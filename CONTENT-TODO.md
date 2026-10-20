@@ -39,4 +39,5 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 
 - Texte, Kontaktdaten, Impressumsangaben und Mitgliedschaft: alte Website khatera-gross.de (Rohtexte in `content/live-site-texte.md`)
 - Fotos: eigene Projektfotos von der alten Website. Profi-Fotos mit Khatera: Fotograf „MKG“ (Nikon D850, Januar 2025), Einliegerwohnung: iPhone, Juli 2024. Porträt: von Ricardo geliefert, KI-hochskaliert (siehe oben).
+- Logo: Illustrator-Originale (`brand-originale/`), Farben der Geschäftsausstattung: Anthrazit #1E1E1D, Sand #BBB494, Creme #FFFDF0.
 - Nicht übernommen: Stockfotos und Platzhalter des Framer-Templates (englische Lorem-Texte, fremde Porträts, Produktbilder).

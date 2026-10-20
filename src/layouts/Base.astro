@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
 import { company, indexable, orte, pakete } from '../config/site';
+import musterKachel from '../assets/brand/muster-kachel.svg';
 
 interface Props {
   title: string;
@@ -75,7 +76,7 @@ const allSchema = [business, ...(crumbSchema ? [crumbSchema] : []), ...schema];
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de" style={`--kg-kachel:url(${musterKachel.src})`}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

@@ -44,10 +44,12 @@ Alte Framer-URLs (`/about-us`, `/blog/…`, `/project/…`) leiten per 301 weite
 | `src/config/site.ts` | Firmendaten, Pakete und Preise, Extras, Rechner-Werte, Stadtseiten |
 | `src/content/faq.ts` | FAQ, wird auch als FAQPage-Schema ausgegeben |
 | `src/components/` | Header, Footer, Paketkarten, Rechner, Ablauf, FAQ, Regionen, CTA |
-| `src/assets/brand/` | Logo als Vektor (aus dem Original-PNG nachgezeichnet) |
+| `src/assets/brand/` | Wortmarke, Logo, Monogramm und Musterkachel, extrahiert aus den Illustrator-Originalen |
+| `brand-originale/` | Originaldateien der Designerin (Visitenkarte, Briefumschlag, Icon in 4 Farben) |
 | `src/assets/images/` | Kuratierte, umbenannte Projektfotos und Porträts |
 | `scripts/screenshots.mjs` | Screenshots Desktop/Mobil: `node scripts/screenshots.mjs http://localhost:4321 / /kontakt` |
 | `scripts/og-image.mjs` | Erzeugt `public/og.jpg` und das Touch-Icon neu |
+| `scripts/logo-extract.mjs` | Zieht Logo-Teile als SVG aus den Originalen: `pdftocairo -svg brand-originale/….ai tmp.svg`, dann `node scripts/logo-extract.mjs tmp.svg out.svg 90-101,79-89` |
 | `SICHTBARKEIT.md` | Plan für Google-Profil, Bewertungen, Makler, Verzeichnisse, Ads, Go-live |
 | `CONTENT-TODO.md` | Offene Inhalte und Entscheidungen für die Kundin |
 

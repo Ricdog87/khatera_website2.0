@@ -171,6 +171,19 @@
   }
   .link-line:hover { background-size: 0 1px; background-position: 100% 100%; }
 
+  .kg-muster { position: relative; isolation: isolate; }
+  .kg-muster::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-sand-400);
+    opacity: 0.07;
+    -webkit-mask: var(--kg-kachel) 0 0 / 132px auto repeat;
+    mask: var(--kg-kachel) 0 0 / 132px auto repeat;
+    pointer-events: none;
+  }
+
   .prose-kg > * + * { margin-top: 1.25em; }
   .prose-kg h2 {
     margin-top: 2.2em;
