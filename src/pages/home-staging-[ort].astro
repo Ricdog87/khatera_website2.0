@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import PaketKarten from '../components/PaketKarten.astro';
+import Ablauf from '../components/Ablauf.astro';
+import Regionen from '../components/Regionen.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company, orte, pakete, type Ort } from '../config/site';
+import { faqAllgemein, faqSchema, type Frage } from '../content/faq';
+
+import wohnzimmer from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
+import schlafzimmer from '../assets/images/projekte/khatera-gross-styling-schlafzimmer.jpg';
+import essbereich from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
+import konsole from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
+import einlieger from '../assets/images/projekte/einliegerwohnung-schlafzimmer-quer.jpg';
+
+export function getStaticPaths() {
+  return orte.map((ort) => ({ params: { ort: ort.slug }, props: { ort } }));
+}
+
+const { ort } = Astro.props as { ort: Ort };
+const bilder = { wiesbaden: wohnzimmer, rheingau: konsole, taunusstein: einlieger, mainz: essbereich, frankfurt: schlafzimmer } as const;
+const bild = bilder[ort.slug as keyof typeof bilder] ?? wohnzimmer;
+const euro = (n: number) => n.toLocaleString('de-DE');
+const [beratung, teil, komplett] = pakete;
+
+const fragen: Frage[] = [
+  {
+    frage: `Was kostet Home Staging ${ort.praep}?`,
+    antwort: `Die Staging-Beratung für bewohnte Immobilien ${ort.praep} kostet ab ${euro(beratung.preisAb!)} €, ein Teil-Staging ab ${euro(teil.preisAb!)} € und ein Komplett-Staging ab ${euro(komplett.preisAb!)} €, jeweils inklusive Möbelmiete und Anfahrt. Den genauen Festpreis bekommen Sie nach einem Blick auf Grundriss und Fotos innerhalb von 48 Stunden.`,
+  },
+  {
+    frage: `Wie schnell sind Sie ${ort.praep} vor Ort?`,
+    antwort: `${ort.anfahrt} Vom Auftrag bis zur fertig eingerichteten Immobilie vergehen meist ein bis zwei Wochen.`,
+  },
+  {
+    frage: `In welchen Lagen ${ort.praep} sind Sie tätig?`,
+    antwort: `Überall ${ort.praep} und Umgebung, unter anderem in ${ort.lagen.slice(0, -1).join(', ')} und ${ort.lagen.at(-1)}.`,
+  },
+  faqAllgemein[1],
+  faqAllgemein[3],
+  faqAllgemein[4],
+];
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: ort.title,
+  serviceType: 'Home Staging',
+  provider: { '@id': `${Astro.site!.href.replace(/\/$/, '')}/#business` },
+  areaServed: { '@type': 'Place', name: ort.name },
+  offers: pakete.map((p) => ({ '@type': 'Offer', name: p.name, price: p.preisAb, priceCurrency: 'EUR' })),
+};
+---
+
+<Base
+  title={`${ort.title} | Khatera Gross`}
+  description={ort.description}
+  schema={[service, faqSchema(fragen)]}
+  breadcrumbs={[{ name: ort.title, href: `/home-staging-${ort.slug}` }]}
+>
+  <section class="pt-10 pb-[var(--section)] md:pt-16">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-6">
+        <p class="label rule text-sand-700" data-reveal>Home Staging · {ort.name}</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Home Staging <em class="text-petrol-500">{ort.praep}</em></h1>
+        <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">{ort.intro}</p>
+        <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
+          <a href={`/kontakt?ort=${encodeURIComponent(ort.name)}`} class="btn btn-primary">Festpreis anfragen <Arrow /></a>
+          <a href={company.phoneHref} class="btn btn-ghost lining-nums">{company.phone}</a>
+        </div>
+      </div>
+      <div class="lg:col-span-6">
+        <div class="overflow-hidden" data-reveal="image">
+          <Photo src={bild} alt={`Home Staging ${ort.praep}: inszenierter Wohnraum von Khatera Gross`} widths={[768, 1080, 1440, 1920]} sizes="(min-width: 1024px) 50vw, 100vw" loading="eager" fetchpriority="high" class="aspect-[4/3] w-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-linen">
+    <div class="container-page grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <SectionHead label={`Immobilienmarkt ${ort.name}`} title="Warum sich Home Staging" em={`${ort.praep} lohnt.`} />
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <div class="space-y-5 text-[1.125rem] text-ink-600" data-reveal>
+          {ort.markt.map((m) => <p>{m}</p>)}
+        </div>
+        <p class="label mt-12 text-sand-700" data-reveal>Hier bin ich unterwegs</p>
+        <ul class="mt-4 flex flex-wrap gap-2" data-reveal>
+          {ort.lagen.map((l) => <li class="rounded-full border border-ink-900/15 px-4 py-2 text-small">{l}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <SectionHead label="Pakete" title={`Pakete für ${ort.name}.`} em="Festpreise ohne Überraschung." />
+      <div class="mt-16">
+        <PaketKarten />
+      </div>
+      <p class="mt-8 text-small text-ink-600">Preise netto zzgl. MwSt., Anfahrt {ort.praep} inklusive. <a href="/home-staging-kosten" class="link-line text-ink-900">Alle Details zu den Kosten</a></p>
+    </div>
+  </section>
+
+  <Ablauf />
+  <Faq fragen={fragen} title={`Home Staging ${ort.praep}:`} em="Ihre Fragen." />
+  <Regionen exclude={ort.slug} />
+  <CtaBand title={`Verkaufen ${ort.praep}?`} em="Ich inszeniere Ihre Immobilie." />
+</Base>

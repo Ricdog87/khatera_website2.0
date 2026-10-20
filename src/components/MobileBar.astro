@@ -1,0 +1,31 @@
+---
+import { company } from '../config/site';
+---
+
+<div class="mobile-bar fixed inset-x-3 bottom-3 z-40 grid grid-cols-[1fr_1fr_1.4fr] gap-1 rounded-full bg-ink-900/95 p-1 text-paper shadow-[0_12px_40px_-12px_rgb(0_0_0/0.5)] backdrop-blur md:hidden" data-show="false">
+  <a href={company.phoneHref} class="label flex min-h-12 items-center justify-center rounded-full tracking-[0.14em]">Anrufen</a>
+  <a href={company.whatsappHref} class="label flex min-h-12 items-center justify-center rounded-full tracking-[0.14em]" rel="noopener" target="_blank">WhatsApp</a>
+  <a href="/kontakt" class="label flex min-h-12 items-center justify-center rounded-full bg-sand-400 tracking-[0.14em] text-ink-900">Anfragen</a>
+</div>
+
+<style>
+  .mobile-bar { transition: transform 600ms var(--ease-expo), opacity 400ms; }
+  .mobile-bar[data-show='false'] { transform: translateY(140%); opacity: 0; pointer-events: none; }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('.mobile-bar')!;
+  const hideOn = document.querySelector('[data-hide-mobile-bar]');
+  let formVisible = false;
+  if (hideOn) {
+    new IntersectionObserver(([e]) => {
+      formVisible = e.isIntersecting;
+      update();
+    }).observe(hideOn);
+  }
+  const update = () => {
+    bar.dataset.show = String(window.scrollY > window.innerHeight * 0.6 && !formVisible);
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+</script>

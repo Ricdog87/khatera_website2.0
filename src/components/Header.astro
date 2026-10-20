@@ -1,0 +1,134 @@
+---
+import Logo from './Logo.astro';
+import { company, navigation } from '../config/site';
+
+interface Props {
+  /** Transparent über einem dunklen Vollbild-Hero */
+  overlay?: boolean;
+}
+const { overlay = false } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<header class="site-header fixed inset-x-0 top-0 z-50" data-overlay={overlay ? 'true' : 'false'} data-solid={overlay ? 'false' : 'true'}>
+  <div class="container-page flex h-(--header-h) items-center justify-between gap-6">
+    <a href="/" class="block w-[150px] shrink-0 md:w-[176px]" aria-label={`${company.name}, zur Startseite`}>
+      <Logo />
+    </a>
+
+    <nav aria-label="Hauptnavigation" class="hidden xl:block">
+      <ul class="flex items-center gap-7 text-[0.9375rem]">
+        {navigation.map((item) => (
+          <li>
+            <a href={item.href} class="nav-link py-2" aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href={company.phoneHref} class="nav-link hidden text-[0.9375rem] lining-nums tabular-nums 2xl:inline">{company.phone}</a>
+      <a href="/kontakt" class="header-cta btn hidden min-h-11 px-5 py-2 sm:inline-flex">Paket anfragen</a>
+      <button type="button" class="menu-toggle label flex h-11 items-center gap-3 xl:hidden" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-text">Menü</span>
+        <span class="relative block h-2.5 w-7" aria-hidden="true">
+          <span class="bar absolute inset-x-0 top-0 h-px bg-current"></span>
+          <span class="bar absolute inset-x-0 bottom-0 h-px bg-current"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 top-(--header-h) overflow-y-auto bg-paper xl:hidden" hidden>
+    <nav aria-label="Mobile Navigation" class="container-page flex min-h-full flex-col justify-between gap-10 pt-6 pb-32">
+      <ul>
+        {navigation.map((item, i) => (
+          <li class="border-b border-line">
+            <a href={item.href} class="mobile-link flex items-baseline justify-between py-4 font-display text-[2.125rem] leading-tight text-ink-900">
+              {item.label}
+              <span class="label text-sand-700">0{i + 1}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="space-y-4">
+        <a href="/kontakt" class="btn btn-primary w-full">Paket anfragen</a>
+        <div class="grid grid-cols-2 gap-3">
+          <a href={company.phoneHref} class="btn btn-ghost">Anrufen</a>
+          <a href={`mailto:${company.email}`} class="btn btn-ghost">E-Mail</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    --fg: var(--color-ink-900);
+    color: var(--fg);
+    border-bottom: 1px solid transparent;
+    transition: background-color 500ms var(--ease-out-soft), color 500ms var(--ease-out-soft), border-color 500ms var(--ease-out-soft), transform 700ms var(--ease-expo);
+  }
+  .site-header[data-solid='true'] {
+    background: rgb(245 241 234 / 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--color-line);
+  }
+  .site-header[data-solid='false'] { --fg: var(--color-paper); }
+  .site-header[data-hidden='true'] { transform: translateY(-101%); }
+  .site-header[data-menu='true'] { --fg: var(--color-ink-900); background: var(--color-paper); border-bottom-color: var(--color-line); }
+
+  .nav-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms var(--ease-expo);
+  }
+  .nav-link:hover, .nav-link[aria-current='page'] { background-size: 100% 1px; }
+
+  .header-cta { background: var(--color-petrol-500); color: var(--color-paper); }
+  .header-cta:hover { background: var(--color-petrol-800); }
+  .site-header[data-solid='false'] .header-cta { background: var(--color-paper); color: var(--color-ink-900); }
+  .site-header[data-solid='false'] .header-cta:hover { background: var(--color-sand-400); }
+
+  .bar { transition: transform 400ms var(--ease-expo); }
+  .menu-toggle[aria-expanded='true'] .bar:first-child { transform: translateY(4.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded='true'] .bar:last-child { transform: translateY(-4.5px) rotate(-45deg); }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header')!;
+  const toggle = header.querySelector<HTMLButtonElement>('.menu-toggle')!;
+  const menu = header.querySelector<HTMLElement>('#mobile-menu')!;
+  const label = toggle.querySelector('.menu-toggle-text')!;
+  const overlay = header.dataset.overlay === 'true';
+  let lastY = window.scrollY;
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (overlay) header.dataset.solid = y > 40 ? 'true' : 'false';
+    // Beim Runterscrollen ausblenden, beim Hochscrollen zeigen
+    header.dataset.hidden = y > 320 && y > lastY && header.dataset.menu !== 'true' ? 'true' : 'false';
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const setMenu = (open: boolean) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+    header.dataset.menu = String(open);
+    label.textContent = open ? 'Schließen' : 'Menü';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  };
+  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && header.dataset.menu === 'true') {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+</script>

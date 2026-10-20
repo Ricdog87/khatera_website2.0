@@ -1,0 +1,26 @@
+---
+import SectionHead from './SectionHead.astro';
+
+const schritte = [
+  { titel: 'Erstgespräch', text: 'Kostenlos am Telefon oder per Video. Sie schicken mir Grundriss und ein paar Handyfotos, ich sage Ihnen ehrlich, welches Paket sich lohnt.', dauer: '20 Minuten' },
+  { titel: 'Festpreisangebot', text: 'Innerhalb von 48 Stunden erhalten Sie ein transparentes Angebot. Keine versteckten Kosten, keine Überraschungen.', dauer: '48 Stunden' },
+  { titel: 'Konzept & Aufbau', text: 'Ich entwickle ein Einrichtungskonzept für Ihre Zielgruppe, liefere an und style jeden Raum bis ins Detail.', dauer: 'meist 1 Tag' },
+  { titel: 'Fotos & Verkauf', text: 'Ihr Fotograf kommt direkt nach dem Styling. Nach dem Notartermin hole ich alles wieder ab. Sie müssen sich um nichts kümmern.', dauer: 'bis zum Notar' },
+];
+---
+
+<section class="section" id="ablauf">
+  <div class="container-page">
+    <SectionHead label="So läuft es ab" title="Vier Schritte bis zur" em="ersten Besichtigung." />
+    <ol class="mt-16 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
+      {schritte.map((s, i) => (
+        <li class="flex flex-col bg-paper p-7 md:p-9" data-reveal style={`--d:${i}`}>
+          <span class="font-display text-[4.5rem] leading-none text-sand-400 italic">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-8 text-title">{s.titel}</h3>
+          <p class="mt-4 flex-1 text-ink-600">{s.text}</p>
+          <p class="label mt-8 text-sand-700">{s.dauer}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

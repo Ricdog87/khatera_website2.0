@@ -1,0 +1,64 @@
+---
+import Logo from './Logo.astro';
+import Arrow from './Arrow.astro';
+import { company, pakete, orte } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="on-dark bg-petrol-950 text-paper">
+  <div class="container-page pt-[var(--section)] pb-10">
+    <div class="grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="label rule text-sand-400">Kontakt</p>
+        <p class="mt-6 font-display text-headline text-paper">Lassen Sie uns Ihre Immobilie <em class="text-sand-400">in Szene setzen.</em></p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/kontakt" class="btn btn-light">Paket anfragen <Arrow /></a>
+          <a href={company.phoneHref} class="btn btn-ghost lining-nums tabular-nums">{company.phone}</a>
+        </div>
+      </div>
+
+      <div class="grid gap-10 text-small sm:grid-cols-3 lg:col-span-6 lg:pt-3">
+        <div>
+          <p class="label text-sand-400">Pakete</p>
+          <ul class="mt-5 space-y-2.5 text-mist">
+            {pakete.map((p) => <li><a class="hover:text-paper" href={`/kontakt?paket=${p.id}`}>{p.name}</a></li>)}
+            <li><a class="hover:text-paper" href="/makler-bautraeger">Musterwohnungen</a></li>
+            <li><a class="hover:text-paper" href="/home-staging-kosten">Alle Preise</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="label text-sand-400">Regionen</p>
+          <ul class="mt-5 space-y-2.5 text-mist">
+            {orte.map((o) => <li><a class="hover:text-paper" href={`/home-staging-${o.slug}`}>Home Staging {o.name}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="label text-sand-400">Studio</p>
+          <ul class="mt-5 space-y-2.5 text-mist">
+            <li><a class="hover:text-paper" href="/ueber-mich">Über mich</a></li>
+            <li><a class="hover:text-paper" href="/projekte">Projekte</a></li>
+            <li><a class="hover:text-paper" href="/ratgeber">Ratgeber</a></li>
+            <li><a class="hover:text-paper" href="/kontakt">Kontakt</a></li>
+          </ul>
+          <address class="mt-8 not-italic text-mist">
+            {company.street}<br />{company.zip} {company.city}<br />
+            <a class="hover:text-paper" href={`mailto:${company.email}`}>{company.email}</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-[var(--section)] text-sand-400/40" aria-hidden="true">
+      <Logo class="w-full" />
+    </div>
+
+    <div class="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-[0.8125rem] text-mist sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {company.name} · {company.region}</p>
+      <ul class="flex gap-6">
+        <li><a class="hover:text-paper" href="/impressum">Impressum</a></li>
+        <li><a class="hover:text-paper" href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

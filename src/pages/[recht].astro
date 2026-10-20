@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('recht');
+  return pages.map((page) => ({ params: { recht: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Base title={page.data.title} description={page.data.description} breadcrumbs={[{ name: page.data.title, href: `/${page.id}` }]}>
+  <article class="pt-10 pb-[var(--section)] md:pt-16">
+    <div class="container-page">
+      <h1 class="text-display">{page.data.title}</h1>
+      <div class="prose-kg mt-12 max-w-[68ch]">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>

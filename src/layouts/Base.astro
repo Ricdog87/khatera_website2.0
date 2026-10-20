@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import { company, indexable, orte, pakete } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Transparenter Header über einem Vollbild-Hero */
+  overlayHeader?: boolean;
+  ogImage?: string;
+  /** Zusätzliche strukturierte Daten (FAQPage, BreadcrumbList, Article …) */
+  schema?: Record<string, unknown>[];
+  /** Brotkrumen für Unterseiten, ohne Startseite */
+  breadcrumbs?: { name: string; href: string }[];
+  noindex?: boolean;
+}
+
+const { title, description, overlayHeader = false, ogImage = '/og.jpg', schema = [], breadcrumbs, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const fullTitle = title.includes('Khatera Gross') ? title : `${title} | Khatera Gross`;
+const site = Astro.site!.href.replace(/\/$/, '');
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${site}/#business`,
+  name: company.name,
+  alternateName: 'KG Home Staging',
+  description: 'Home Staging für Eigentümer, Makler und Bauträger im Rheingau, in Wiesbaden, Taunusstein, Mainz und Frankfurt.',
+  url: site,
+  logo: `${site}/favicon.svg`,
+  image: `${site}/og.jpg`,
+  telephone: company.phone.replace(/\s/g, ''),
+  email: company.email,
+  priceRange: '€€',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.street,
+    postalCode: company.zip,
+    addressLocality: company.city,
+    addressRegion: 'Hessen',
+    addressCountry: 'DE',
+  },
+  areaServed: [...orte.map((o) => ({ '@type': 'Place', name: o.name })), { '@type': 'AdministrativeArea', name: 'Rheingau-Taunus-Kreis' }],
+  founder: { '@type': 'Person', '@id': `${site}/#khatera`, name: company.owner, jobTitle: 'Home Stagerin' },
+  memberOf: { '@type': 'Organization', name: 'Staging Community' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Home Staging Pakete',
+    itemListElement: pakete.map((p) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: `Home Staging: ${p.name}`, description: p.leistungen.join('. ') },
+      ...(p.preisAb ? { priceSpecification: { '@type': 'PriceSpecification', price: p.preisAb, priceCurrency: 'EUR', minPrice: p.preisAb } } : {}),
+    })),
+  },
+  ...(company.linkedin || company.instagram ? { sameAs: [company.linkedin, company.instagram].filter(Boolean) } : {}),
+};
+
+const crumbSchema = breadcrumbs && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ name: 'Startseite', href: '/' }, ...breadcrumbs].map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.href, Astro.site).href,
+  })),
+};
+
+const allSchema = [business, ...(crumbSchema ? [crumbSchema] : []), ...schema];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={indexable && !noindex ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+    <meta name="theme-color" content="#f5f1ea" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="geo.region" content="DE-HE" />
+    <meta name="geo.placename" content="Taunusstein" />
+    <Font cssVariable="--font-cormorant" preload />
+    <Font cssVariable="--font-jost" preload />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+    <script is:inline>
+      (function (d) {
+        d.classList.add('js');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
+      })(document.documentElement);
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="min-h-svh">
+    <a href="#inhalt" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink-900 focus:px-4 focus:py-3 focus:text-paper">Zum Inhalt springen</a>
+    <Header overlay={overlayHeader} />
+    <main id="inhalt">
+      {breadcrumbs && (
+        <nav aria-label="Brotkrumen" class="container-page pt-[calc(var(--header-h)+1.5rem)] text-[0.8125rem] text-ink-600">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-ink-900">Start</a></li>
+            {breadcrumbs.map((c, i) => (
+              <li class="flex items-center gap-2">
+                <span aria-hidden="true" class="text-line">/</span>
+                {i === breadcrumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href} class="hover:text-ink-900">{c.name}</a>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <slot />
+    </main>
+    <Footer />
+    <MobileBar />
+
+    <script>
+      import { startMotion } from '../scripts/motion';
+      startMotion();
+    </script>
+  </body>
+</html>

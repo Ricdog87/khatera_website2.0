@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import PaketKarten from '../components/PaketKarten.astro';
+import Rechner from '../components/Rechner.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Arrow from '../components/Arrow.astro';
+import { extras } from '../config/site';
+import { faqKosten, faqSchema } from '../content/faq';
+
+const faktoren = [
+  { titel: 'Größe & Räume', text: 'Wie viele Wohnräume, Flure und Bäder eingerichtet werden. Ob ein Zimmer 12 oder 18 m² hat, macht dagegen kaum einen Unterschied.' },
+  { titel: 'Preisklasse', text: 'Eine Villa in Sonnenberg braucht andere Möbel als die Zweizimmerwohnung für Kapitalanleger. Die Möbelqualität passt sich der Zielgruppe an.' },
+  { titel: 'Laufzeit', text: 'Im Paket sind 8 oder 12 Wochen Möbelmiete enthalten. Danach wird fair nach Wochen abgerechnet, nicht nach Monaten.' },
+  { titel: 'Zugang & Lage', text: 'Etage, Aufzug und Parkmöglichkeiten bestimmen den Aufwand beim Auf- und Abbau. Im Rhein-Main-Gebiet ist die Anfahrt inklusive.' },
+];
+
+const beispiel = [
+  { label: 'Angebotspreis Eigentumswohnung', wert: '450.000 €' },
+  { label: 'Typischer Preisnachlass in der Verhandlung, 3 %', wert: '– 13.500 €' },
+  { label: 'Investition Komplett-Staging, ca.', wert: '3.500 €' },
+  { label: 'Break-even bei Mehrerlös von', wert: '0,8 %' },
+];
+---
+
+<Base
+  title="Home Staging Kosten: Pakete & Preise"
+  description="Was kostet Home Staging? Transparente Pakete ab 290 €: Staging-Beratung, Teil-Staging und Komplett-Staging inkl. Möbelmiete. Festpreis in 48 Stunden, Rhein-Main-Gebiet."
+  breadcrumbs={[{ name: 'Pakete & Preise', href: '/home-staging-kosten' }]}
+  schema={[faqSchema(faqKosten)]}
+>
+  <section class="pt-10 pb-[calc(var(--section)*0.6)] md:pt-16">
+    <div class="container-page grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-8">
+        <p class="label rule text-sand-700" data-reveal>Pakete & Preise</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Was kostet <em class="text-petrol-500">Home Staging?</em></h1>
+      </div>
+      <p class="text-lead text-ink-600 lg:col-span-4" data-reveal style="--d:2">
+        Drei Pakete mit klaren Startpreisen. Nach einem Blick auf Grundriss und Fotos bekommen Sie einen verbindlichen Festpreis, ohne versteckte Kosten.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-linen pt-16 pb-[var(--section)] md:pt-24">
+    <div class="container-page">
+      <PaketKarten />
+      <p class="mt-8 text-small text-ink-600">Alle Preise netto zzgl. 19 % MwSt. Anfahrt im Rhein-Main-Gebiet, Auf- und Abbau inklusive.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <SectionHead label="So entsteht der Preis" title="Zwei Positionen," em="volle Transparenz." />
+        <div class="mt-8 space-y-5 text-ink-600" data-reveal style="--d:2">
+          <p>Jedes Angebot besteht aus der <strong class="font-normal text-ink-900">Arbeitsleistung</strong> (Konzept, Transport, Aufbau, Styling, Abbau) und der <strong class="font-normal text-ink-900">Miete für Möbel und Dekoration</strong>. Beides weise ich getrennt aus, damit Sie genau sehen, wofür Sie zahlen.</p>
+          <p>Zusatzleistungen wie Fotografie, Malerarbeiten oder Reinigung sind optional und stehen extra im Angebot.</p>
+        </div>
+      </div>
+      <div class="grid gap-px border border-line bg-line sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
+        {faktoren.map((f, i) => (
+          <div class="bg-paper p-7" data-reveal style={`--d:${i}`}>
+            <p class="font-display text-[2.5rem] leading-none text-sand-400 italic">0{i + 1}</p>
+            <h3 class="mt-5 text-[1.75rem] leading-tight">{f.titel}</h3>
+            <p class="mt-3 text-small text-ink-600">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-5">
+        <SectionHead label="Rechenbeispiel" title="Teurer als Home Staging ist" em="ein Preisnachlass." />
+        <p class="mt-8 text-ink-600" data-reveal style="--d:2">Leere oder unruhig eingerichtete Immobilien stehen länger im Netz. Mit jeder Woche wächst der Druck, und am Ende wird über den Preis verhandelt. Schon ein kleiner Unterschied in der Verhandlung ist mehr wert als die Inszenierung.</p>
+      </div>
+      <dl class="border-t border-ink-900 lg:col-span-6 lg:col-start-7" data-reveal>
+        {beispiel.map((b, i) => (
+          <div class:list={['flex items-baseline justify-between gap-6 border-b border-line py-5', i === beispiel.length - 1 && 'border-ink-900']}>
+            <dt class="text-ink-600">{b.label}</dt>
+            <dd class:list={['font-display text-[1.75rem] leading-none whitespace-nowrap lining-nums', i === beispiel.length - 1 && 'text-petrol-500']}>{b.wert}</dd>
+          </div>
+        ))}
+        <p class="mt-4 text-[0.8125rem] text-ink-600">Beispielhafte Rechnung, Werte gerundet.</p>
+      </dl>
+    </div>
+  </section>
+
+  <Rechner />
+
+  <section class="section">
+    <div class="container-page">
+      <SectionHead label="Extras" title="Alles aus" em="einer Hand." />
+      <div class="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
+        {extras.map((e, i) => (
+          <div class="bg-paper p-7" data-reveal style={`--d:${i}`}>
+            <h3 class="text-[1.75rem] leading-tight">{e.name}</h3>
+            <p class="mt-3 text-small text-ink-600">{e.text}</p>
+            <p class="label mt-6 text-sand-700">Auf Anfrage</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-12 flex flex-col gap-5 bg-petrol-800 p-8 text-paper md:flex-row md:items-center md:justify-between md:p-10" data-reveal>
+        <div>
+          <p class="label text-sand-400">Makler & Bauträger</p>
+          <p class="mt-3 font-display text-[1.875rem] leading-tight">Mehrere Objekte im Jahr? Für Partner gibt es feste Konditionen.</p>
+        </div>
+        <a href="/makler-bautraeger" class="btn btn-light shrink-0">Partnermodell <Arrow /></a>
+      </div>
+    </div>
+  </section>
+
+  <Faq fragen={faqKosten} title="Fragen zu" em="Kosten & Ablauf." />
+  <CtaBand />
+</Base>

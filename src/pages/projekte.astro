@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+
+import wohnzimmer from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
+import konsole from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
+import schlafzimmer from '../assets/images/projekte/khatera-gross-styling-schlafzimmer.jpg';
+import essbereich from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
+import elQuer from '../assets/images/projekte/einliegerwohnung-schlafzimmer-quer.jpg';
+import elHoch from '../assets/images/projekte/einliegerwohnung-schlafzimmer-hoch.jpg';
+import elSessel from '../assets/images/projekte/einliegerwohnung-sessel-ecke.jpg';
+import elVase from '../assets/images/projekte/einliegerwohnung-konsole-vase.jpg';
+
+// TODO Kundin: Orte, Flächen und Ergebnisse (z. B. "nach 3 Wochen reserviert") ergänzen
+const projekte = [
+  {
+    nr: '01',
+    titel: 'Neubauwohnung',
+    ort: 'Rhein-Main',
+    art: 'Home Staging, leerstehend',
+    text: 'Eine helle Neubauwohnung ohne Charakter auf den Fotos. Mit warmem Licht, ruhigen Naturtönen und klaren Möbelgruppen wurde aus dem offenen Grundriss ein Zuhause mit Wohn-, Ess- und Schlafbereich, das man sofort versteht.',
+    bilder: [
+      { src: wohnzimmer, alt: 'Wohnzimmer mit Pendelleuchte, Regal und Sofa in warmem Licht', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: essbereich, alt: 'Khatera Gross dekoriert den Esstisch vor der offenen Küche', cls: 'col-span-12 md:col-span-7', ratio: 'aspect-[3/2]' },
+      { src: konsole, alt: 'Konsole mit Skulptur, Leuchte und Kunstdruck', cls: 'col-span-12 md:col-span-5', ratio: 'aspect-[4/5] md:aspect-auto md:h-full' },
+      { src: schlafzimmer, alt: 'Schlafzimmer mit blauen Samtkissen und heller Tagesdecke', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+    ],
+  },
+  {
+    nr: '02',
+    titel: 'Einliegerwohnung',
+    ort: 'Rheingau-Taunus',
+    art: 'Einrichtung & Styling',
+    text: 'Kleine Fläche, große Wirkung: Mit wenigen, gut gewählten Stücken in Creme, Holz und Schwarz wirkt die Einliegerwohnung großzügig und hochwertig. Texturen statt Farbe, Ruhe statt Fülle.',
+    bilder: [
+      { src: elQuer, alt: 'Schlafzimmer der Einliegerwohnung mit Pendelleuchte aus Rattan und Teppich', cls: 'col-span-12 md:col-span-8', ratio: 'aspect-[4/3]' },
+      { src: elVase, alt: 'Konsole mit Glasvase und Trockenblumen', cls: 'col-span-6 md:col-span-4', ratio: 'aspect-[3/4] md:aspect-auto md:h-full' },
+      { src: elSessel, alt: 'Polsterstuhl und Pflanze in der Zimmerecke', cls: 'col-span-6 md:col-span-4', ratio: 'aspect-[3/4]' },
+      { src: elHoch, alt: 'Blick ins eingerichtete Schlafzimmer', cls: 'col-span-12 md:col-span-8', ratio: 'aspect-[4/3]' },
+    ],
+  },
+];
+---
+
+<Base
+  title="Home Staging Projekte & Referenzen"
+  description="Ausgewählte Home Staging Projekte von Khatera Gross im Rhein-Main-Gebiet: Neubauwohnung, Einliegerwohnung und mehr. So wirken inszenierte Räume."
+  breadcrumbs={[{ name: 'Projekte', href: '/projekte' }]}
+>
+  <section class="pt-10 pb-[calc(var(--section)*0.6)] md:pt-16">
+    <div class="container-page grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-8">
+        <p class="label rule text-sand-700" data-reveal>Projekte</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Räume, die man <em class="text-petrol-500">kaufen möchte.</em></h1>
+      </div>
+      <p class="text-lead text-ink-600 lg:col-span-4" data-reveal style="--d:2">Jede Immobilie bekommt ihr eigenes Konzept. Hier ein Einblick in aktuelle Inszenierungen.</p>
+    </div>
+  </section>
+
+  {projekte.map((p) => (
+    <section class="border-t border-line py-[calc(var(--section)*0.8)]">
+      <div class="container-page grid gap-12 lg:grid-cols-12">
+        <header class="lg:col-span-4">
+          <div class="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
+            <p class="font-display text-[5rem] leading-none text-sand-400 italic">{p.nr}</p>
+            <h2 class="mt-6 text-headline">{p.titel}</h2>
+            <dl class="mt-8 grid grid-cols-2 gap-4 border-y border-line py-5 text-small">
+              <div><dt class="label text-sand-700">Region</dt><dd class="mt-1">{p.ort}</dd></div>
+              <div><dt class="label text-sand-700">Leistung</dt><dd class="mt-1">{p.art}</dd></div>
+            </dl>
+            <p class="mt-8 text-ink-600">{p.text}</p>
+          </div>
+        </header>
+        <div class="grid grid-cols-12 gap-3 md:gap-4 lg:col-span-8">
+          {p.bilder.map((b) => (
+            <div class:list={['overflow-hidden', b.cls]} data-reveal="image">
+              <Photo src={b.src} alt={b.alt} widths={[480, 768, 1080, 1440, 1920]} sizes="(min-width: 1024px) 60vw, 100vw" class:list={['w-full object-cover', b.ratio]} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section bg-linen">
+    <div class="container-page max-w-3xl text-center">
+      <p class="label text-sand-700">Ihr Projekt</p>
+      <h2 class="mt-6 text-headline">Ihre Immobilie könnte <em class="text-petrol-500">die nächste sein.</em></h2>
+      <p class="mt-6 text-lead text-ink-600">Ob leere Wohnung, Einfamilienhaus oder Musterwohnung: Ich freue mich auf Ihr Projekt.</p>
+      <a href="/kontakt" class="btn btn-primary mt-10">Projekt anfragen <Arrow /></a>
+    </div>
+  </section>
+</Base>

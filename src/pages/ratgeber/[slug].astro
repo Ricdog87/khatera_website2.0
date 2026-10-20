@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Photo from '../../components/Photo.astro';
+import Arrow from '../../components/Arrow.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import portrait from '../../assets/images/portrait/khatera-gross-blazer.jpg';
+import { getImage } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const artikel = await getCollection('ratgeber');
+  return artikel.map((a) => ({ params: { slug: a.id }, props: { a, alle: artikel } }));
+}
+
+const { a, alle } = Astro.props;
+const { Content } = await render(a);
+const weitere = alle.filter((x) => x.id !== a.id).slice(0, 2);
+const datum = (d: Date) => d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+const og = await getImage({ src: a.data.bild, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const site = Astro.site!.href.replace(/\/$/, '');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: a.data.title,
+  description: a.data.description,
+  datePublished: a.data.datum.toISOString(),
+  dateModified: (a.data.aktualisiert ?? a.data.datum).toISOString(),
+  image: new URL(og.src, Astro.site).href,
+  author: { '@type': 'Person', '@id': `${site}/#khatera`, name: 'Khatera Gross', url: `${site}/ueber-mich` },
+  publisher: { '@id': `${site}/#business` },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+};
+---
+
+<Base
+  title={a.data.title}
+  description={a.data.description}
+  ogImage={og.src}
+  schema={[schema]}
+  breadcrumbs={[{ name: 'Ratgeber', href: '/ratgeber' }, { name: a.data.kurz, href: `/ratgeber/${a.id}` }]}
+>
+  <article class="pt-10 md:pt-16">
+    <header class="container-page max-w-5xl">
+      <p class="label text-sand-700" data-reveal>{a.data.kategorie} · {a.data.lesezeit} Min. Lesezeit</p>
+      <h1 class="mt-6 text-display" data-reveal style="--d:1">{a.data.title}</h1>
+      <div class="mt-10 flex items-center gap-4 text-small text-ink-600" data-reveal style="--d:2">
+        <Photo src={portrait} alt="" widths={[96, 192]} sizes="48px" class="h-12 w-12 rounded-full object-cover object-[50%_20%]" />
+        <p><span class="text-ink-900">Khatera Gross</span><br /><time datetime={a.data.datum.toISOString()}>{datum(a.data.datum)}</time></p>
+      </div>
+    </header>
+
+    <div class="container-page mt-14">
+      <div class="overflow-hidden" data-reveal="image">
+        <Photo src={a.data.bild} alt={a.data.bildAlt} widths={[768, 1440, 2250]} sizes="(min-width: 1472px) 1400px, 100vw" loading="eager" class="aspect-[16/9] max-h-[78vh] w-full object-cover" />
+      </div>
+    </div>
+
+    <div class="container-page grid gap-14 py-[var(--section)] lg:grid-cols-12">
+      <div class="prose-kg text-[1.125rem] lg:col-span-7 lg:col-start-3">
+        <Content />
+      </div>
+      <aside class="lg:col-span-3">
+        <div class="sticky top-[calc(var(--header-h)+2rem)] bg-linen p-7">
+          <p class="label text-sand-700">Persönliche Beratung</p>
+          <p class="mt-4 font-display text-[1.75rem] leading-tight">Was bringt Home Staging für <em class="text-petrol-500">Ihre Immobilie?</em></p>
+          <a href="/kontakt" class="btn btn-primary mt-6 w-full">Kostenlos anfragen</a>
+          <a href="/home-staging-kosten" class="label link-line mt-5 inline-block">Pakete & Preise</a>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <section class="section border-t border-line pt-[calc(var(--section)*0.7)]">
+    <div class="container-page">
+      <p class="label rule text-sand-700">Weiterlesen</p>
+      <div class="mt-10 grid gap-10 md:grid-cols-2">
+        {weitere.map((w) => (
+          <a href={`/ratgeber/${w.id}`} class="group grid grid-cols-[120px_1fr] items-center gap-6 sm:grid-cols-[180px_1fr]">
+            <div class="overflow-hidden"><Photo src={w.data.bild} alt="" widths={[240, 360]} sizes="180px" class="aspect-square w-full object-cover transition-transform duration-1000 group-hover:scale-105" /></div>
+            <div>
+              <p class="label text-sand-700">{w.data.kategorie}</p>
+              <p class="mt-2 font-display text-[1.625rem] leading-tight">{w.data.title}</p>
+              <span class="label mt-4 inline-flex items-center gap-3">Lesen <Arrow /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

@@ -1,0 +1,35 @@
+---
+import Photo from './Photo.astro';
+import Arrow from './Arrow.astro';
+import { company } from '../config/site';
+import bild from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
+
+interface Props {
+  title?: string;
+  em?: string;
+  text?: string;
+}
+const {
+  title = 'Ihre Immobilie hat',
+  em = 'eine Bühne verdient.',
+  text = 'Schicken Sie mir Grundriss und ein paar Fotos. Sie bekommen innerhalb von 48 Stunden ein Festpreisangebot, kostenlos und unverbindlich.',
+} = Astro.props;
+---
+
+<section class="on-dark relative isolate overflow-hidden bg-ink-900 text-paper">
+  <div class="absolute inset-0 -z-10 overflow-hidden" data-parallax-frame>
+    <Photo src={bild} alt="" widths={[768, 1440, 2250]} sizes="100vw" class="h-full w-full object-cover opacity-55" data-parallax="0.12" />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/50 to-ink-900/10"></div>
+  </div>
+  <div class="container-page py-[calc(var(--section)*1.2)]">
+    <div class="max-w-3xl">
+      <p class="label rule text-sand-400" data-reveal>Kostenloses Erstgespräch</p>
+      <h2 class="mt-6 text-display" data-reveal style="--d:1">{title} <em class="text-sand-400">{em}</em></h2>
+      <p class="mt-8 max-w-xl text-lead text-paper/80" data-reveal style="--d:2">{text}</p>
+      <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
+        <a href="/kontakt" class="btn btn-light">Angebot anfordern <Arrow /></a>
+        <a href={company.phoneHref} class="btn btn-ghost lining-nums tabular-nums">{company.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

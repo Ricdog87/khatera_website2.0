@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+import { company, pakete, web3formsKey } from '../config/site';
+import portrait from '../assets/images/portrait/khatera-gross-blazer.jpg';
+
+const euro = (n: number) => n.toLocaleString('de-DE');
+const optionen = [
+  ...pakete.map((p) => ({ value: p.id, label: `${p.name}${p.preisAb ? ` · ab ${euro(p.preisAb)} €` : ''}` })),
+  { value: 'musterwohnung', label: 'Musterwohnung / Bauträger' },
+  { value: 'makler', label: 'Partnerschaft als Makler' },
+  { value: 'virtuell', label: 'Virtuelles Home Staging' },
+  { value: 'unsicher', label: 'Weiß ich noch nicht, bitte beraten' },
+];
+---
+
+<Base
+  title="Kontakt & Paket anfragen"
+  description="Home Staging anfragen: Paket wählen, Eckdaten eintragen, Festpreisangebot innerhalb von 48 Stunden erhalten. Khatera Gross, Taunusstein, Tel. +49 151 547 205 35."
+  breadcrumbs={[{ name: 'Kontakt', href: '/kontakt' }]}
+>
+  <section class="pt-10 pb-[var(--section)] md:pt-16">
+    <div class="container-page grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="label rule text-sand-700" data-reveal>Paket anfragen</p>
+        <h1 class="mt-6 text-display lg:text-[clamp(3.25rem,4.6vw,5rem)]" data-reveal style="--d:1">Erzählen Sie mir von <em class="text-petrol-500">Ihrer Immobilie.</em></h1>
+        <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">Ich melde mich innerhalb von 24 Stunden persönlich. Das Erstgespräch ist kostenlos und unverbindlich.</p>
+
+        <div class="mt-12 flex items-center gap-5 border-t border-line pt-8" data-reveal style="--d:3">
+          <Photo src={portrait} alt="Khatera Gross" widths={[160, 320]} sizes="80px" class="h-20 w-20 rounded-full object-cover object-[50%_20%]" />
+          <div>
+            <p class="font-display text-[1.5rem] leading-tight">Khatera Gross</p>
+            <p class="text-small text-ink-600">Home Stagerin · Taunusstein</p>
+          </div>
+        </div>
+        <dl class="mt-8 space-y-5 text-small" data-reveal style="--d:4">
+          <div><dt class="label text-sand-700">Telefon</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem] lining-nums" href={company.phoneHref}>{company.phone}</a></dd></div>
+          <div><dt class="label text-sand-700">E-Mail</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem]" href={`mailto:${company.email}`}>{company.email}</a></dd></div>
+          <div><dt class="label text-sand-700">Region</dt><dd class="mt-1 text-ink-600">Taunusstein · Wiesbaden · Rheingau · Mainz · Frankfurt</dd></div>
+        </dl>
+      </div>
+
+      <form id="anfrage" class="anfrage bg-linen p-6 sm:p-10 lg:col-span-7 lg:col-start-6" data-key={web3formsKey} data-email={company.email} data-hide-mobile-bar novalidate>
+        <fieldset>
+          <legend class="label text-sand-700">1 · Was darf es sein?</legend>
+          <div class="mt-5 grid gap-2 sm:grid-cols-2">
+            {optionen.map((o, i) => (
+              <label class="option">
+                <input type="radio" name="paket" value={o.value} checked={i === 2} class="peer sr-only" />
+                <span>{o.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-10">
+          <legend class="label text-sand-700">2 · Ihre Immobilie</legend>
+          <div class="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+            <label class="field">
+              <span>Art der Immobilie</span>
+              <select name="objekt">
+                <option>Wohnung</option>
+                <option>Einfamilienhaus</option>
+                <option>Doppel- oder Reihenhaus</option>
+                <option>Villa</option>
+                <option>Neubauprojekt</option>
+                <option>Sonstiges</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Zustand</span>
+              <select name="zustand">
+                <option>leerstehend</option>
+                <option>bewohnt</option>
+                <option>teilweise möbliert</option>
+                <option>im Bau</option>
+              </select>
+            </label>
+            <label class="field"><span>Wohnfläche in m²</span><input name="flaeche" inputmode="numeric" autocomplete="off" /></label>
+            <label class="field"><span>Ort oder PLZ</span><input name="ort" autocomplete="address-level2" /></label>
+            <label class="field"><span>Geplanter Angebotspreis (optional)</span><input name="preis" inputmode="numeric" autocomplete="off" /></label>
+            <label class="field"><span>Wunschtermin</span><input name="termin" placeholder="z. B. Anfang März" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-10">
+          <legend class="label text-sand-700">3 · Ihre Kontaktdaten</legend>
+          <div class="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+            <label class="field"><span>Name *</span><input name="name" required autocomplete="name" /></label>
+            <label class="field">
+              <span>Ich bin</span>
+              <select name="rolle">
+                <option>Eigentümer:in</option>
+                <option>Makler:in</option>
+                <option>Bauträger / Projektentwickler</option>
+                <option>Sonstiges</option>
+              </select>
+            </label>
+            <label class="field"><span>E-Mail *</span><input name="email" type="email" required autocomplete="email" /></label>
+            <label class="field"><span>Telefon</span><input name="telefon" type="tel" autocomplete="tel" /></label>
+            <label class="field sm:col-span-2"><span>Nachricht</span><textarea name="nachricht" rows="4" placeholder="Was ist Ihnen wichtig? Gibt es schon Fotos oder ein Exposé?"></textarea></label>
+          </div>
+        </fieldset>
+
+        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <label class="mt-8 flex gap-3 text-small text-ink-600">
+          <input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 shrink-0 accent-petrol-500" />
+          <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>. *</span>
+        </label>
+
+        <p class="form-error mt-6 hidden text-small text-[#9a3b2e]" role="alert"></p>
+
+        <button type="submit" class="btn btn-primary mt-8 w-full sm:w-auto">Anfrage senden <Arrow /></button>
+        <p class="mt-4 text-[0.8125rem] text-ink-600">Antwort innerhalb von 24 Stunden. Kostenlos und unverbindlich.</p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .option span {
+    display: flex;
+    min-height: 3.25rem;
+    align-items: center;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-paper);
+    font-size: 0.975rem;
+    cursor: pointer;
+    transition: border-color 300ms, background-color 300ms, color 300ms;
+  }
+  .option span:hover { border-color: var(--color-petrol-500); }
+  .option input:checked + span { background: var(--color-petrol-500); border-color: var(--color-petrol-500); color: var(--color-paper); }
+  .option input:focus-visible + span { outline: 2px solid var(--color-petrol-500); outline-offset: 2px; }
+
+  .field { display: block; }
+  .field > span { display: block; font-size: 0.8125rem; color: var(--color-ink-600); }
+  .field input, .field select, .field textarea {
+    display: block;
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.7rem 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-ink-900);
+    border-radius: 0;
+    font-size: 1.0625rem;
+    color: var(--color-ink-900);
+    outline: none;
+    transition: border-color 300ms;
+  }
+  .field select { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231c2427'/%3E%3C/svg%3E") right 0.25rem center no-repeat; }
+  .field textarea { resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--color-petrol-500); box-shadow: 0 1px 0 var(--color-petrol-500); }
+  .field [aria-invalid='true'] { border-bottom-color: #9a3b2e; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form.anfrage')!;
+  const error = form.querySelector<HTMLElement>('.form-error')!;
+  const params = new URLSearchParams(location.search);
+
+  // Vorauswahl aus Paket-Buttons und Mehrerlös-Rechner
+  const paket = params.get('paket');
+  if (paket) {
+    const radio = form.querySelector<HTMLInputElement>(`input[name=paket][value="${CSS.escape(paket)}"]`);
+    if (radio) radio.checked = true;
+  }
+  for (const key of ['flaeche', 'preis', 'ort']) {
+    const v = params.get(key);
+    const input = form.querySelector<HTMLInputElement>(`[name=${key}]`);
+    if (v && input && v !== '0') input.value = key === 'preis' ? Number(v).toLocaleString('de-DE') + ' €' : v;
+  }
+
+  const labels: Record<string, string> = {
+    paket: 'Paket', objekt: 'Immobilie', zustand: 'Zustand', flaeche: 'Wohnfläche (m²)', ort: 'Ort', preis: 'Angebotspreis',
+    termin: 'Wunschtermin', name: 'Name', rolle: 'Rolle', email: 'E-Mail', telefon: 'Telefon', nachricht: 'Nachricht',
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    error.classList.add('hidden');
+    const required = [...form.querySelectorAll<HTMLInputElement>('[required]')];
+    let firstInvalid: HTMLInputElement | null = null;
+    for (const el of required) {
+      const ok = el.type === 'checkbox' ? el.checked : el.checkValidity() && el.value.trim() !== '';
+      el.setAttribute('aria-invalid', String(!ok));
+      if (!ok && !firstInvalid) firstInvalid = el;
+    }
+    if (firstInvalid) {
+      error.textContent = 'Bitte füllen Sie Name, E-Mail und die Datenschutz-Zustimmung aus.';
+      error.classList.remove('hidden');
+      firstInvalid.focus();
+      return;
+    }
+
+    const data = new FormData(form);
+    if (data.get('botcheck')) return;
+    const paketLabel = form.querySelector<HTMLInputElement>('input[name=paket]:checked')?.nextElementSibling?.textContent ?? '';
+    const lines = Object.keys(labels)
+      .map((k) => [labels[k], k === 'paket' ? paketLabel : String(data.get(k) ?? '').trim()])
+      .filter(([, v]) => v)
+      .map(([l, v]) => `${l}: ${v}`);
+    const subject = `Home-Staging-Anfrage: ${paketLabel} – ${data.get('name')}`;
+    const key = form.dataset.key;
+    const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+
+    if (!key) {
+      // Ohne Formular-Dienst: E-Mail-Programm mit fertiger Anfrage öffnen
+      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      return;
+    }
+
+    button.disabled = true;
+    button.style.opacity = '0.6';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: key,
+          subject,
+          from_name: 'khatera-gross.de',
+          replyto: data.get('email'),
+          ...Object.fromEntries(Object.keys(labels).map((k) => [labels[k], k === 'paket' ? paketLabel : data.get(k) ?? ''])),
+        }),
+      });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message);
+      location.href = '/danke';
+    } catch {
+      error.innerHTML = `Das hat leider nicht geklappt. Bitte rufen Sie mich an oder schreiben Sie an <a class="underline" href="mailto:${form.dataset.email}">${form.dataset.email}</a>.`;
+      error.classList.remove('hidden');
+      button.disabled = false;
+      button.style.opacity = '';
+    }
+  });
+</script>

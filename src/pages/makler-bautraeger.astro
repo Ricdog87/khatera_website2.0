@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqSchema, type Frage } from '../content/faq';
+import wohnzimmer from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
+import essbereich from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
+
+const vorteile = [
+  { titel: 'Mehr Aufträge gewinnen', text: 'Home Staging als Teil Ihres Leistungsversprechens überzeugt Eigentümer im Akquisegespräch. Sie bieten mehr als die Konkurrenz.' },
+  { titel: 'Stärkere Exposés', text: 'Inszenierte Räume liefern Fotos, die auf den Portalen auffallen. Mehr Klicks, mehr Anfragen, bessere Besichtigungen.' },
+  { titel: 'Kürzere Vermarktung', text: 'Weniger Besichtigungen, weniger Preisdiskussionen, schnellerer Abschluss. Ihre Provision kommt früher.' },
+];
+
+const partner = [
+  'Feste Partnerkonditionen für alle Pakete',
+  'Priorisierte Termine, auch kurzfristig vor dem Fototermin',
+  'Ein Ansprechpartner, ein Ablauf, kein Abstimmungsaufwand',
+  'Unterlagen für Ihr Akquisegespräch mit Eigentümern',
+  'Abrechnung wahlweise über Sie oder direkt mit dem Eigentümer',
+];
+
+const bautraeger = [
+  { titel: 'Musterwohnungen', text: 'Real eingerichtete Musterwohnungen, die Grundrisse verständlich und Qualität fühlbar machen.' },
+  { titel: 'Restanten-Staging', text: 'Die letzten Einheiten eines Projekts gezielt inszenieren, damit der Abverkauf nicht ins Stocken gerät.' },
+  { titel: 'Virtuelles Staging', text: 'Fotorealistische Visualisierungen für Exposé und Vertrieb, schon vor der Fertigstellung.' },
+];
+
+const fragen: Frage[] = [
+  { frage: 'Wie funktioniert die Zusammenarbeit mit Maklern?', antwort: 'Sie melden ein Objekt, ich schaue mir Grundriss und Fotos an und schicke innerhalb von 48 Stunden ein Festpreisangebot. Auf Wunsch spreche ich direkt mit dem Eigentümer. Aufbau meist an einem Tag, damit Ihr Fototermin fest geplant werden kann.' },
+  { frage: 'Wer ist Vertragspartner, Makler oder Eigentümer?', antwort: 'Beides ist möglich. Viele Makler beauftragen das Staging selbst und kalkulieren es in ihre Vermarktung ein, andere vermitteln den Auftrag und ich rechne direkt mit dem Eigentümer ab.' },
+  { frage: 'Können Sie auch mehrere Objekte parallel betreuen?', antwort: 'Ja. Für Partner und Bauträger plane ich Kapazitäten fest ein. Sprechen Sie mich frühzeitig an, dann sichern wir die Termine.' },
+];
+---
+
+<Base
+  title="Home Staging für Makler & Bauträger"
+  description="Home Staging als Vertriebswerkzeug: Partnermodell für Immobilienmakler und Musterwohnungen für Bauträger im Rhein-Main-Gebiet. Schneller vermarkten, mehr Aufträge gewinnen."
+  breadcrumbs={[{ name: 'Für Makler & Bauträger', href: '/makler-bautraeger' }]}
+  schema={[faqSchema(fragen)]}
+>
+  <section class="pt-10 pb-[var(--section)] md:pt-16">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <p class="label rule text-sand-700" data-reveal>Für Makler & Bauträger</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Ihr Vertrieb verdient <em class="text-petrol-500">eine Bühne.</em></h1>
+        <p class="mt-10 max-w-2xl text-lead text-ink-600" data-reveal style="--d:2">Ich bin Ihre feste Staging-Partnerin im Rhein-Main-Gebiet. Für Makler, die mehr Mandate gewinnen und schneller abschließen wollen, und für Bauträger, die Neubauten erlebbar machen.</p>
+        <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
+          <a href="/kontakt?paket=makler" class="btn btn-primary">Partnergespräch vereinbaren <Arrow /></a>
+          <a href="#musterwohnungen" class="btn btn-ghost">Für Bauträger</a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="overflow-hidden" data-reveal="image">
+          <Photo src={wohnzimmer} alt="Inszeniertes Wohnzimmer einer Neubauwohnung" widths={[768, 1080, 1440]} sizes="(min-width: 1024px) 40vw, 100vw" loading="eager" class="aspect-[4/5] w-full object-cover object-[65%_50%]" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-linen">
+    <div class="container-page">
+      <SectionHead label="Für Makler" title="Home Staging ist Ihr" em="Argument im Akquisegespräch." />
+      <div class="mt-14 grid gap-px border border-ink-900/10 bg-ink-900/10 md:grid-cols-3">
+        {vorteile.map((v, i) => (
+          <div class="bg-linen p-8 md:p-10" data-reveal style={`--d:${i}`}>
+            <p class="font-display text-[3rem] leading-none text-sand-700 italic">0{i + 1}</p>
+            <h3 class="mt-6 text-title">{v.titel}</h3>
+            <p class="mt-4 text-ink-600">{v.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="on-dark mt-16 grid gap-10 bg-petrol-800 p-8 text-paper md:p-14 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="label text-sand-400">Partnermodell</p>
+          <h3 class="mt-4 text-headline">Ein Anruf. <em class="text-sand-400">Alles erledigt.</em></h3>
+        </div>
+        <ul class="space-y-4 lg:col-span-6 lg:col-start-7">
+          {partner.map((p) => (
+            <li class="flex gap-4 border-b border-white/15 pb-4">
+              <svg class="mt-[0.45em] h-3 w-3 shrink-0 text-sand-400" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6.5 4.5 10 11 2" fill="none" stroke="currentColor" stroke-width="1.2" /></svg>
+              <span>{p}</span>
+            </li>
+          ))}
+          <li class="pt-4"><a href="/kontakt?paket=makler" class="btn btn-light">Konditionen anfragen <Arrow /></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="musterwohnungen">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-5">
+        <div class="overflow-hidden" data-reveal="image">
+          <Photo src={essbereich} alt="Styling eines Essbereichs in einer Neubauwohnung" widths={[768, 1080, 1440]} sizes="(min-width: 1024px) 40vw, 100vw" class="aspect-[4/5] w-full object-cover object-[70%_50%]" />
+        </div>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <SectionHead label="Für Bauträger" title="Musterwohnungen, die" em="Grundrisse verkaufen." intro="Käufer verstehen Pläne selten. Sie verstehen Räume. Ich übersetze Ihre Architektur in ein Wohngefühl, das zur Zielgruppe und zur Vertriebsphase passt." />
+        <div class="mt-10 space-y-6">
+          {bautraeger.map((b, i) => (
+            <div class="border-t border-line pt-6" data-reveal style={`--d:${i}`}>
+              <h3 class="text-[1.875rem] leading-tight">{b.titel}</h3>
+              <p class="mt-2 text-ink-600">{b.text}</p>
+            </div>
+          ))}
+        </div>
+        <a href="/kontakt?paket=musterwohnung" class="btn btn-dark mt-10" data-reveal>Projekt besprechen <Arrow /></a>
+      </div>
+    </div>
+  </section>
+
+  <Faq fragen={fragen} title="Fragen von" em="Maklern & Bauträgern." />
+  <CtaBand title="Lassen Sie uns" em="gemeinsam verkaufen." text="Ein kurzes Gespräch genügt, um zu sehen, ob wir zusammenpassen. Ich freue mich auf Ihren Anruf." />
+</Base>
