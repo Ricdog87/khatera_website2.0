@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Photo from '../../components/Photo.astro';
 import Arrow from '../../components/Arrow.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import portrait from '../../assets/images/portrait/khatera-gross-blazer.jpg';
+import portrait from '../../assets/images/portrait/khatera-gross-avatar.jpg';
 import { getImage } from 'astro:assets';
 
 export async function getStaticPaths() {
@@ -45,7 +45,7 @@ const schema = {
       <p class="label text-sand-700" data-reveal>{a.data.kategorie} · {a.data.lesezeit} Min. Lesezeit</p>
       <h1 class="mt-6 text-display" data-reveal style="--d:1">{a.data.title}</h1>
       <div class="mt-10 flex items-center gap-4 text-small text-ink-600" data-reveal style="--d:2">
-        <Photo src={portrait} alt="" widths={[96, 192]} sizes="48px" class="h-12 w-12 rounded-full object-cover object-[50%_20%]" />
+        <Photo src={portrait} alt="" widths={[96, 192]} sizes="48px" class="h-12 w-12 rounded-full object-cover" />
         <p><span class="text-ink-900">Khatera Gross</span><br /><time datetime={a.data.datum.toISOString()}>{datum(a.data.datum)}</time></p>
       </div>
     </header>

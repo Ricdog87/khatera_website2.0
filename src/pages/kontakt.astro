@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import { company, pakete, web3formsKey } from '../config/site';
-import portrait from '../assets/images/portrait/khatera-gross-blazer.jpg';
+import portrait from '../assets/images/portrait/khatera-gross-avatar.jpg';
 
 const euro = (n: number) => n.toLocaleString('de-DE');
 const optionen = [
@@ -28,7 +28,7 @@ const optionen = [
         <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">Ich melde mich innerhalb von 24 Stunden persönlich. Das Erstgespräch ist kostenlos und unverbindlich.</p>
 
         <div class="mt-12 flex items-center gap-5 border-t border-line pt-8" data-reveal style="--d:3">
-          <Photo src={portrait} alt="Khatera Gross" widths={[160, 320]} sizes="80px" class="h-20 w-20 rounded-full object-cover object-[50%_20%]" />
+          <Photo src={portrait} alt="Khatera Gross" widths={[160, 320]} sizes="80px" class="h-20 w-20 rounded-full object-cover" />
           <div>
             <p class="font-display text-[1.5rem] leading-tight">Khatera Gross</p>
             <p class="text-small text-ink-600">Home Stagerin · Taunusstein</p>

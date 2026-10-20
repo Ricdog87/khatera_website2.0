@@ -26,6 +26,7 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 - [ ] 3 bis 5 Kundenstimmen mit Name und Rolle (Eigentümerin, Makler …) oder Freigabe für Google-Bewertungen
 - [ ] Gütesiegel der Staging Community als Grafik (Premium-Mitglied)
 - [ ] LinkedIn- und Instagram-Link
+- [ ] **Porträt in Originalauflösung**: Das aktuelle Business-Porträt lag nur mit 241 × 249 Pixeln vor und wurde per KI auf 964 × 996 hochgerechnet (Real-ESRGAN, Gesicht mit GFPGAN). Die Originaldatei vom Fotografen ersetzt das 1:1 und ist noch schärfer.
 - [ ] Freigabe der vier Ratgeber-Artikel (Inhalte von der alten Seite übernommen und überarbeitet)
 
 ## Technik (Ricardo)
@@ -37,5 +38,5 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 ## Herkunft der Inhalte
 
 - Texte, Kontaktdaten, Impressumsangaben und Mitgliedschaft: alte Website khatera-gross.de (Rohtexte in `content/live-site-texte.md`)
-- Fotos: eigene Projektfotos von der alten Website. Profi-Fotos mit Khatera: Fotograf „MKG“ (Nikon D850, Januar 2025), Einliegerwohnung: iPhone, Juli 2024. Porträts: alte Website.
+- Fotos: eigene Projektfotos von der alten Website. Profi-Fotos mit Khatera: Fotograf „MKG“ (Nikon D850, Januar 2025), Einliegerwohnung: iPhone, Juli 2024. Porträt: von Ricardo geliefert, KI-hochskaliert (siehe oben).
 - Nicht übernommen: Stockfotos und Platzhalter des Framer-Templates (englische Lorem-Texte, fremde Porträts, Produktbilder).
