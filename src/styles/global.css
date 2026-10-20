@@ -218,10 +218,13 @@
     transition: clip-path 1600ms var(--ease-expo);
   }
   html.motion [data-reveal='image'] img { transform: scale(1.12); transition: transform 2000ms var(--ease-expo); }
-  html.motion [data-reveal].is-in { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
+  html.motion [data-reveal].is-in { opacity: 1; transform: none; }
+  html.motion [data-reveal='image'].is-in { clip-path: inset(0 0 0 0); }
   html.motion [data-reveal='image'].is-in img { transform: scale(1); }
 
   /* Sicherheitsnetz, falls das Skript nicht startet */
   html.motion:not(.motion-ready) [data-reveal] { animation: kg-safety 1ms 3.5s forwards; }
-  @keyframes kg-safety { to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+  html.motion:not(.motion-ready) [data-reveal='image'] { animation-name: kg-safety-image; }
+  @keyframes kg-safety { to { opacity: 1; transform: none; } }
+  @keyframes kg-safety-image { to { clip-path: inset(0 0 0 0); } }
 }
