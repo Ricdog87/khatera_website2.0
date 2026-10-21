@@ -14,9 +14,9 @@ const { label, title, em, intro, align = 'left', as: Tag = 'h2', dark = false, c
 ---
 
 <header class:list={['max-w-4xl', align === 'center' && 'mx-auto text-center', className]}>
-  <p class:list={['label rule', dark ? 'text-sand-400' : 'text-sand-700', align === 'center' && 'justify-center']} data-reveal>{label}</p>
+  <p class:list={['label rule', dark ? 'text-sand-400' : 'text-olive-700', align === 'center' && 'justify-center']} data-reveal>{label}</p>
   <Tag class:list={['mt-6 text-headline', dark ? 'text-paper' : 'text-ink-900']} data-reveal style="--d:1">
-    {title}{em && <> <em class={dark ? 'text-sand-400' : 'text-petrol-500'}>{em}</em></>}
+    {title}{em && <> <em class={dark ? 'text-sand-400' : 'text-olive-600'}>{em}</em></>}
   </Tag>
   {intro && <p class:list={['mt-6 max-w-2xl text-lead', dark ? 'text-mist' : 'text-ink-600', align === 'center' && 'mx-auto']} data-reveal style="--d:2">{intro}</p>}
 </header>

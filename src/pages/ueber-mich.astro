@@ -3,9 +3,10 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import CtaBand from '../components/CtaBand.astro';
+import GoogleBewertung from '../components/GoogleBewertung.astro';
 import { facts } from '../config/site';
 import portraitGanz from '../assets/images/portrait/khatera-gross-portrait-business.jpg';
-import styling from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
+import styling from '../assets/images/haus-fernblick/detail-bett-vase.jpg';
 
 const werte = [
   { titel: 'Ehrlich', text: 'Ich empfehle nur, was sich für Ihre Immobilie rechnet. Manchmal ist das eine Beratung für 290 €, nicht das große Paket.' },
@@ -34,8 +35,8 @@ const person = {
   <section class="pt-10 pb-[var(--section)] md:pt-16">
     <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
-        <p class="label rule text-sand-700" data-reveal>Über mich</p>
-        <h1 class="mt-6 text-display" data-reveal style="--d:1">Ich bin Khatera. <em class="text-petrol-500">Ich gebe Räumen eine Geschichte.</em></h1>
+        <p class="label rule text-olive-700" data-reveal>Über mich</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Ich bin Khatera. <em class="text-olive-600">Ich gebe Räumen eine Geschichte.</em></h1>
         <p class="mt-10 max-w-2xl text-lead text-ink-600" data-reveal style="--d:2">
           Gründerin von Khatera Gross Home Staging in Taunusstein. Meine Leidenschaft gilt Design, Raumgestaltung und der Kunst, Immobilien so zu präsentieren, dass sie ihr volles Potenzial zeigen.
         </p>
@@ -58,12 +59,12 @@ const person = {
       </div>
       <div class="lg:col-span-5 lg:col-start-8">
         <div class="overflow-hidden" data-reveal="image">
-          <Photo src={styling} alt="Khatera Gross beim Styling eines Esstischs" widths={[768, 1080, 1440]} sizes="(min-width: 1024px) 40vw, 100vw" class="aspect-[4/5] w-full object-cover object-[70%_50%]" />
+          <Photo src={styling} alt="Detail einer Inszenierung: Bett mit Kissen, Vase und Tablett" widths={[768, 1080, 1440]} sizes="(min-width: 1024px) 40vw, 100vw" class="aspect-[4/5] w-full object-cover object-[35%_50%]" />
         </div>
         <div class="mt-10 grid grid-cols-3 gap-6 border-t border-ink-900/15 pt-8">
           {facts.map((f) => (
             <div>
-              <p class="font-display text-[2.75rem] leading-none text-petrol-500 lining-nums">{f.value}{f.unit}</p>
+              <p class="font-display text-[2.75rem] leading-none text-olive-600 lining-nums">{f.value}{f.unit}</p>
               <p class="mt-2 text-[0.8125rem] leading-snug text-ink-600">{f.label}</p>
             </div>
           ))}
@@ -75,8 +76,8 @@ const person = {
   <section class="section">
     <div class="container-page grid gap-14 lg:grid-cols-12">
       <div class="lg:col-span-5">
-        <p class="label rule text-sand-700" data-reveal>Mitgliedschaft</p>
-        <h2 class="mt-6 text-headline" data-reveal style="--d:1">Premium-Mitglied der <em class="text-petrol-500">Staging Community.</em></h2>
+        <p class="label rule text-olive-700" data-reveal>Mitgliedschaft</p>
+        <h2 class="mt-6 text-headline" data-reveal style="--d:1">Premium-Mitglied der <em class="text-olive-600">Staging Community.</em></h2>
       </div>
       <div class="space-y-5 text-ink-600 lg:col-span-6 lg:col-start-7" data-reveal style="--d:2">
         <p>Die Staging Community ist der größte Zusammenschluss von über 250 deutschsprachigen Expertinnen und Experten für Home Staging, Interior, Redesign und Immobilienverkauf.</p>
@@ -88,7 +89,7 @@ const person = {
     <div class="container-page mt-[var(--section)] grid gap-px border border-line bg-line md:grid-cols-3">
       {werte.map((w, i) => (
         <div class="bg-paper p-8 md:p-10" data-reveal style={`--d:${i}`}>
-          <p class="label text-sand-700">Versprechen 0{i + 1}</p>
+          <p class="label text-olive-700">Versprechen 0{i + 1}</p>
           <h3 class="mt-4 text-title">{w.titel}</h3>
           <p class="mt-4 text-ink-600">{w.text}</p>
         </div>
@@ -96,6 +97,7 @@ const person = {
     </div>
     <div class="container-page mt-12">
       <a href="/kontakt" class="btn btn-dark">Lernen wir uns kennen <Arrow /></a>
+      <GoogleBewertung class="mt-16" />
     </div>
   </section>
 

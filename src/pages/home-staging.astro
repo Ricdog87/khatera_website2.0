@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Seitenkopf from '../components/Seitenkopf.astro';
+import Pakete from '../components/Pakete.astro';
+import Ablauf from '../components/Ablauf.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqAllgemein, faqSchema } from '../content/faq';
+
+import wohnEss from '../assets/images/haus-fernblick/home-staging-offener-wohn-essbereich.jpg';
+import schlafen from '../assets/images/haus-fernblick/home-staging-schlafzimmer-hell.jpg';
+import sofa from '../assets/images/haus-fernblick/detail-sofa-plaid.jpg';
+import garderobe from '../assets/images/haus-fernblick/detail-garderobe-spiegel.jpg';
+
+const situationen = [
+  {
+    titel: 'Ihre Immobilie steht leer',
+    text: 'Leere Räume wirken auf Fotos kleiner und kühler, als sie sind. Mit Möbeln, Textilien, Licht und Kunst wird jeder Raum verständlich und begehrenswert.',
+    paket: 'Teil- oder Komplett-Staging',
+    href: '/kontakt?paket=komplett',
+  },
+  {
+    titel: 'Sie wohnen noch darin',
+    text: 'Persönliche Dinge, zu viele Möbel, kräftige Farben: Ich zeige Ihnen Raum für Raum, was weg kann, was bleibt und welche wenigen Accessoires den Unterschied machen.',
+    paket: 'Staging-Beratung',
+    href: '/kontakt?paket=beratung',
+  },
+  {
+    titel: 'Sie verkaufen über einen Makler',
+    text: 'Perfekt. Ich stimme mich direkt mit Ihrem Makler ab, damit Fototermin und Vermarktungsstart passen. Bei Partnermaklern sind bis zu 50 % Kostenübernahme möglich.',
+    paket: 'Alle Pakete',
+    href: '/makler-bautraeger',
+  },
+];
+
+const wirkung = [
+  { titel: 'Ein erster Eindruck, der hält', text: 'Interessenten entscheiden in Sekunden, meist auf dem Smartphone. Inszenierte Räume stechen im Portal heraus und bringen mehr Anfragen.' },
+  { titel: 'Schneller verkauft', text: 'Laut Deutscher Gesellschaft für Home Staging und Redesign verkürzt sich die Vermarktungszeit deutlich. Weniger Leerstand, weniger laufende Kosten.' },
+  { titel: 'Stärker in der Verhandlung', text: 'Wer sich verliebt, verhandelt weniger. Schon ein Prozent weniger Preisnachlass deckt bei den meisten Immobilien die Kosten des Stagings.' },
+];
+
+const fragen = [faqAllgemein[0], faqAllgemein[1], faqAllgemein[2], faqAllgemein[4], faqAllgemein[5]];
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Home Staging',
+  serviceType: 'Home Staging',
+  provider: { '@id': `${Astro.site!.href.replace(/\/$/, '')}/#business` },
+  areaServed: ['Wiesbaden', 'Rheingau', 'Taunusstein', 'Mainz', 'Frankfurt am Main'].map((name) => ({ '@type': 'Place', name })),
+};
+---
+
+<Base
+  title="Home Staging für Eigentümer im Rhein-Main-Gebiet"
+  description="Home Staging von Khatera Gross: Leere oder bewohnte Immobilien verkaufsstark inszenieren. Mehr Anfragen, schnellerer Verkauf, bessere Verhandlungsposition. Pakete ab 290 €."
+  breadcrumbs={[{ name: 'Home Staging', href: '/home-staging' }]}
+  schema={[service, faqSchema(fragen)]}
+>
+  <Seitenkopf
+    label="Home Staging"
+    title="Home Staging, das"
+    em="verkauft."
+    intro="Ich inszeniere Häuser und Wohnungen so, dass Interessenten sich sofort zu Hause fühlen. Mit Gespür für Architektur, Zielgruppe und Licht. Damit Ihre Immobilie schneller und zu einem guten Preis verkauft wird."
+    bild={wohnEss}
+    bildAlt="Offener Wohn- und Essbereich nach dem Home Staging von Khatera Gross"
+    bildPos="45% 50%"
+    cta={{ label: 'Kostenlos beraten lassen', href: '/kontakt' }}
+    cta2={{ label: 'Pakete ansehen', href: '#pakete' }}
+  />
+
+  <section class="section bg-linen">
+    <div class="container-page">
+      <SectionHead label="Ihre Situation" title="Für jede Ausgangslage" em="das passende Staging." />
+      <div class="mt-14 grid gap-px border border-ink-900/10 bg-ink-900/10 md:grid-cols-3">
+        {situationen.map((s, i) => (
+          <a href={s.href} class="group flex flex-col bg-linen p-8 transition-colors duration-500 hover:bg-paper md:p-10" data-reveal style={`--d:${i}`}>
+            <p class="font-display text-[3rem] leading-none text-olive-700 italic lining-nums">0{i + 1}</p>
+            <h3 class="mt-6 text-title">{s.titel}</h3>
+            <p class="mt-4 flex-1 text-ink-600">{s.text}</p>
+            <span class="label mt-8 inline-flex items-center gap-3 text-ink-900">{s.paket} <Arrow class="h-3 w-4 transition-transform duration-500 group-hover:translate-x-1" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div class="grid grid-cols-2 gap-3 md:gap-4 lg:col-span-6">
+        <div class="col-span-2 overflow-hidden" data-reveal="image"><Photo src={schlafen} alt="Helles Schlafzimmer nach dem Home Staging" widths={[768, 1080, 1440]} sizes="(min-width: 1024px) 45vw, 100vw" class="aspect-[3/2] w-full object-cover" /></div>
+        <div class="overflow-hidden" data-reveal="image"><Photo src={sofa} alt="Sofa mit Strickplaid und Kissen" widths={[480, 768]} sizes="(min-width: 1024px) 22vw, 50vw" class="aspect-square w-full object-cover object-[60%_50%]" /></div>
+        <div class="overflow-hidden" data-reveal="image"><Photo src={garderobe} alt="Garderobe mit rundem Spiegel und Trockengräsern" widths={[480, 768]} sizes="(min-width: 1024px) 22vw, 50vw" class="aspect-square w-full object-cover" /></div>
+      </div>
+      <div class="lg:col-span-5 lg:col-start-8">
+        <SectionHead label="Wirkung" title="Was Home Staging" em="für Sie leistet." />
+        <div class="mt-10 space-y-8">
+          {wirkung.map((w, i) => (
+            <div class="border-t border-line pt-6" data-reveal style={`--d:${i}`}>
+              <h3 class="text-[1.875rem] leading-tight">{w.titel}</h3>
+              <p class="mt-2 text-ink-600">{w.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section kg-muster bg-linen" id="pakete">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <SectionHead class="lg:col-span-7" label="Pakete" title="Drei Pakete." em="Ein Ziel." />
+        <p class="text-lead text-ink-600 lg:col-span-4 lg:col-start-9" data-reveal>Öffnen Sie ein Paket, um alle Leistungen zu sehen. <a href="/home-staging-kosten" class="link-line text-ink-900">Alles zu den Kosten</a></p>
+      </div>
+      <div class="mt-14"><Pakete /></div>
+    </div>
+  </section>
+
+  <Ablauf />
+  <Faq fragen={fragen} title="Fragen zum" em="Home Staging." />
+  <CtaBand />
+</Base>

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Seitenkopf from '../components/Seitenkopf.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqSchema, type Frage } from '../content/faq';
+
+import loft from '../assets/images/loft/home-staging-loft-wohnbereich.jpg';
+import treppe from '../assets/images/loft/home-staging-loft-treppe.jpg';
+
+const leistungen = [
+  { titel: 'Beratung vor der Sanierung', text: 'Welche Böden, Fliesen und Wandfarben verkaufen sich in Ihrer Lage? Ich berate Sie, bevor das Budget verbaut ist, damit Sanierung und Inszenierung zusammenpassen.' },
+  { titel: 'Virtuelles Staging', text: 'Noch während der Sanierung eingerichtete Visualisierungen für Exposé und Portale. So starten Sie die Vermarktung, bevor die Handwerker raus sind.' },
+  { titel: 'Staging nach Fertigstellung', text: 'Teil- oder Komplett-Staging, Aufbau meist an einem Tag. Direkt danach Fotos, direkt danach online.' },
+  { titel: 'Rahmenvereinbarung', text: 'Mehrere Objekte im Jahr? Feste Konditionen, priorisierte Termine und ein eingespielter Ablauf, Objekt für Objekt.' },
+];
+
+const rechnung = [
+  { label: 'Kaufpreis und Sanierung, finanziert', wert: '400.000 €' },
+  { label: 'Zinsen bei 5 % p. a., pro Monat', wert: '1.667 €' },
+  { label: 'Nebenkosten (Grundsteuer, Versicherung, Energie), ca.', wert: '300 €' },
+  { label: 'Haltekosten pro Monat Leerstand', wert: '≈ 2.000 €' },
+  { label: 'Zwei Monate schneller verkauft', wert: '≈ 4.000 €' },
+];
+
+const fragen: Frage[] = [
+  { frage: 'Lohnt sich Home Staging bei Fix & Flip?', antwort: 'In den meisten Fällen ja. Jeder Monat, in dem ein saniertes Objekt leer steht, kostet Zinsen und Nebenkosten. Wird durch das Staging schneller und ohne großen Preisnachlass verkauft, ist die Inszenierung meist schon nach wenigen Wochen bezahlt.' },
+  { frage: 'Wie schnell kann das Staging nach der Sanierung stehen?', antwort: 'Wenn wir früh planen, steht das Konzept bereits während der Sanierung. Der Aufbau dauert meist nur einen Tag, sodass Fotos und Vermarktung direkt nach der Endreinigung starten können.' },
+  { frage: 'Gibt es Konditionen für mehrere Objekte?', antwort: 'Ja. Für Investoren mit mehreren Objekten im Jahr biete ich eine Rahmenvereinbarung mit festen Preisen und priorisierten Terminen an.' },
+];
+---
+
+<Base
+  title="Home Staging für Fix & Flip und Investoren"
+  description="Fix & Flip im Rhein-Main-Gebiet: Sanierte Immobilien schneller verkaufen. Beratung vor der Sanierung, virtuelles Staging, Aufbau an einem Tag, Rahmenvereinbarung für Investoren."
+  breadcrumbs={[{ name: 'Fix & Flip', href: '/fix-and-flip' }]}
+  schema={[faqSchema(fragen)]}
+>
+  <Seitenkopf
+    label="Fix & Flip · Investoren"
+    title="Saniert. Inszeniert."
+    em="Verkauft."
+    intro="Ein frisch saniertes, leeres Objekt zeigt viel Arbeit, aber wenig Gefühl. Ich mache Ihre Immobilie in kurzer Zeit verkaufsfertig, damit Ihr Kapital schnell wieder frei ist."
+    bild={loft}
+    bildAlt="Saniertes Loft mit Sitzlandschaft nach dem Home Staging"
+    cta={{ label: 'Objekt anfragen', href: '/kontakt?paket=fixflip' }}
+    cta2={{ label: 'Rechenbeispiel', href: '#rechnung' }}
+  />
+
+  <section class="section bg-linen">
+    <div class="container-page">
+      <SectionHead label="Leistungen" title="Vom Rohbau-Gefühl zum" em="Wunschobjekt." />
+      <div class="mt-14 grid gap-px border border-ink-900/10 bg-ink-900/10 md:grid-cols-2">
+        {leistungen.map((l, i) => (
+          <div class="bg-linen p-8 md:p-10" data-reveal style={`--d:${i % 2}`}>
+            <p class="font-display text-[3rem] leading-none text-olive-700 italic lining-nums">0{i + 1}</p>
+            <h3 class="mt-6 text-title">{l.titel}</h3>
+            <p class="mt-4 max-w-xl text-ink-600">{l.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rechnung">
+    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-5">
+        <SectionHead label="Rechenbeispiel" title="Leerstand ist" em="Ihr teuerster Posten." />
+        <p class="mt-8 text-ink-600" data-reveal style="--d:2">Bei Fix &amp; Flip zählt jeder Monat. Schon zwei Monate kürzere Vermarktung sparen in diesem Beispiel so viel, wie ein Komplett-Staging kostet. Und das, bevor überhaupt über den Verkaufspreis verhandelt wurde.</p>
+      </div>
+      <dl class="border-t border-ink-900 lg:col-span-6 lg:col-start-7" data-reveal>
+        {rechnung.map((r, i) => (
+          <div class:list={['flex items-baseline justify-between gap-6 border-b py-5', i === rechnung.length - 1 ? 'border-ink-900' : 'border-line']}>
+            <dt class="text-ink-600">{r.label}</dt>
+            <dd class:list={['font-display text-[1.75rem] leading-none whitespace-nowrap lining-nums', i === rechnung.length - 1 && 'text-olive-600']}>{r.wert}</dd>
+          </div>
+        ))}
+        <p class="mt-4 text-[0.8125rem] text-ink-600">Beispielhafte Rechnung, Werte gerundet. Ihre Zahlen rechne ich gern mit Ihnen durch.</p>
+      </dl>
+    </div>
+  </section>
+
+  <section class="overflow-hidden">
+    <div class="container-page">
+      <div class="overflow-hidden" data-reveal="image">
+        <Photo src={treppe} alt="Loft mit offener Stahltreppe zur Galerie" widths={[768, 1440, 1920, 2600]} sizes="(min-width: 1472px) 1400px, 100vw" class="aspect-[21/9] w-full object-cover" />
+      </div>
+      <p class="mt-3 mb-[var(--section)] text-small text-ink-600">Loft mit Galerie, Gewerbe zu Wohnen · <a href="/projekte" class="link-line text-ink-900">Alle Projekte</a></p>
+    </div>
+  </section>
+
+  <Faq fragen={fragen} title="Fragen von" em="Investoren." />
+  <CtaBand title="Ihr nächstes Objekt," em="schneller verkauft." text="Schicken Sie mir Grundriss, Sanierungsstand und Zieltermin. Sie erhalten innerhalb von 48 Stunden ein Festpreisangebot." />
+</Base>

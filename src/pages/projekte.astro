@@ -2,42 +2,73 @@
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
+import GoogleBewertung from '../components/GoogleBewertung.astro';
 
-import wohnzimmer from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
-import konsole from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
-import schlafzimmer from '../assets/images/projekte/khatera-gross-styling-schlafzimmer.jpg';
-import essbereich from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
+import hfWohnen from '../assets/images/haus-fernblick/home-staging-wohnzimmer-haus-fernblick.jpg';
+import hfWohnEss from '../assets/images/haus-fernblick/home-staging-offener-wohn-essbereich.jpg';
+import hfKueche from '../assets/images/haus-fernblick/home-staging-kueche-blick-essbereich.jpg';
+import hfSchlafen from '../assets/images/haus-fernblick/home-staging-schlafzimmer-hell.jpg';
+import hfAnkleide from '../assets/images/haus-fernblick/home-staging-ankleidezimmer.jpg';
+import hfSofa from '../assets/images/haus-fernblick/detail-sofa-plaid.jpg';
+import hfKonsole from '../assets/images/haus-fernblick/detail-konsole-vase.jpg';
+import hfTerrasse from '../assets/images/haus-fernblick/terrasse-fernblick.jpg';
+import loftWohnen from '../assets/images/loft/home-staging-loft-wohnbereich.jpg';
+import loftTreppe from '../assets/images/loft/home-staging-loft-treppe.jpg';
+import nbWohnen from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
+import nbKonsole from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
 import elQuer from '../assets/images/projekte/einliegerwohnung-schlafzimmer-quer.jpg';
-import elHoch from '../assets/images/projekte/einliegerwohnung-schlafzimmer-hoch.jpg';
-import elSessel from '../assets/images/projekte/einliegerwohnung-sessel-ecke.jpg';
 import elVase from '../assets/images/projekte/einliegerwohnung-konsole-vase.jpg';
 
 // TODO Kundin: Orte, Flächen und Ergebnisse (z. B. "nach 3 Wochen reserviert") ergänzen
 const projekte = [
   {
     nr: '01',
-    titel: 'Neubauwohnung',
+    titel: 'Haus mit Fernblick',
     ort: 'Rhein-Main',
-    art: 'Home Staging, leerstehend',
-    text: 'Eine helle Neubauwohnung ohne Charakter auf den Fotos. Mit warmem Licht, ruhigen Naturtönen und klaren Möbelgruppen wurde aus dem offenen Grundriss ein Zuhause mit Wohn-, Ess- und Schlafbereich, das man sofort versteht.',
+    art: 'Komplett-Staging',
+    text: 'Ein großzügiges Einfamilienhaus mit offenem Grundriss, Glasbausteinwand und Blick über die Felder. Helle Naturtöne, Bouclé, Leinen und schwarze Akzente machen aus den leeren Räumen ein ruhiges, hochwertiges Zuhause, das die Weite des Hauses betont.',
     bilder: [
-      { src: wohnzimmer, alt: 'Wohnzimmer mit Pendelleuchte, Regal und Sofa in warmem Licht', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
-      { src: essbereich, alt: 'Khatera Gross dekoriert den Esstisch vor der offenen Küche', cls: 'col-span-12 md:col-span-7', ratio: 'aspect-[3/2]' },
-      { src: konsole, alt: 'Konsole mit Skulptur, Leuchte und Kunstdruck', cls: 'col-span-12 md:col-span-5', ratio: 'aspect-[4/5] md:aspect-auto md:h-full' },
-      { src: schlafzimmer, alt: 'Schlafzimmer mit blauen Samtkissen und heller Tagesdecke', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: hfWohnen, alt: 'Wohnzimmer mit cremefarbenem Sofa, Leinenvorhängen und Blick auf die Terrasse', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: hfWohnEss, alt: 'Offener Wohn- und Essbereich mit ovalem Esstisch und Glasbausteinwand', cls: 'col-span-12 md:col-span-7', ratio: 'aspect-[3/2]' },
+      { src: hfSofa, alt: 'Sofa mit Strickplaid und Kissen am Fenster', cls: 'col-span-12 md:col-span-5', ratio: 'aspect-[4/5] md:aspect-auto md:h-full' },
+      { src: hfKueche, alt: 'Küchenzeile mit Pendelleuchten und Blick in den Essbereich', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: hfKonsole, alt: 'Konsole mit Vase, Skulptur und Kunstdruck', cls: 'col-span-6 md:col-span-5', ratio: 'aspect-[3/4] md:aspect-auto md:h-full object-[18%_50%]' },
+      { src: hfSchlafen, alt: 'Helles Schlafzimmer mit Tagesdecke und großen Fenstern', cls: 'col-span-6 md:col-span-7', ratio: 'aspect-[3/4] md:aspect-[3/2]' },
+      { src: hfAnkleide, alt: 'Ankleidezimmer mit Kleiderstange, Hocker und Teppich', cls: 'col-span-12 md:col-span-6', ratio: 'aspect-[3/2]' },
+      { src: hfTerrasse, alt: 'Terrasse mit weitem Blick über Felder und Hügel', cls: 'col-span-12 md:col-span-6', ratio: 'aspect-[3/2]' },
     ],
   },
   {
     nr: '02',
+    titel: 'Loft mit Galerie',
+    ort: 'Rhein-Main',
+    art: 'Home Staging, Gewerbe zu Wohnen',
+    text: 'Ein ehemaliger Gewerberaum mit Galerie und offener Treppe. Mit einer großen Sitzlandschaft, Teppich als Insel und wenigen grafischen Akzenten wird der Raum lesbar: Hier wohnt man, hier arbeitet man, hier kommt man an.',
+    bilder: [
+      { src: loftWohnen, alt: 'Loft mit Sitzlandschaft, Couchtisch und Glaswand zur Galerie', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: loftTreppe, alt: 'Offene Stahltreppe zur Galerie im Loft', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+    ],
+  },
+  {
+    nr: '03',
+    titel: 'Neubauwohnung',
+    ort: 'Rhein-Main',
+    art: 'Home Staging, leerstehend',
+    text: 'Eine helle Neubauwohnung ohne Charakter auf den Fotos. Mit warmem Licht, ruhigen Naturtönen und klaren Möbelgruppen wurde der offene Grundriss sofort verständlich.',
+    bilder: [
+      { src: nbWohnen, alt: 'Wohnzimmer mit Pendelleuchte, Regal und Sofa in warmem Licht', cls: 'col-span-12 md:col-span-7', ratio: 'aspect-[3/2]' },
+      { src: nbKonsole, alt: 'Konsole mit Skulptur, Leuchte und Kunstdruck', cls: 'col-span-12 md:col-span-5', ratio: 'aspect-[4/5] md:aspect-auto md:h-full' },
+    ],
+  },
+  {
+    nr: '04',
     titel: 'Einliegerwohnung',
     ort: 'Rheingau-Taunus',
     art: 'Einrichtung & Styling',
-    text: 'Kleine Fläche, große Wirkung: Mit wenigen, gut gewählten Stücken in Creme, Holz und Schwarz wirkt die Einliegerwohnung großzügig und hochwertig. Texturen statt Farbe, Ruhe statt Fülle.',
+    text: 'Kleine Fläche, große Wirkung: Mit wenigen, gut gewählten Stücken in Creme, Holz und Schwarz wirkt die Einliegerwohnung großzügig und hochwertig.',
     bilder: [
       { src: elQuer, alt: 'Schlafzimmer der Einliegerwohnung mit Pendelleuchte aus Rattan und Teppich', cls: 'col-span-12 md:col-span-8', ratio: 'aspect-[4/3]' },
-      { src: elVase, alt: 'Konsole mit Glasvase und Trockenblumen', cls: 'col-span-6 md:col-span-4', ratio: 'aspect-[3/4] md:aspect-auto md:h-full' },
-      { src: elSessel, alt: 'Polsterstuhl und Pflanze in der Zimmerecke', cls: 'col-span-6 md:col-span-4', ratio: 'aspect-[3/4]' },
-      { src: elHoch, alt: 'Blick ins eingerichtete Schlafzimmer', cls: 'col-span-12 md:col-span-8', ratio: 'aspect-[4/3]' },
+      { src: elVase, alt: 'Konsole mit Glasvase und Trockenblumen', cls: 'col-span-12 md:col-span-4', ratio: 'aspect-[3/4] md:aspect-auto md:h-full' },
     ],
   },
 ];
@@ -45,14 +76,14 @@ const projekte = [
 
 <Base
   title="Home Staging Projekte & Referenzen"
-  description="Ausgewählte Home Staging Projekte von Khatera Gross im Rhein-Main-Gebiet: Neubauwohnung, Einliegerwohnung und mehr. So wirken inszenierte Räume."
+  description="Ausgewählte Home Staging Projekte von Khatera Gross im Rhein-Main-Gebiet: Haus mit Fernblick, Loft, Neubauwohnung und mehr. So wirken inszenierte Räume."
   breadcrumbs={[{ name: 'Projekte', href: '/projekte' }]}
 >
   <section class="pt-10 pb-[calc(var(--section)*0.6)] md:pt-16">
     <div class="container-page grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-8">
-        <p class="label rule text-sand-700" data-reveal>Projekte</p>
-        <h1 class="mt-6 text-display" data-reveal style="--d:1">Räume, die man <em class="text-petrol-500">kaufen möchte.</em></h1>
+        <p class="label rule text-olive-700" data-reveal>Projekte</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Räume, die man <em class="text-olive-600">kaufen möchte.</em></h1>
       </div>
       <p class="text-lead text-ink-600 lg:col-span-4" data-reveal style="--d:2">Jede Immobilie bekommt ihr eigenes Konzept. Hier ein Einblick in aktuelle Inszenierungen.</p>
     </div>
@@ -63,11 +94,11 @@ const projekte = [
       <div class="container-page grid gap-12 lg:grid-cols-12">
         <header class="lg:col-span-4">
           <div class="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
-            <p class="font-display text-[5rem] leading-none text-sand-400 italic">{p.nr}</p>
+            <p class="font-display text-[5rem] leading-none text-sand-400 italic lining-nums">{p.nr}</p>
             <h2 class="mt-6 text-headline">{p.titel}</h2>
             <dl class="mt-8 grid grid-cols-2 gap-4 border-y border-line py-5 text-small">
-              <div><dt class="label text-sand-700">Region</dt><dd class="mt-1">{p.ort}</dd></div>
-              <div><dt class="label text-sand-700">Leistung</dt><dd class="mt-1">{p.art}</dd></div>
+              <div><dt class="label text-olive-700">Region</dt><dd class="mt-1">{p.ort}</dd></div>
+              <div><dt class="label text-olive-700">Leistung</dt><dd class="mt-1">{p.art}</dd></div>
             </dl>
             <p class="mt-8 text-ink-600">{p.text}</p>
           </div>
@@ -85,10 +116,13 @@ const projekte = [
 
   <section class="section bg-linen">
     <div class="container-page max-w-3xl text-center">
-      <p class="label text-sand-700">Ihr Projekt</p>
-      <h2 class="mt-6 text-headline">Ihre Immobilie könnte <em class="text-petrol-500">die nächste sein.</em></h2>
-      <p class="mt-6 text-lead text-ink-600">Ob leere Wohnung, Einfamilienhaus oder Musterwohnung: Ich freue mich auf Ihr Projekt.</p>
+      <p class="label text-olive-700">Ihr Projekt</p>
+      <h2 class="mt-6 text-headline">Ihre Immobilie könnte <em class="text-olive-600">die nächste sein.</em></h2>
+      <p class="mt-6 text-lead text-ink-600">Ob leere Wohnung, Einfamilienhaus, Musterwohnung oder Fix &amp; Flip: Ich freue mich auf Ihr Projekt.</p>
       <a href="/kontakt" class="btn btn-primary mt-10">Projekt anfragen <Arrow /></a>
+    </div>
+    <div class="container-page mt-[var(--section)] max-w-5xl">
+      <GoogleBewertung />
     </div>
   </section>
 </Base>

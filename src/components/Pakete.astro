@@ -1,0 +1,104 @@
+---
+// Pakete untereinander, klappen beim Überfahren (Desktop) bzw. Antippen (Touch) auf. Ohne JS ist alles offen.
+import Arrow from './Arrow.astro';
+import { pakete, partnerHinweis } from '../config/site';
+
+const euro = (n: number) => n.toLocaleString('de-DE');
+const startOffen = pakete.findIndex((p) => p.highlight);
+---
+
+<div class="pakete border-t border-ink-900/20" data-pakete>
+  {pakete.map((p, i) => (
+    <article class="paket border-b border-ink-900/20" data-open={i === startOffen ? 'true' : 'false'} data-reveal style={`--d:${i}`}>
+      <h3>
+        <button type="button" class="paket-kopf grid w-full cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-1 py-7 text-left md:grid-cols-[4rem_1.4fr_1fr_auto_auto] md:gap-x-8 md:py-9" aria-expanded={i === startOffen ? 'true' : 'false'} aria-controls={`paket-${p.id}`}>
+          <span class="font-display text-[1.75rem] leading-none text-olive-600 italic lining-nums md:text-[2.25rem]">0{i + 1}</span>
+          <span class="min-w-0">
+            <span class="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span class="font-display text-[2rem] leading-tight md:text-[2.75rem]">{p.name}</span>
+              {p.highlight && <span class="label rounded-full bg-sand-400/45 px-3 py-1 text-[0.625rem] text-ink-900">Am häufigsten gebucht</span>}
+            </span>
+            <span class="mt-1 block font-display text-[1.25rem] leading-snug text-ink-600 italic">{p.claim}</span>
+          </span>
+          <span class="col-span-3 col-start-2 font-sans text-small text-ink-600 md:col-span-1 md:col-start-auto">{p.fuer}</span>
+          <span class="col-start-3 row-start-1 text-right md:col-start-auto md:row-start-auto">
+            <span class="label block text-olive-700">ab</span>
+            <span class="font-display text-[1.875rem] leading-none whitespace-nowrap lining-nums md:text-[2.5rem]">{p.preisAb ? `${euro(p.preisAb)} €` : 'Anfrage'}</span>
+          </span>
+          <span class="paket-icon relative hidden h-11 w-11 shrink-0 rounded-full border border-ink-900/20 md:block" aria-hidden="true">
+            <span class="absolute top-1/2 left-1/2 h-px w-3.5 -translate-1/2 bg-current"></span>
+            <span class="paket-icon-v absolute top-1/2 left-1/2 h-3.5 w-px -translate-1/2 bg-current"></span>
+          </span>
+        </button>
+      </h3>
+      <div class="paket-body" id={`paket-${p.id}`} role="region" aria-label={p.name}>
+        <div class="overflow-hidden">
+          <div class="grid gap-10 pb-10 md:grid-cols-[4rem_1.4fr_1fr] md:gap-x-8 md:pb-12">
+            <ul class="space-y-3 md:col-start-2">
+              {p.leistungen.map((l) => (
+                <li class="flex gap-3">
+                  <svg class="mt-[0.5em] h-3 w-3 shrink-0 text-olive-600" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6.5 4.5 10 11 2" fill="none" stroke="currentColor" stroke-width="1.2" /></svg>
+                  <span>{l}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-5">
+              <dl class="grid grid-cols-2 gap-4 text-small">
+                <div><dt class="label text-olive-700">Umfang</dt><dd class="mt-1">{p.dauer}</dd></div>
+                <div><dt class="label text-olive-700">Preis</dt><dd class="mt-1">{p.preisHinweis}, zzgl. MwSt.</dd></div>
+              </dl>
+              {p.id !== 'beratung' && (
+                <p class="border-l-2 border-sand-400 pl-4 text-small text-ink-600"><strong class="font-medium text-ink-900">{partnerHinweis.titel}:</strong> {partnerHinweis.text}</p>
+              )}
+              <a href={`/kontakt?paket=${p.id}`} class="btn btn-primary self-start">{p.name} anfragen <Arrow /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .paket { transition: background-color 500ms var(--ease-out-soft); }
+  .paket-kopf { transition: padding 500ms var(--ease-expo); }
+  .paket-body { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 650ms var(--ease-expo); }
+  :global(html.js) .paket[data-open='false'] .paket-body { grid-template-rows: 0fr; }
+  .paket-icon-v { transition: rotate 500ms var(--ease-expo); }
+  .paket[data-open='true'] .paket-icon-v { rotate: 90deg; }
+  .paket[data-open='true'] .paket-icon { background: var(--color-ink-900); color: var(--color-paper); border-color: var(--color-ink-900); }
+  .paket-icon { transition: background-color 400ms, color 400ms, border-color 400ms; }
+  .paket-kopf:hover .paket-icon { border-color: var(--color-ink-900); }
+  @media (prefers-reduced-motion: reduce) { .paket-body { transition: none; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pakete]').forEach((liste) => {
+    const items = [...liste.querySelectorAll<HTMLElement>('.paket')];
+    const open = (ziel: HTMLElement) => {
+      for (const el of items) {
+        const an = el === ziel;
+        el.dataset.open = String(an);
+        el.querySelector('.paket-kopf')!.setAttribute('aria-expanded', String(an));
+      }
+    };
+    const kannHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let timer = 0;
+    items.forEach((el) => {
+      el.querySelector('.paket-kopf')!.addEventListener('click', () => {
+        if (el.dataset.open === 'true' && !kannHover) {
+          el.dataset.open = 'false';
+          el.querySelector('.paket-kopf')!.setAttribute('aria-expanded', 'false');
+        } else open(el);
+      });
+      if (kannHover) {
+        // Kurze Absichtsverzögerung, damit beim Drüberwischen nichts aufspringt
+        el.addEventListener('mouseenter', () => {
+          clearTimeout(timer);
+          timer = window.setTimeout(() => open(el), 140);
+        });
+        el.addEventListener('mouseleave', () => clearTimeout(timer));
+      }
+    });
+  });
+</script>

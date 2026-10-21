@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Arrow from '../components/Arrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Seitenkopf from '../components/Seitenkopf.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqSchema, type Frage } from '../content/faq';
+
+import kueche from '../assets/images/haus-fernblick/home-staging-kueche-blick-essbereich.jpg';
+import ankleide from '../assets/images/haus-fernblick/home-staging-ankleidezimmer.jpg';
+import leseecke from '../assets/images/haus-fernblick/home-staging-leseecke-arbeitszimmer.jpg';
+import kinder from '../assets/images/haus-fernblick/home-staging-kinderzimmer.jpg';
+
+const leistungen = [
+  { titel: 'Musterwohnung', text: 'Eine real eingerichtete Einheit, die Grundriss, Ausstattung und Lebensgefühl erlebbar macht. Für Besichtigungen, Vertriebsevents und Ihre Exposé-Fotos.' },
+  { titel: 'Restanten-Staging', text: 'Die letzten Einheiten eines Projekts gezielt inszenieren, damit der Abverkauf nicht ins Stocken gerät und keine Preisnachlässe nötig werden.' },
+  { titel: 'Virtuelles Staging', text: 'Fotorealistisch eingerichtete Räume für Exposé, Website und Portale, schon vor der Fertigstellung. Ideal für den Vorvertrieb.' },
+  { titel: 'Showroom & Vertriebsbüro', text: 'Atmosphäre für den Ort, an dem Sie verkaufen: Materialmuster, Mobiliar und Licht, abgestimmt auf Ihr Projekt und Ihre Marke.' },
+];
+
+const ablauf = [
+  { titel: 'Projektanalyse', text: 'Grundrisse, Zielgruppe, Preisniveau und Vertriebsphase. Daraus leite ich ab, welche Einheiten inszeniert werden und wie.' },
+  { titel: 'Konzept & Moodboard', text: 'Ein Einrichtungskonzept mit Farbwelt, Materialien und Möblierung zur Freigabe, bevor ein Möbelstück bewegt wird.' },
+  { titel: 'Einrichtung', text: 'Anlieferung, Aufbau und Styling termingenau zum Vertriebsstart oder zum Fototermin.' },
+  { titel: 'Betreuung', text: 'Pflege während der Laufzeit, Umzug in eine andere Einheit, wenn die Musterwohnung verkauft ist, und Rückbau zum Projektende.' },
+];
+
+const fragen: Frage[] = [
+  { frage: 'Was kostet eine Musterwohnung?', antwort: 'Das hängt von Anzahl und Größe der Einheiten, der Laufzeit und dem Ausstattungsniveau ab. Nach einem Blick auf Grundrisse und Vertriebsplan bekommen Sie ein transparentes Angebot mit getrennt ausgewiesener Arbeitsleistung und Möbelmiete.' },
+  { frage: 'Wie lange kann eine Musterwohnung eingerichtet bleiben?', antwort: 'So lange, wie Ihr Vertrieb sie braucht. Die Laufzeit stimmen wir zu Beginn ab und verlängern sie bei Bedarf flexibel.' },
+  { frage: 'Was passiert, wenn die Musterwohnung selbst verkauft wird?', antwort: 'Dann ziehe ich die Einrichtung in eine baugleiche oder ähnliche Einheit um, damit der Vertrieb ohne Unterbrechung weiterlaufen kann.' },
+  { frage: 'Lohnt sich virtuelles Staging für Neubauten?', antwort: 'Für den Vorvertrieb und für Online-Exposés auf jeden Fall, weil Käufer die Räume schon vor der Fertigstellung sehen. Für Besichtigungen vor Ort ersetzt es die reale Musterwohnung aber nicht. Oft ist die Kombination am wirkungsvollsten.' },
+];
+---
+
+<Base
+  title="Musterwohnungen für Bauträger & Projektentwickler"
+  description="Musterwohnungen, Restanten-Staging und virtuelles Staging für Bauträger im Rhein-Main-Gebiet. Grundrisse erlebbar machen, Abverkauf beschleunigen. Khatera Gross Home Staging."
+  breadcrumbs={[{ name: 'Musterwohnungen', href: '/musterwohnungen' }]}
+  schema={[faqSchema(fragen)]}
+>
+  <Seitenkopf
+    label="Für Bauträger & Projektentwickler"
+    title="Musterwohnungen, die"
+    em="Grundrisse verkaufen."
+    intro="Käufer verstehen Pläne selten. Sie verstehen Räume. Ich übersetze Ihre Architektur in ein Wohngefühl, das zur Zielgruppe und zur Vertriebsphase passt. Real, virtuell oder kombiniert."
+    bild={kueche}
+    bildAlt="Eingerichtete Küche mit Blick in den Essbereich"
+    cta={{ label: 'Projekt besprechen', href: '/kontakt?paket=musterwohnung' }}
+    cta2={{ label: 'Projekte ansehen', href: '/projekte' }}
+  />
+
+  <section class="section bg-linen">
+    <div class="container-page">
+      <SectionHead label="Leistungen" title="Alles, was Ihr Vertrieb" em="zum Zeigen braucht." />
+      <div class="mt-14 grid gap-px border border-ink-900/10 bg-ink-900/10 md:grid-cols-2">
+        {leistungen.map((l, i) => (
+          <div class="bg-linen p-8 md:p-10" data-reveal style={`--d:${i % 2}`}>
+            <p class="font-display text-[3rem] leading-none text-olive-700 italic lining-nums">0{i + 1}</p>
+            <h3 class="mt-6 text-title">{l.titel}</h3>
+            <p class="mt-4 max-w-xl text-ink-600">{l.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section overflow-hidden">
+    <div class="container-page grid grid-cols-12 gap-3 md:gap-5">
+      <div class="col-span-12 overflow-hidden md:col-span-7" data-reveal="image"><Photo src={ankleide} alt="Ankleidezimmer mit Kleiderstange und Teppich" widths={[768, 1080, 1440, 1920]} sizes="(min-width: 768px) 58vw, 100vw" class="aspect-[3/2] w-full object-cover" /></div>
+      <div class="col-span-6 overflow-hidden md:col-span-5 md:mt-24" data-reveal="image"><Photo src={leseecke} alt="Leseecke mit Sessel und Regal" widths={[480, 768, 1080]} sizes="(min-width: 768px) 40vw, 50vw" class="aspect-[4/5] w-full object-cover" /></div>
+      <div class="col-span-6 overflow-hidden md:col-span-5 md:col-start-2 md:-mt-10" data-reveal="image"><Photo src={kinder} alt="Kinderzimmer mit Tipi-Zelt und Spielteppich" widths={[480, 768, 1080]} sizes="(min-width: 768px) 40vw, 50vw" class="aspect-[4/5] w-full object-cover" /></div>
+      <div class="col-span-12 self-center md:col-span-5 md:col-start-8">
+        <SectionHead label="Zielgruppen" title="Jede Einheit," em="ihre Bewohner." intro="Familien, Paare, Kapitalanleger: Jede Zielgruppe sucht etwas anderes. Ich inszeniere Kinderzimmer, Homeoffice und Ankleide so, dass sich Ihre Käufer darin wiederfinden." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-linen">
+    <div class="container-page">
+      <SectionHead label="Ablauf" title="Vom Grundriss zur" em="fertigen Musterwohnung." />
+      <ol class="mt-14 grid gap-px overflow-hidden border border-ink-900/10 bg-ink-900/10 md:grid-cols-2 xl:grid-cols-4">
+        {ablauf.map((s, i) => (
+          <li class="flex flex-col bg-linen p-7 md:p-9" data-reveal style={`--d:${i}`}>
+            <span class="font-display text-[4rem] leading-none text-sand-400 italic lining-nums">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-6 text-title">{s.titel}</h3>
+            <p class="mt-4 text-ink-600">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <a href="/kontakt?paket=musterwohnung" class="btn btn-dark mt-12" data-reveal>Projekt besprechen <Arrow /></a>
+    </div>
+  </section>
+
+  <Faq fragen={fragen} title="Fragen von" em="Bauträgern." />
+  <CtaBand title="Ihr nächstes Projekt" em="verdient eine Bühne." text="Schicken Sie mir Grundrisse und Vertriebsplan. Sie erhalten ein transparentes Angebot mit Konzeptidee." />
+</Base>

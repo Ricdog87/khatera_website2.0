@@ -7,17 +7,18 @@
   --color-current: currentColor;
   --color-white: #ffffff;
 
-  --color-paper: #f5f1ea;       /* Hintergrund */
-  --color-linen: #ebe4d7;       /* Flächen, Karten */
-  --color-line: #d9d0bf;        /* Linien auf hell */
-  --color-sand-400: #bbb494;    /* Markenfarbe Sand, nur Flächen, Linien, Text auf dunkel */
-  --color-sand-700: #6c6442;    /* Sand als Text auf hell (5,3:1) */
-  --color-petrol-500: #4c6971;  /* Markenfarbe Petrol (5,2:1 auf paper) */
-  --color-petrol-800: #2b3e43;  /* dunkle Sektionen */
-  --color-petrol-950: #172428;  /* Footer, tiefste Fläche */
-  --color-ink-900: #1c2427;     /* Text */
-  --color-ink-600: #576265;     /* Sekundärtext (5,6:1 auf paper) */
-  --color-mist: #b9c4c3;        /* Sekundärtext auf petrol-800 (6,0:1) */
+  /* Abgestimmt mit Khatera (Meeting 21.10.): helles Grau statt Beige, dezentes Oliv als Akzent, kein Blau */
+  --color-paper: #f4f4f1;       /* Hintergrund, helles Grau */
+  --color-linen: #e8e8e3;       /* Flächen, Karten */
+  --color-line: #d5d5ce;        /* Linien auf hell */
+  --color-sand-400: #bbb494;    /* CI-Sand, nur Flächen, Linien, Text auf dunkel */
+  --color-olive-700: #575b3f;   /* Labels auf hell (6,4:1) */
+  --color-olive-600: #676c4a;   /* Akzent, Buttons (5,0:1) */
+  --color-graphit-800: #2a2b27; /* dunkle Sektionen */
+  --color-graphit-950: #1e1e1d; /* Footer, CI-Anthrazit */
+  --color-ink-900: #1f201d;     /* Text */
+  --color-ink-600: #5b5c56;     /* Sekundärtext (6,1:1) */
+  --color-mist: #b8b8b0;        /* Sekundärtext auf dunkel (7,1:1) */
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), "Jost", Arial, sans-serif;
@@ -87,7 +88,7 @@
   ::selection { background: var(--color-sand-400); color: var(--color-ink-900); }
 
   :focus-visible {
-    outline: 2px solid var(--color-petrol-500);
+    outline: 2px solid var(--color-olive-600);
     outline-offset: 3px;
   }
 
@@ -148,11 +149,11 @@
   .btn svg { transition: transform 400ms var(--ease-expo); }
   .btn:hover svg { transform: translateX(4px); }
 
-  .btn-primary { background: var(--color-petrol-500); color: var(--color-paper); }
-  .btn-primary:hover { background: var(--color-petrol-800); }
+  .btn-primary { background: var(--color-olive-600); color: var(--color-paper); }
+  .btn-primary:hover { background: var(--color-graphit-800); }
 
   .btn-dark { background: var(--color-ink-900); color: var(--color-paper); }
-  .btn-dark:hover { background: var(--color-petrol-500); }
+  .btn-dark:hover { background: var(--color-olive-600); }
 
   .btn-light { background: var(--color-paper); color: var(--color-ink-900); }
   .btn-light:hover { background: var(--color-sand-400); }
@@ -201,9 +202,9 @@
   .prose-kg ul { list-style: none; padding: 0; }
   .prose-kg ul li { position: relative; padding-left: 1.5rem; }
   .prose-kg ul li + li { margin-top: 0.5rem; }
-  .prose-kg ul li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 0.6rem; height: 1px; background: var(--color-sand-700); }
+  .prose-kg ul li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 0.6rem; height: 1px; background: var(--color-olive-700); }
   .prose-kg ol { list-style: decimal; padding-left: 1.25rem; }
-  .prose-kg a { color: var(--color-petrol-500); text-decoration: underline; text-underline-offset: 0.2em; }
+  .prose-kg a { color: var(--color-olive-600); text-decoration: underline; text-underline-offset: 0.2em; }
   .prose-kg blockquote {
     border-left: 1px solid var(--color-sand-400);
     padding-left: 1.5rem;
@@ -211,7 +212,7 @@
     font-style: italic;
     font-size: var(--text-title);
     line-height: 1.25;
-    color: var(--color-petrol-500);
+    color: var(--color-olive-600);
   }
 }
 

@@ -17,7 +17,7 @@ const path = Astro.url.pathname;
     </a>
 
     <nav aria-label="Hauptnavigation" class="hidden xl:block">
-      <ul class="flex items-center gap-7 text-[0.9375rem]">
+      <ul class="flex items-center gap-5 text-[0.875rem] 2xl:gap-7 2xl:text-[0.9375rem]">
         {navigation.map((item) => (
           <li>
             <a href={item.href} class="nav-link py-2" aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
@@ -46,7 +46,7 @@ const path = Astro.url.pathname;
           <li class="border-b border-line">
             <a href={item.href} class="mobile-link flex items-baseline justify-between py-4 font-display text-[2.125rem] leading-tight text-ink-900">
               {item.label}
-              <span class="label text-sand-700">0{i + 1}</span>
+              <span class="label text-olive-700">0{i + 1}</span>
             </a>
           </li>
         ))}
@@ -70,7 +70,7 @@ const path = Astro.url.pathname;
     transition: background-color 500ms var(--ease-out-soft), color 500ms var(--ease-out-soft), border-color 500ms var(--ease-out-soft), transform 700ms var(--ease-expo);
   }
   .site-header[data-solid='true'] {
-    background: rgb(245 241 234 / 0.92);
+    background: rgb(244 244 241 / 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom-color: var(--color-line);
@@ -88,8 +88,8 @@ const path = Astro.url.pathname;
   }
   .nav-link:hover, .nav-link[aria-current='page'] { background-size: 100% 1px; }
 
-  .header-cta { background: var(--color-petrol-500); color: var(--color-paper); }
-  .header-cta:hover { background: var(--color-petrol-800); }
+  .header-cta { background: var(--color-olive-600); color: var(--color-paper); }
+  .header-cta:hover { background: var(--color-graphit-800); }
   .site-header[data-solid='false'] .header-cta { background: var(--color-paper); color: var(--color-ink-900); }
   .site-header[data-solid='false'] .header-cta:hover { background: var(--color-sand-400); }
 

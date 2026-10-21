@@ -11,7 +11,17 @@ npm install
 npm run dev        # http://localhost:4321
 npm run build      # Ausgabe nach .vercel/output
 npm run check      # Typprüfung
+npm run build:ionos  # Live-Build für IONOS-Webspace nach dist/ (inkl. .htaccess)
 ```
+
+## Deployment
+
+| Ziel | Befehl | Hinweise |
+|---|---|---|
+| Vercel (Demo) | Push auf den Branch | Projekt `khatera-relaunch`, deployt automatisch |
+| IONOS (Live) | `npm run build:ionos`, dann Inhalt von `dist/` per SFTP in das Webspace-Verzeichnis | `.htaccess` wird mit erzeugt: HTTPS, ohne www, 301 für alte Framer-URLs, saubere URLs ohne `.html`, Caching. Lokal mit Apache 2.4 getestet. Umgebungsvariablen beim Build setzen: `PUBLIC_INDEXABLE=true PUBLIC_WEB3FORMS_KEY=… npm run build:ionos` |
+
+Die Datenschutzerklärung nennt automatisch den passenden Hoster (IONOS im Live-Build, Vercel in der Demo).
 
 Voraussetzung: Node 22.22 oder neuer.
 
@@ -29,7 +39,10 @@ Voraussetzung: Node 22.22 oder neuer.
 | `/` | Startseite: Hero, Zielgruppen, Pakete, Einblicke, Ablauf, Mehrerlös-Rechner, Über mich, Regionen, FAQ |
 | `/home-staging-kosten` | Pakete & Preise, Preisfaktoren, Rechenbeispiel, Rechner, FAQ Kosten |
 | `/home-staging-[ort]` | Stadtseiten Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt (Daten in `site.ts` → `orte`) |
-| `/makler-bautraeger` | Partnermodell für Makler, Musterwohnungen für Bauträger |
+| `/home-staging` | Leistungsseite für Eigentümer |
+| `/musterwohnungen` | Bauträger und Projektentwickler |
+| `/fix-and-flip` | Investoren, mit Rechenbeispiel zu Haltekosten |
+| `/makler-bautraeger` | Partnermodell für Makler |
 | `/projekte`, `/ueber-mich` | Referenzen, Profil |
 | `/ratgeber`, `/ratgeber/[slug]` | Artikel als Markdown in `src/content/ratgeber/` |
 | `/kontakt` | Anfrageformular mit Paketauswahl, Vorbelegung über `?paket=komplett&flaeche=…&preis=…&ort=…` |

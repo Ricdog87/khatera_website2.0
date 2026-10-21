@@ -1,0 +1,38 @@
+---
+// Einheitlicher Kopf für Leistungsseiten: Text links, Bild rechts
+import Photo from './Photo.astro';
+import Arrow from './Arrow.astro';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  label: string;
+  title: string;
+  em: string;
+  intro: string;
+  bild: ImageMetadata;
+  bildAlt: string;
+  bildPos?: string;
+  cta: { label: string; href: string };
+  cta2?: { label: string; href: string };
+}
+const { label, title, em, intro, bild, bildAlt, bildPos = '50% 50%', cta, cta2 } = Astro.props;
+---
+
+<section class="pt-10 pb-[var(--section)] md:pt-16">
+  <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+    <div class="lg:col-span-6">
+      <p class="label rule text-olive-700" data-reveal>{label}</p>
+      <h1 class="mt-6 text-display" data-reveal style="--d:1">{title} <em class="text-olive-600">{em}</em></h1>
+      <p class="mt-8 max-w-2xl text-lead text-ink-600" data-reveal style="--d:2">{intro}</p>
+      <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
+        <a href={cta.href} class="btn btn-primary">{cta.label} <Arrow /></a>
+        {cta2 && <a href={cta2.href} class="btn btn-ghost">{cta2.label}</a>}
+      </div>
+    </div>
+    <div class="lg:col-span-6">
+      <div class="overflow-hidden" data-reveal="image">
+        <Photo src={bild} alt={bildAlt} widths={[768, 1080, 1440, 1920]} sizes="(min-width: 1024px) 50vw, 100vw" loading="eager" fetchpriority="high" class="aspect-[4/3] w-full object-cover" style={`object-position:${bildPos}`} />
+      </div>
+    </div>
+  </div>
+</section>

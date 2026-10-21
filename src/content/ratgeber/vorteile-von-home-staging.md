@@ -5,8 +5,8 @@ description: 'Schneller verkaufen, besser verhandeln, mehr Anfragen: die fünf w
 kategorie: Verkaufen
 datum: 2024-07-03
 lesezeit: 5
-bild: ../../assets/images/projekte/khatera-gross-styling-essbereich.jpg
-bildAlt: Khatera Gross dekoriert einen Esstisch in einer Neubauwohnung
+bild: ../../assets/images/haus-fernblick/home-staging-offener-wohn-essbereich.jpg
+bildAlt: Offener Wohn- und Essbereich nach dem Home Staging
 ---
 
 Für viele Verkäufer stellt sich die Frage: „Warum sollte ich in Home Staging investieren, wenn ich die Immobilie auch so verkaufen kann?“ Die Antwort ist einfach. Professionell inszenierte Immobilien verkaufen sich in der Regel schneller und zu einem höheren Preis als vergleichbare Objekte ohne Inszenierung. Aber woran liegt das genau?

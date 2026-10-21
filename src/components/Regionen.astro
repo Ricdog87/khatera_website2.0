@@ -10,8 +10,8 @@ const liste = orte.filter((o) => o.slug !== exclude);
 <section class="section bg-linen" id="regionen">
   <div class="container-page grid gap-12 lg:grid-cols-12">
     <div class="lg:col-span-4">
-      <p class="label rule text-sand-700" data-reveal>Regionen</p>
-      <h2 class="mt-6 text-headline" data-reveal style="--d:1">Zu Hause im <em class="text-petrol-500">Rheingau-Taunus.</em></h2>
+      <p class="label rule text-olive-700" data-reveal>Regionen</p>
+      <h2 class="mt-6 text-headline" data-reveal style="--d:1">Zu Hause im <em class="text-olive-600">Rheingau-Taunus.</em></h2>
       <p class="mt-6 text-ink-600" data-reveal style="--d:2">Ich arbeite von Taunusstein aus und bin schnell bei Ihnen. Für Musterwohnungen und größere Projekte im gesamten Rhein-Main-Gebiet.</p>
     </div>
     <ul class="border-t border-ink-900/15 lg:col-span-7 lg:col-start-6">
@@ -19,9 +19,9 @@ const liste = orte.filter((o) => o.slug !== exclude);
         <li class="border-b border-ink-900/15" data-reveal style={`--d:${i}`}>
           <a href={`/home-staging-${o.slug}`} class="ort group flex items-center justify-between gap-6 py-5 md:py-6">
             <span class="font-display text-[2.25rem] leading-none md:text-[3.25rem]">
-              <span class="label mr-4 align-middle text-sand-700">Home Staging</span>{o.name}
+              <span class="label mr-4 align-middle text-olive-700">Home Staging</span>{o.name}
             </span>
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink-900/20 transition-colors duration-500 group-hover:border-petrol-500 group-hover:bg-petrol-500 group-hover:text-paper"><Arrow /></span>
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink-900/20 transition-colors duration-500 group-hover:border-olive-600 group-hover:bg-olive-600 group-hover:text-paper"><Arrow /></span>
           </a>
         </li>
       ))}
@@ -31,5 +31,5 @@ const liste = orte.filter((o) => o.slug !== exclude);
 
 <style>
   .ort span:first-child { transition: transform 700ms var(--ease-expo), color 500ms; }
-  .ort:hover span:first-child { transform: translateX(0.75rem); color: var(--color-petrol-500); }
+  .ort:hover span:first-child { transform: translateX(0.75rem); color: var(--color-olive-600); }
 </style>

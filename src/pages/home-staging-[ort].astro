@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import SectionHead from '../components/SectionHead.astro';
-import PaketKarten from '../components/PaketKarten.astro';
+import Pakete from '../components/Pakete.astro';
 import Ablauf from '../components/Ablauf.astro';
 import Regionen from '../components/Regionen.astro';
 import Faq from '../components/Faq.astro';
@@ -11,19 +11,19 @@ import CtaBand from '../components/CtaBand.astro';
 import { company, orte, pakete, type Ort } from '../config/site';
 import { faqAllgemein, faqSchema, type Frage } from '../content/faq';
 
-import wohnzimmer from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
-import schlafzimmer from '../assets/images/projekte/khatera-gross-styling-schlafzimmer.jpg';
-import essbereich from '../assets/images/projekte/khatera-gross-styling-essbereich.jpg';
-import konsole from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
-import einlieger from '../assets/images/projekte/einliegerwohnung-schlafzimmer-quer.jpg';
+import wohnEss from '../assets/images/haus-fernblick/home-staging-offener-wohn-essbereich.jpg';
+import terrasse from '../assets/images/haus-fernblick/terrasse-fernblick.jpg';
+import wohnzimmer from '../assets/images/haus-fernblick/home-staging-wohnzimmer-haus-fernblick.jpg';
+import kueche from '../assets/images/haus-fernblick/home-staging-kueche-blick-essbereich.jpg';
+import loft from '../assets/images/loft/home-staging-loft-wohnbereich.jpg';
 
 export function getStaticPaths() {
   return orte.map((ort) => ({ params: { ort: ort.slug }, props: { ort } }));
 }
 
 const { ort } = Astro.props as { ort: Ort };
-const bilder = { wiesbaden: wohnzimmer, rheingau: konsole, taunusstein: einlieger, mainz: essbereich, frankfurt: schlafzimmer } as const;
-const bild = bilder[ort.slug as keyof typeof bilder] ?? wohnzimmer;
+const bilder = { wiesbaden: wohnEss, rheingau: terrasse, taunusstein: wohnzimmer, mainz: kueche, frankfurt: loft } as const;
+const bild = bilder[ort.slug as keyof typeof bilder] ?? wohnEss;
 const euro = (n: number) => n.toLocaleString('de-DE');
 const [beratung, teil, komplett] = pakete;
 
@@ -65,8 +65,8 @@ const service = {
   <section class="pt-10 pb-[var(--section)] md:pt-16">
     <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
       <div class="lg:col-span-6">
-        <p class="label rule text-sand-700" data-reveal>Home Staging · {ort.name}</p>
-        <h1 class="mt-6 text-display" data-reveal style="--d:1">Home Staging <em class="text-petrol-500">{ort.praep}</em></h1>
+        <p class="label rule text-olive-700" data-reveal>Home Staging · {ort.name}</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Home Staging <em class="text-olive-600">{ort.praep}</em></h1>
         <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">{ort.intro}</p>
         <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
           <a href={`/kontakt?ort=${encodeURIComponent(ort.name)}`} class="btn btn-primary">Festpreis anfragen <Arrow /></a>
@@ -90,7 +90,7 @@ const service = {
         <div class="space-y-5 text-[1.125rem] text-ink-600" data-reveal>
           {ort.markt.map((m) => <p>{m}</p>)}
         </div>
-        <p class="label mt-12 text-sand-700" data-reveal>Hier bin ich unterwegs</p>
+        <p class="label mt-12 text-olive-700" data-reveal>Hier bin ich unterwegs</p>
         <ul class="mt-4 flex flex-wrap gap-2" data-reveal>
           {ort.lagen.map((l) => <li class="rounded-full border border-ink-900/15 px-4 py-2 text-small">{l}</li>)}
         </ul>
@@ -102,7 +102,7 @@ const service = {
     <div class="container-page">
       <SectionHead label="Pakete" title={`Pakete für ${ort.name}.`} em="Festpreise ohne Überraschung." />
       <div class="mt-16">
-        <PaketKarten />
+        <Pakete />
       </div>
       <p class="mt-8 text-small text-ink-600">Preise netto zzgl. MwSt., Anfahrt {ort.praep} inklusive. <a href="/home-staging-kosten" class="link-line text-ink-900">Alle Details zu den Kosten</a></p>
     </div>

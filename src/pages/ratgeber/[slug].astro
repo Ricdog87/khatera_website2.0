@@ -42,7 +42,7 @@ const schema = {
 >
   <article class="pt-10 md:pt-16">
     <header class="container-page max-w-5xl">
-      <p class="label text-sand-700" data-reveal>{a.data.kategorie} · {a.data.lesezeit} Min. Lesezeit</p>
+      <p class="label text-olive-700" data-reveal>{a.data.kategorie} · {a.data.lesezeit} Min. Lesezeit</p>
       <h1 class="mt-6 text-display" data-reveal style="--d:1">{a.data.title}</h1>
       <div class="mt-10 flex items-center gap-4 text-small text-ink-600" data-reveal style="--d:2">
         <Photo src={portrait} alt="" widths={[96, 192]} sizes="48px" class="h-12 w-12 rounded-full object-cover" />
@@ -62,8 +62,8 @@ const schema = {
       </div>
       <aside class="lg:col-span-3">
         <div class="sticky top-[calc(var(--header-h)+2rem)] bg-linen p-7">
-          <p class="label text-sand-700">Persönliche Beratung</p>
-          <p class="mt-4 font-display text-[1.75rem] leading-tight">Was bringt Home Staging für <em class="text-petrol-500">Ihre Immobilie?</em></p>
+          <p class="label text-olive-700">Persönliche Beratung</p>
+          <p class="mt-4 font-display text-[1.75rem] leading-tight">Was bringt Home Staging für <em class="text-olive-600">Ihre Immobilie?</em></p>
           <a href="/kontakt" class="btn btn-primary mt-6 w-full">Kostenlos anfragen</a>
           <a href="/home-staging-kosten" class="label link-line mt-5 inline-block">Pakete & Preise</a>
         </div>
@@ -73,13 +73,13 @@ const schema = {
 
   <section class="section border-t border-line pt-[calc(var(--section)*0.7)]">
     <div class="container-page">
-      <p class="label rule text-sand-700">Weiterlesen</p>
+      <p class="label rule text-olive-700">Weiterlesen</p>
       <div class="mt-10 grid gap-10 md:grid-cols-2">
         {weitere.map((w) => (
           <a href={`/ratgeber/${w.id}`} class="group grid grid-cols-[120px_1fr] items-center gap-6 sm:grid-cols-[180px_1fr]">
             <div class="overflow-hidden"><Photo src={w.data.bild} alt="" widths={[240, 360]} sizes="180px" class="aspect-square w-full object-cover transition-transform duration-1000 group-hover:scale-105" /></div>
             <div>
-              <p class="label text-sand-700">{w.data.kategorie}</p>
+              <p class="label text-olive-700">{w.data.kategorie}</p>
               <p class="mt-2 font-display text-[1.625rem] leading-tight">{w.data.title}</p>
               <span class="label mt-4 inline-flex items-center gap-3">Lesen <Arrow /></span>
             </div>

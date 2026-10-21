@@ -2,7 +2,7 @@
 import Photo from './Photo.astro';
 import Arrow from './Arrow.astro';
 import { company } from '../config/site';
-import bild from '../assets/images/projekte/home-staging-wohnzimmer-detail-konsole.jpg';
+import bild from '../assets/images/haus-fernblick/detail-wohnbereich-pflanze.jpg';
 
 interface Props {
   title?: string;
@@ -18,7 +18,7 @@ const {
 
 <section class="on-dark relative isolate overflow-hidden bg-ink-900 text-paper">
   <div class="absolute inset-0 -z-10 overflow-hidden" data-parallax-frame>
-    <Photo src={bild} alt="" widths={[768, 1440, 2250]} sizes="100vw" class="h-full w-full object-cover opacity-55" data-parallax="0.12" />
+    <Photo src={bild} alt="" widths={[768, 1440, 2600]} sizes="100vw" class="h-full w-full object-cover opacity-55" data-parallax="0.12" />
     <div class="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/50 to-ink-900/10"></div>
   </div>
   <div class="container-page py-[calc(var(--section)*1.2)]">

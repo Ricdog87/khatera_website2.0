@@ -1,0 +1,28 @@
+---
+// Bewertungs-Link für Google (Meeting 21.10.). URL in site.ts → company.googleReviewUrl
+import Arrow from './Arrow.astro';
+import { company } from '../config/site';
+
+interface Props {
+  variant?: 'link' | 'block';
+  class?: string;
+}
+const { variant = 'block', class: className } = Astro.props;
+const sterne = Array.from({ length: 5 });
+---
+
+{variant === 'link' ? (
+  <a href={company.googleReviewUrl} target="_blank" rel="noopener" class:list={['group inline-flex items-center gap-3', className]}>
+    <span class="flex gap-0.5 text-sand-400" aria-hidden="true">{sterne.map(() => <svg class="h-3.5 w-3.5" viewBox="0 0 20 20"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z" /></svg>)}</span>
+    <span class="group-hover:text-paper">Auf Google bewerten</span>
+  </a>
+) : (
+  <div class:list={['flex flex-col gap-6 border border-line bg-paper p-7 md:flex-row md:items-center md:justify-between md:p-9', className]}>
+    <div>
+      <span class="flex gap-1 text-olive-600" aria-hidden="true">{sterne.map(() => <svg class="h-5 w-5" viewBox="0 0 20 20"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z" /></svg>)}</span>
+      <p class="mt-4 font-display text-[1.875rem] leading-tight">Zufrieden mit meiner Arbeit?</p>
+      <p class="mt-2 max-w-xl text-ink-600">Eine kurze Google-Bewertung hilft anderen Eigentümern und Maklern, mich zu finden. Herzlichen Dank!</p>
+    </div>
+    <a href={company.googleReviewUrl} target="_blank" rel="noopener" class="btn btn-dark shrink-0">Jetzt bewerten <Arrow /></a>
+  </div>
+)}

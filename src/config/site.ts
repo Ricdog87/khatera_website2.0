@@ -21,16 +21,22 @@ export const company = {
   linkedin: '',
   instagram: '',
   url: 'https://khatera-gross.de',
+  // TODO: Direkten Bewertungslink aus dem Google-Unternehmensprofil eintragen (Profil > Rezensionen anfordern).
+  // Bis dahin führt der Link auf die Google-Suche nach dem Profil.
+  googleReviewUrl: 'https://www.google.com/maps/search/?api=1&query=Khatera+Gross+Home+Staging+Taunusstein',
 } as const;
 
 export const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
 export const web3formsKey: string = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
+// Reihenfolge abgestimmt im Meeting 21.10.: Home Staging an zweiter Stelle, dann Musterwohnungen, Fix & Flip, Preise
 export const navigation = [
-  { label: 'Home Staging', href: '/#leistungen' },
-  { label: 'Pakete & Preise', href: '/home-staging-kosten' },
+  { label: 'Start', href: '/' },
+  { label: 'Home Staging', href: '/home-staging' },
+  { label: 'Musterwohnungen', href: '/musterwohnungen' },
+  { label: 'Fix & Flip', href: '/fix-and-flip' },
+  { label: 'Preise', href: '/home-staging-kosten' },
   { label: 'Projekte', href: '/projekte' },
-  { label: 'Für Makler', href: '/makler-bautraeger' },
   { label: 'Über mich', href: '/ueber-mich' },
   { label: 'Ratgeber', href: '/ratgeber' },
 ];
@@ -105,6 +111,12 @@ export const pakete: Paket[] = [
     ],
   },
 ];
+
+/** Hinweis aus dem Meeting 21.10.: dezent in der Paketübersicht, nicht prominent auf der Startseite */
+export const partnerHinweis = {
+  titel: 'Partner-Vorteil',
+  text: 'Vermarkten Sie Ihre Immobilie über einen meiner Partnermakler, kann dieser bis zu 50 % der Home-Staging-Kosten übernehmen. Fragen Sie mich gern nach den Konditionen.',
+};
 
 export const extras = [
   { name: 'Virtuelles Home Staging', text: 'Leere Räume digital eingerichtet, fotorealistisch, für Exposé und Portale.' },

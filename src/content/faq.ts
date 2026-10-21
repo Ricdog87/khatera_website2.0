@@ -29,7 +29,7 @@ export const faqAllgemein: Frage[] = [
   {
     frage: 'Wer bezahlt das Home Staging, Eigentümer oder Makler?',
     antwort:
-      'Beides ist üblich. Viele Makler bieten Home Staging als Teil ihres Vermarktungspakets an, andere teilen sich die Kosten mit dem Eigentümer. Für Makler habe ich ein eigenes Partnermodell mit festen Konditionen.',
+      'Beides ist üblich. Viele Makler bieten Home Staging als Teil ihres Vermarktungspakets an, andere teilen sich die Kosten mit dem Eigentümer. Vermarkten Sie über einen meiner Partnermakler, kann dieser bis zu 50 % der Home-Staging-Kosten übernehmen. Für Makler gibt es außerdem ein eigenes Partnermodell mit festen Konditionen.',
   },
   {
     frage: 'Was ist virtuelles Home Staging?',

@@ -19,6 +19,18 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 | WhatsApp | Button auf dem Handy mit der Mobilnummer. Falls kein WhatsApp Business genutzt wird: entfernen | `MobileBar.astro` |
 | Kennzahlen | 5+ Jahre, 50+ Kunden, Netzwerk 250+ | `site.ts` → `facts` |
 
+## Aus dem Meeting vom 21.10. (umgesetzt, bitte prüfen)
+
+- Farben: helles Grau, dezentes Oliv, Anthrazit aus der Geschäftsausstattung. Kein Blau, kein Beige mehr.
+- Pakete untereinander, klappen beim Überfahren auf (Handy: antippen).
+- Menü: Start, Home Staging, Musterwohnungen, Fix & Flip, Preise, Projekte, Über mich, Ratgeber. „Für Makler“ im Footer und auf den Leistungsseiten.
+- Neue Seiten: `/home-staging`, `/musterwohnungen`, `/fix-and-flip`. Texte bitte freigeben.
+- Partner-Hinweis „bis zu 50 % Kostenübernahme“ dezent in Teil- und Komplett-Staging, im FAQ und auf der Makler-Seite. **Bitte Formulierung und Bedingungen bestätigen.**
+- Bewertungs-Link „Auf Google bewerten“ im Footer, auf Über mich und Projekte. **Direkten Link aus dem Google-Unternehmensprofil liefern** (`site.ts` → `googleReviewUrl`).
+- Neue Profi-Fotos aus dem Drive-Ordner „Bilder - Webseite“ (Serie Juni 2026, Loft September 2025). Fotos mit blauen Kissen/Stühlen entfernt.
+- Datenschutz mit Hosting-Angaben für IONOS (Live) bzw. Vercel (Demo).
+- Offen: Partner-Login/Dashboard für Makler (Konzept separat).
+
 ## Bitte liefern
 
 - [ ] **Vorher/Nachher-Fotos** von 3 bis 5 Projekten (stärkstes Verkaufsargument, fehlt aktuell komplett)
@@ -38,6 +50,6 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 ## Herkunft der Inhalte
 
 - Texte, Kontaktdaten, Impressumsangaben und Mitgliedschaft: alte Website khatera-gross.de (Rohtexte in `content/live-site-texte.md`)
-- Fotos: eigene Projektfotos von der alten Website. Profi-Fotos mit Khatera: Fotograf „MKG“ (Nikon D850, Januar 2025), Einliegerwohnung: iPhone, Juli 2024. Porträt: von Ricardo geliefert, KI-hochskaliert (siehe oben).
+- Fotos: Profi-Fotos aus dem Drive-Ordner „Bilder - Webseite“ (MKG, Juni 2026 und September 2025) sowie eigene Projektfotos von der alten Website. Profi-Fotos mit Khatera: Fotograf „MKG“ (Nikon D850, Januar 2025), Einliegerwohnung: iPhone, Juli 2024. Porträt: von Ricardo geliefert, KI-hochskaliert (siehe oben).
 - Logo: Illustrator-Originale (`brand-originale/`), Farben der Geschäftsausstattung: Anthrazit #1E1E1D, Sand #BBB494, Creme #FFFDF0.
 - Nicht übernommen: Stockfotos und Platzhalter des Framer-Templates (englische Lorem-Texte, fremde Porträts, Produktbilder).

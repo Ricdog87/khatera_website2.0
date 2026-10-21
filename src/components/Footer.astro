@@ -1,12 +1,13 @@
 ---
 import Logo from './Logo.astro';
 import Arrow from './Arrow.astro';
-import { company, pakete, orte } from '../config/site';
+import GoogleBewertung from './GoogleBewertung.astro';
+import { company, orte } from '../config/site';
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="on-dark relative isolate overflow-hidden bg-petrol-950 text-paper">
+<footer class="on-dark relative isolate overflow-hidden bg-graphit-950 text-paper">
   <!-- Großes Monogramm Ton in Ton, wie auf der Visitenkarte -->
   <div class="pointer-events-none absolute -top-[14%] -right-[18%] -z-10 w-[min(80vw,620px)] text-white/[0.03] md:-right-[6%]" aria-hidden="true">
     <Logo variant="monogramm" />
@@ -24,11 +25,13 @@ const year = new Date().getFullYear();
 
       <div class="grid gap-10 text-small sm:grid-cols-3 lg:col-span-6 lg:pt-3">
         <div>
-          <p class="label text-sand-400">Pakete</p>
+          <p class="label text-sand-400">Leistungen</p>
           <ul class="mt-5 space-y-2.5 text-mist">
-            {pakete.map((p) => <li><a class="hover:text-paper" href={`/kontakt?paket=${p.id}`}>{p.name}</a></li>)}
-            <li><a class="hover:text-paper" href="/makler-bautraeger">Musterwohnungen</a></li>
-            <li><a class="hover:text-paper" href="/home-staging-kosten">Alle Preise</a></li>
+            <li><a class="hover:text-paper" href="/home-staging">Home Staging</a></li>
+            <li><a class="hover:text-paper" href="/musterwohnungen">Musterwohnungen</a></li>
+            <li><a class="hover:text-paper" href="/fix-and-flip">Fix &amp; Flip</a></li>
+            <li><a class="hover:text-paper" href="/makler-bautraeger">Für Makler</a></li>
+            <li><a class="hover:text-paper" href="/home-staging-kosten">Pakete &amp; Preise</a></li>
           </ul>
         </div>
         <div>
@@ -49,6 +52,7 @@ const year = new Date().getFullYear();
             {company.street}<br />{company.zip} {company.city}<br />
             <a class="hover:text-paper" href={`mailto:${company.email}`}>{company.email}</a>
           </address>
+          <GoogleBewertung variant="link" class="mt-6" />
         </div>
       </div>
     </div>

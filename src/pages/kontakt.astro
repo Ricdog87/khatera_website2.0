@@ -10,6 +10,7 @@ const optionen = [
   ...pakete.map((p) => ({ value: p.id, label: `${p.name}${p.preisAb ? ` · ab ${euro(p.preisAb)} €` : ''}` })),
   { value: 'musterwohnung', label: 'Musterwohnung / Bauträger' },
   { value: 'makler', label: 'Partnerschaft als Makler' },
+  { value: 'fixflip', label: 'Fix & Flip / Investor' },
   { value: 'virtuell', label: 'Virtuelles Home Staging' },
   { value: 'unsicher', label: 'Weiß ich noch nicht, bitte beraten' },
 ];
@@ -23,8 +24,8 @@ const optionen = [
   <section class="pt-10 pb-[var(--section)] md:pt-16">
     <div class="container-page grid gap-14 lg:grid-cols-12">
       <div class="lg:col-span-4">
-        <p class="label rule text-sand-700" data-reveal>Paket anfragen</p>
-        <h1 class="mt-6 text-display lg:text-[clamp(3.25rem,4.6vw,5rem)]" data-reveal style="--d:1">Erzählen Sie mir von <em class="text-petrol-500">Ihrer Immobilie.</em></h1>
+        <p class="label rule text-olive-700" data-reveal>Paket anfragen</p>
+        <h1 class="mt-6 text-display lg:text-[clamp(3.25rem,4.6vw,5rem)]" data-reveal style="--d:1">Erzählen Sie mir von <em class="text-olive-600">Ihrer Immobilie.</em></h1>
         <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">Ich melde mich innerhalb von 24 Stunden persönlich. Das Erstgespräch ist kostenlos und unverbindlich.</p>
 
         <div class="mt-12 flex items-center gap-5 border-t border-line pt-8" data-reveal style="--d:3">
@@ -35,15 +36,15 @@ const optionen = [
           </div>
         </div>
         <dl class="mt-8 space-y-5 text-small" data-reveal style="--d:4">
-          <div><dt class="label text-sand-700">Telefon</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem] lining-nums" href={company.phoneHref}>{company.phone}</a></dd></div>
-          <div><dt class="label text-sand-700">E-Mail</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem]" href={`mailto:${company.email}`}>{company.email}</a></dd></div>
-          <div><dt class="label text-sand-700">Region</dt><dd class="mt-1 text-ink-600">Taunusstein · Wiesbaden · Rheingau · Mainz · Frankfurt</dd></div>
+          <div><dt class="label text-olive-700">Telefon</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem] lining-nums" href={company.phoneHref}>{company.phone}</a></dd></div>
+          <div><dt class="label text-olive-700">E-Mail</dt><dd class="mt-1"><a class="link-line font-display text-[1.5rem]" href={`mailto:${company.email}`}>{company.email}</a></dd></div>
+          <div><dt class="label text-olive-700">Region</dt><dd class="mt-1 text-ink-600">Taunusstein · Wiesbaden · Rheingau · Mainz · Frankfurt</dd></div>
         </dl>
       </div>
 
       <form id="anfrage" class="anfrage bg-linen p-6 sm:p-10 lg:col-span-7 lg:col-start-6" data-key={web3formsKey} data-email={company.email} data-hide-mobile-bar novalidate>
         <fieldset>
-          <legend class="label text-sand-700">1 · Was darf es sein?</legend>
+          <legend class="label text-olive-700">1 · Was darf es sein?</legend>
           <div class="mt-5 grid gap-2 sm:grid-cols-2">
             {optionen.map((o, i) => (
               <label class="option">
@@ -55,7 +56,7 @@ const optionen = [
         </fieldset>
 
         <fieldset class="mt-10">
-          <legend class="label text-sand-700">2 · Ihre Immobilie</legend>
+          <legend class="label text-olive-700">2 · Ihre Immobilie</legend>
           <div class="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
             <label class="field">
               <span>Art der Immobilie</span>
@@ -85,7 +86,7 @@ const optionen = [
         </fieldset>
 
         <fieldset class="mt-10">
-          <legend class="label text-sand-700">3 · Ihre Kontaktdaten</legend>
+          <legend class="label text-olive-700">3 · Ihre Kontaktdaten</legend>
           <div class="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
             <label class="field"><span>Name *</span><input name="name" required autocomplete="name" /></label>
             <label class="field">
@@ -106,7 +107,7 @@ const optionen = [
         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
 
         <label class="mt-8 flex gap-3 text-small text-ink-600">
-          <input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 shrink-0 accent-petrol-500" />
+          <input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 shrink-0 accent-olive-600" />
           <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>. *</span>
         </label>
 
@@ -131,9 +132,9 @@ const optionen = [
     cursor: pointer;
     transition: border-color 300ms, background-color 300ms, color 300ms;
   }
-  .option span:hover { border-color: var(--color-petrol-500); }
-  .option input:checked + span { background: var(--color-petrol-500); border-color: var(--color-petrol-500); color: var(--color-paper); }
-  .option input:focus-visible + span { outline: 2px solid var(--color-petrol-500); outline-offset: 2px; }
+  .option span:hover { border-color: var(--color-olive-600); }
+  .option input:checked + span { background: var(--color-olive-600); border-color: var(--color-olive-600); color: var(--color-paper); }
+  .option input:focus-visible + span { outline: 2px solid var(--color-olive-600); outline-offset: 2px; }
 
   .field { display: block; }
   .field > span { display: block; font-size: 0.8125rem; color: var(--color-ink-600); }
@@ -151,9 +152,9 @@ const optionen = [
     outline: none;
     transition: border-color 300ms;
   }
-  .field select { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231c2427'/%3E%3C/svg%3E") right 0.25rem center no-repeat; }
+  .field select { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231f201d'/%3E%3C/svg%3E") right 0.25rem center no-repeat; }
   .field textarea { resize: vertical; }
-  .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--color-petrol-500); box-shadow: 0 1px 0 var(--color-petrol-500); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--color-olive-600); box-shadow: 0 1px 0 var(--color-olive-600); }
   .field [aria-invalid='true'] { border-bottom-color: #9a3b2e; }
 </style>
 
