@@ -1,5 +1,6 @@
 ---
 title: 'Home Staging Tipps: So setzen Sie Ihre Immobilie in Szene'
+seoTitel: 'Home Staging Tipps: Immobilie perfekt in Szene setzen'
 kurz: Home Staging Tipps
 description: 'Fünf Home Staging Tipps, die Sie sofort und mit kleinem Budget umsetzen können: entrümpeln, depersonalisieren, Licht, Farbe und Deko.'
 kategorie: Tipps

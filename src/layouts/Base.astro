@@ -22,7 +22,8 @@ interface Props {
 
 const { title, description, overlayHeader = false, ogImage = '/og.jpg', schema = [], breadcrumbs, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const fullTitle = title.includes('Khatera Gross') ? title : `${title} | Khatera Gross`;
+// Marken-Suffix nur, wenn der Titel dann noch in die Suchergebnisse passt (ca. 65 Zeichen)
+const fullTitle = title.includes('Khatera Gross') || title.length > 49 ? title : `${title} | Khatera Gross`;
 const site = Astro.site!.href.replace(/\/$/, '');
 
 const business = {
@@ -31,9 +32,13 @@ const business = {
   '@id': `${site}/#business`,
   name: company.name,
   alternateName: 'KG Home Staging',
-  description: 'Home Staging für Eigentümer, Makler und Bauträger im Rheingau, in Wiesbaden, Taunusstein, Mainz und Frankfurt.',
+  description:
+    'Home-Staging-Studio aus Taunusstein. Khatera Gross inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet und richtet Musterwohnungen für Bauträger bundesweit ein.',
+  slogan: 'Räume, die verkaufen.',
+  knowsAbout: ['Home Staging', 'Immobilien-Inszenierung', 'Musterwohnung', 'Restanten-Staging', 'Virtuelles Home Staging', 'Redesign', 'Fix and Flip', 'Immobilienverkauf'],
+  inLanguage: 'de-DE',
   url: site,
-  logo: `${site}/favicon.svg`,
+  logo: `${site}/logo.png`,
   image: `${site}/og.jpg`,
   telephone: company.phone.replace(/\s/g, ''),
   email: company.email,
@@ -46,17 +51,34 @@ const business = {
     addressRegion: 'Hessen',
     addressCountry: 'DE',
   },
-  areaServed: [...orte.map((o) => ({ '@type': 'Place', name: o.name })), { '@type': 'AdministrativeArea', name: 'Rheingau-Taunus-Kreis' }],
-  founder: { '@type': 'Person', '@id': `${site}/#khatera`, name: company.owner, jobTitle: 'Home Stagerin' },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Rhein-Main-Gebiet' },
+    ...orte.map((o) => ({ '@type': 'City', name: o.name })),
+    { '@type': 'AdministrativeArea', name: 'Rheingau-Taunus-Kreis' },
+  ],
+  founder: { '@type': 'Person', '@id': `${site}/#khatera`, name: company.owner, jobTitle: 'Home Stagerin', url: `${site}/ueber-mich` },
   memberOf: { '@type': 'Organization', name: 'Staging Community' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Home Staging Pakete',
-    itemListElement: pakete.map((p) => ({
-      '@type': 'Offer',
-      itemOffered: { '@type': 'Service', name: `Home Staging: ${p.name}`, description: p.leistungen.join('. ') },
-      ...(p.preisAb ? { priceSpecification: { '@type': 'PriceSpecification', price: p.preisAb, priceCurrency: 'EUR', minPrice: p.preisAb } } : {}),
-    })),
+    itemListElement: [
+      ...pakete.map((p) => ({
+        '@type': 'Offer',
+        url: `${site}/home-staging-kosten`,
+        itemOffered: { '@type': 'Service', name: `Home Staging: ${p.name}`, description: `${p.fuer}. ${p.leistungen.join('. ')}.`, areaServed: { '@type': 'AdministrativeArea', name: 'Rhein-Main-Gebiet' } },
+        ...(p.preisAb ? { priceSpecification: { '@type': 'PriceSpecification', minPrice: p.preisAb, priceCurrency: 'EUR', valueAddedTaxIncluded: false } } : {}),
+      })),
+      {
+        '@type': 'Offer',
+        url: `${site}/musterwohnungen`,
+        itemOffered: { '@type': 'Service', name: 'Musterwohnungen für Bauträger', description: 'Einrichtung von Musterwohnungen, Restanten-Staging und virtuelles Staging für Neubauprojekte.', areaServed: { '@type': 'Country', name: 'Deutschland' } },
+      },
+      {
+        '@type': 'Offer',
+        url: `${site}/fix-and-flip`,
+        itemOffered: { '@type': 'Service', name: 'Home Staging für Fix & Flip', description: 'Beratung vor der Sanierung, virtuelles Staging und Staging nach Fertigstellung für Immobilieninvestoren.', areaServed: { '@type': 'AdministrativeArea', name: 'Rhein-Main-Gebiet' } },
+      },
+    ],
   },
   ...(company.linkedin || company.instagram ? { sameAs: [company.linkedin, company.instagram].filter(Boolean) } : {}),
 };
@@ -72,7 +94,17 @@ const crumbSchema = breadcrumbs && {
   })),
 };
 
-const allSchema = [business, ...(crumbSchema ? [crumbSchema] : []), ...schema];
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site}/#website`,
+  url: site,
+  name: company.name,
+  inLanguage: 'de-DE',
+  publisher: { '@id': `${site}/#business` },
+};
+
+const allSchema = [business, website, ...(crumbSchema ? [crumbSchema] : []), ...schema];
 ---
 
 <!doctype html>
@@ -83,7 +115,7 @@ const allSchema = [business, ...(crumbSchema ? [crumbSchema] : []), ...schema];
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content={indexable && !noindex ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+    <meta name="robots" content={indexable && !noindex ? 'index, follow, max-image-preview:large, max-snippet:-1' : 'noindex, nofollow'} />
     <meta name="theme-color" content="#f4f4f1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -118,7 +150,7 @@ const allSchema = [business, ...(crumbSchema ? [crumbSchema] : []), ...schema];
       {breadcrumbs && (
         <nav aria-label="Brotkrumen" class="container-page pt-[calc(var(--header-h)+1.5rem)] text-[0.8125rem] text-ink-600">
           <ol class="flex flex-wrap items-center gap-2">
-            <li><a href="/" class="hover:text-ink-900">Start</a></li>
+            <li><a href="/" class="hover:text-ink-900">Startseite</a></li>
             {breadcrumbs.map((c, i) => (
               <li class="flex items-center gap-2">
                 <span aria-hidden="true" class="text-line">/</span>

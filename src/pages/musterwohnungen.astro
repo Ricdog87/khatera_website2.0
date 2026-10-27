@@ -1,9 +1,12 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
+import RatgeberTipp from '../components/RatgeberTipp.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Seitenkopf from '../components/Seitenkopf.astro';
+import Kurzantwort from '../components/Kurzantwort.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { faqSchema, type Frage } from '../content/faq';
@@ -28,28 +31,38 @@ const ablauf = [
 ];
 
 const fragen: Frage[] = [
+  { frage: 'Richten Sie Musterwohnungen auch außerhalb des Rhein-Main-Gebiets ein?', antwort: 'Ja. Musterwohnungen für Bauträger und Projektentwickler übernehme ich bundesweit. Konzept und Abstimmung laufen digital, für Aufbau und Styling bin ich mit meinem Team vor Ort. Anfahrt und Logistik weise ich im Angebot transparent aus.' },
   { frage: 'Was kostet eine Musterwohnung?', antwort: 'Das hängt von Anzahl und Größe der Einheiten, der Laufzeit und dem Ausstattungsniveau ab. Nach einem Blick auf Grundrisse und Vertriebsplan bekommen Sie ein transparentes Angebot mit getrennt ausgewiesener Arbeitsleistung und Möbelmiete.' },
   { frage: 'Wie lange kann eine Musterwohnung eingerichtet bleiben?', antwort: 'So lange, wie Ihr Vertrieb sie braucht. Die Laufzeit stimmen wir zu Beginn ab und verlängern sie bei Bedarf flexibel.' },
   { frage: 'Was passiert, wenn die Musterwohnung selbst verkauft wird?', antwort: 'Dann ziehe ich die Einrichtung in eine baugleiche oder ähnliche Einheit um, damit der Vertrieb ohne Unterbrechung weiterlaufen kann.' },
   { frage: 'Lohnt sich virtuelles Staging für Neubauten?', antwort: 'Für den Vorvertrieb und für Online-Exposés auf jeden Fall, weil Käufer die Räume schon vor der Fertigstellung sehen. Für Besichtigungen vor Ort ersetzt es die reale Musterwohnung aber nicht. Oft ist die Kombination am wirkungsvollsten.' },
 ];
+const og = await ogBild(kueche);
 ---
 
 <Base
+  ogImage={og}
   title="Musterwohnungen für Bauträger & Projektentwickler"
-  description="Musterwohnungen, Restanten-Staging und virtuelles Staging für Bauträger im Rhein-Main-Gebiet. Grundrisse erlebbar machen, Abverkauf beschleunigen. Khatera Gross Home Staging."
+  description="Musterwohnungen bundesweit: Einrichtung, Restanten- und virtuelles Staging für Bauträger und Projektentwickler. Grundrisse erlebbar machen."
   breadcrumbs={[{ name: 'Musterwohnungen', href: '/musterwohnungen' }]}
   schema={[faqSchema(fragen)]}
 >
   <Seitenkopf
-    label="Für Bauträger & Projektentwickler"
+    label="Für Bauträger · bundesweit"
     title="Musterwohnungen, die"
     em="Grundrisse verkaufen."
-    intro="Käufer verstehen Pläne selten. Sie verstehen Räume. Ich übersetze Ihre Architektur in ein Wohngefühl, das zur Zielgruppe und zur Vertriebsphase passt. Real, virtuell oder kombiniert."
+    intro="Käufer verstehen Pläne selten. Sie verstehen Räume. Ich übersetze Ihre Architektur in ein Wohngefühl, das zur Zielgruppe und zur Vertriebsphase passt. Real, virtuell oder kombiniert, im Rhein-Main-Gebiet und bundesweit."
     bild={kueche}
     bildAlt="Eingerichtete Küche mit Blick in den Essbereich"
     cta={{ label: 'Projekt besprechen', href: '/kontakt?paket=musterwohnung' }}
     cta2={{ label: 'Projekte ansehen', href: '/projekte' }}
+  />
+
+  <Kurzantwort
+    class="mb-[var(--section)]"
+    frage="Was bringt eine Musterwohnung im Neubauvertrieb?"
+    antwort="Eine Musterwohnung ist eine vollständig eingerichtete Einheit eines Neubauprojekts, in der Interessenten Grundriss, Raumgefühl und Ausstattung real erleben. Sie macht Pläne verständlich, liefert die Bilder für Exposé und Website und verkürzt erfahrungsgemäß die Entscheidungszeit der Käufer. Khatera Gross plant und richtet Musterwohnungen bundesweit ein, ergänzt um Restanten-Staging und virtuelles Staging für den Vorvertrieb."
+    fakten={[{ label: 'Einsatz', wert: 'bundesweit' }, { label: 'Leistungen', wert: 'real, virtuell, kombiniert' }, { label: 'Laufzeit', wert: 'flexibel nach Vertrieb' }, { label: 'Angebot', wert: 'nach Grundriss' }]}
   />
 
   <section class="section bg-linen">
@@ -94,6 +107,7 @@ const fragen: Frage[] = [
     </div>
   </section>
 
+  <RatgeberTipp slugs={['musterwohnung-einrichten', 'was-ist-home-staging']} />
   <Faq fragen={fragen} title="Fragen von" em="Bauträgern." />
   <CtaBand title="Ihr nächstes Projekt" em="verdient eine Bühne." text="Schicken Sie mir Grundrisse und Vertriebsplan. Sie erhalten ein transparentes Angebot mit Konzeptidee." />
 </Base>

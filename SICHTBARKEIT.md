@@ -1,12 +1,15 @@
 # Sichtbarkeit: So wird Khatera gefunden
 
-Die Website ist die Basis. Gefunden wird man im Home Staging aber vor allem über **Google Maps, Bewertungen und Makler**. Dieser Plan ist nach Hebel sortiert: oben das, was am schnellsten Anfragen bringt.
+Die Website ist die Basis. Gefunden wird man im Home Staging aber vor allem über **Google Maps, Bewertungen, Makler und zunehmend über KI-Assistenten** wie ChatGPT und Perplexity. Dieser Plan ist nach Hebel sortiert: oben das, was am schnellsten Anfragen bringt.
 
 ## Was die neue Website schon mitbringt
 
 | Baustein | Wirkung |
 |---|---|
-| 5 Stadtseiten (`/home-staging-wiesbaden`, `-rheingau`, `-taunusstein`, `-mainz`, `-frankfurt`) | rankt auf „Home Staging + Ort“, die Suchanfragen mit der höchsten Kaufabsicht |
+| 8 Stadtseiten (Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt, Darmstadt, Offenbach, Bad Homburg) | rankt auf „Home Staging + Ort“, die Suchanfragen mit der höchsten Kaufabsicht |
+| Seiten Musterwohnungen (bundesweit) und Fix & Flip | eigene Zielgruppen mit eigenem Suchverhalten: Bauträger und Investoren |
+| „Kurz erklärt“-Blöcke, `llms.txt`, KI-Crawler erlaubt | Grundlage dafür, dass KI-Assistenten Khatera als Quelle nennen (siehe Abschnitt 6) |
+| 8 Ratgeber-Artikel mit Antwort zuerst | ranken auf Fragen wie „Lohnt sich Home Staging?“ und werden von KI-Suchen zitiert |
 | Seite „Home Staging Kosten“ | rankt auf „Home Staging Kosten / Preise“, die meistgesuchte Frage |
 | Strukturierte Daten (LocalBusiness, Service, Preise, FAQ, Artikel, Brotkrumen) | Google versteht Leistung, Region und Preise, FAQ können direkt in den Suchergebnissen erscheinen |
 | 301-Weiterleitungen aller alten Framer-URLs | bestehende Rankings und Links gehen beim Umzug nicht verloren |
@@ -72,21 +75,27 @@ Jedes neue Projekt wird eine eigene Referenz mit Ort, Fläche und Ergebnis („n
 
 Vorher/Nachher-Fotos bei jedem Projekt machen. Sie sind für Website, Google-Profil und Instagram das stärkste Material.
 
-## 6. Optional: Google Ads (Test mit 300 bis 500 € im Monat)
+## 6. In KI-Assistenten auftauchen (GEO)
+
+ChatGPT, Perplexity, Claude und Googles KI-Übersichten empfehlen Anbieter, die sie auf mehreren vertrauenswürdigen Seiten mit **identischen Fakten** finden. Die Website liefert diese Fakten bereits sauber („Kurz erklärt“, strukturierte Daten, `llms.txt`). Jetzt geht es darum, dass sie auch anderswo stehen.
+
+1. **Bing Webmaster Tools** einrichten und `npm run indexnow` ausführen: ChatGPT-Suche und Copilot greifen auf Bing zu.
+2. **Gleiche Fakten überall:** Name „Khatera Gross Home Staging“, Taunusstein, Rhein-Main-Gebiet, Musterwohnungen bundesweit, Pakete ab 290 €. In Google-Profil, LinkedIn, Staging-Community-Profil, Houzz und Branchenverzeichnissen identisch formulieren.
+3. **Bewertungen mit Inhalt:** Kunden bitten, Ort und Leistung zu nennen („Komplett-Staging für unsere Wohnung in Wiesbaden“). KI-Systeme werten den Text von Bewertungen aus.
+4. **Erwähnungen auf fremden Seiten:** Partnermakler-Websites („Unser Home-Staging-Partner“), Bauträger-Referenzen, lokale Presse (Wiesbadener Kurier, Rheingau Echo) mit einem Projekt.
+5. **LinkedIn-Beiträge** mit den Ratgeber-Themen, jeweils mit Link auf den Artikel.
+6. **Monatlicher Test:** In ChatGPT, Perplexity und Google fragen: „Wer macht Home Staging in Wiesbaden?“, „Was kostet Home Staging im Rhein-Main-Gebiet?“, „Musterwohnung einrichten lassen bundesweit“. Ergebnis notieren.
+
+## 7. Optional: Google Ads (Test mit 300 bis 500 € im Monat)
 
 Die Staging Manufaktur aus der Referenz schaltet genau das: Anzeigen auf „Home Staging + Stadt“ mit eigener Landingpage. Die Stadtseiten sind dafür schon die passenden Zielseiten. Sinnvoll, sobald Profil und erste Bewertungen stehen, damit die Anzeigen auch überzeugen.
 
 Startkeywords: home staging wiesbaden, home staging rheingau, home staging mainz, home staging kosten, immobilie verkaufen einrichten
 
-## 7. Go-live-Checkliste (technisch)
+## 8. Go-live-Checkliste (technisch)
 
-- [ ] Domain `khatera-gross.de` von Framer auf Vercel umziehen (DNS)
-- [ ] In Vercel `PUBLIC_INDEXABLE=true` setzen und neu deployen
-- [ ] `PUBLIC_WEB3FORMS_KEY` setzen und eine Testanfrage schicken
-- [ ] Google Search Console einrichten, `https://khatera-gross.de/sitemap-index.xml` einreichen
-- [ ] Alte URLs stichprobenartig prüfen (`/about-us`, `/blog/...`), müssen auf die neuen Seiten weiterleiten
-- [ ] Framer-Abo kündigen, sobald die neue Seite live ist
+Schritt für Schritt in `UEBERGABE.md`, Abschnitt 3: Formular-Schlüssel, Build für IONOS, Upload, Domain, Tests, Search Console, Bing Webmaster Tools mit IndexNow, Google-Bewertungslink.
 
 ## Messen
 
-Einmal im Monat: Anfragen über die Website, Anrufe und Klicks im Google-Profil, Anzahl Bewertungen, Position für die 10 wichtigsten Suchbegriffe (Search Console).
+Einmal im Monat: Anfragen über die Website, Anrufe und Klicks im Google-Profil, Anzahl Bewertungen, Position für die 10 wichtigsten Suchbegriffe (Search Console), Ergebnis des KI-Tests aus Abschnitt 6.

@@ -1,6 +1,6 @@
 ---
 title: Impressum
-description: Impressum von Khatera Gross Home Staging, Taunusstein.
+description: Impressum von Khatera Gross Home Staging, Im Biengarten 21, 65232 Taunusstein. Kontakt, Umsatzsteuer-ID und rechtliche Angaben.
 ---
 
 ## Angaben gemäß § 5 DDG

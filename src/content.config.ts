@@ -12,6 +12,8 @@ const ratgeber = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      /** Kürzerer Titel für Suchergebnisse, falls title zu lang ist */
+      seoTitel: z.string().optional(),
       /** Kurzer Titel für Karten und Brotkrumen */
       kurz: z.string(),
       description: z.string(),

@@ -1,0 +1,28 @@
+---
+// Verlinkt passende Ratgeber-Artikel (interne Verlinkung für Leser, Google und KI-Suchen)
+import { getCollection } from 'astro:content';
+import Photo from './Photo.astro';
+import Arrow from './Arrow.astro';
+
+interface Props {
+  slugs: string[];
+}
+const { slugs } = Astro.props;
+const artikel = (await getCollection('ratgeber')).filter((a) => slugs.includes(a.id)).sort((a, b) => slugs.indexOf(a.id) - slugs.indexOf(b.id));
+---
+
+<section class="container-page pt-[var(--section)]">
+  <p class="label rule text-olive-700">Im Ratgeber</p>
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    {artikel.map((a) => (
+      <a href={`/ratgeber/${a.id}`} class="group grid grid-cols-[110px_1fr] items-center gap-5 border-t border-line pt-6 sm:grid-cols-[150px_1fr]">
+        <div class="overflow-hidden"><Photo src={a.data.bild} alt="" widths={[220, 300]} sizes="150px" class="aspect-square w-full object-cover transition-transform duration-1000 group-hover:scale-105" /></div>
+        <div>
+          <p class="label text-olive-700">{a.data.kategorie} · {a.data.lesezeit} Min.</p>
+          <p class="mt-2 font-display text-[1.5rem] leading-tight">{a.data.title}</p>
+          <span class="label mt-3 inline-flex items-center gap-3">Lesen <Arrow /></span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

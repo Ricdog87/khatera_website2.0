@@ -1,5 +1,6 @@
 ---
 title: 'Die Vorteile von Home Staging: Warum es sich lohnt zu investieren'
+seoTitel: 'Vorteile von Home Staging: Warum es sich lohnt'
 kurz: Die Vorteile von Home Staging
 description: 'Schneller verkaufen, besser verhandeln, mehr Anfragen: die fünf wichtigsten Vorteile von Home Staging für Eigentümer, Makler und Bauträger.'
 kategorie: Verkaufen

@@ -23,13 +23,21 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 
 - Farben: helles Grau, dezentes Oliv, Anthrazit aus der Geschäftsausstattung. Kein Blau, kein Beige mehr.
 - Pakete untereinander, klappen beim Überfahren auf (Handy: antippen).
-- Menü: Start, Home Staging, Musterwohnungen, Fix & Flip, Preise, Projekte, Über mich, Ratgeber. „Für Makler“ im Footer und auf den Leistungsseiten.
+- Menü: Startseite, Home Staging, Musterwohnungen, Fix & Flip, Preise, Projekte, Über mich, Ratgeber. „Für Makler“ im Footer und auf den Leistungsseiten.
 - Neue Seiten: `/home-staging`, `/musterwohnungen`, `/fix-and-flip`. Texte bitte freigeben.
 - Partner-Hinweis „bis zu 50 % Kostenübernahme“ dezent in Teil- und Komplett-Staging, im FAQ und auf der Makler-Seite. **Bitte Formulierung und Bedingungen bestätigen.**
 - Bewertungs-Link „Auf Google bewerten“ im Footer, auf Über mich und Projekte. **Direkten Link aus dem Google-Unternehmensprofil liefern** (`site.ts` → `googleReviewUrl`).
 - Neue Profi-Fotos aus dem Drive-Ordner „Bilder - Webseite“ (Serie Juni 2026, Loft September 2025). Fotos mit blauen Kissen/Stühlen entfernt.
 - Datenschutz mit Hosting-Angaben für IONOS (Live) bzw. Vercel (Demo).
 - Offen: Partner-Login/Dashboard für Makler (Konzept separat).
+
+## Seit dem 27.10. ergänzt (bitte prüfen)
+
+- Einsatzgebiet: gesamtes Rhein-Main-Gebiet, Musterwohnungen bundesweit (FAQ, Regionen, Musterwohnungen-Seite, strukturierte Daten).
+- Drei neue Stadtseiten: Darmstadt, Offenbach, Bad Homburg & Hochtaunus. Texte bitte freigeben.
+- „Kurz erklärt“-Blöcke auf Startseite, Leistungs-, Preis- und Stadtseiten.
+- Vier neue Ratgeber-Artikel: „Lohnt sich Home Staging?“, „Leere Wohnung verkaufen“, „Musterwohnung einrichten“, „Fix & Flip“. Bitte freigeben.
+- Bei Musterwohnungen steht „mit meinem Team vor Ort“. Bitte bestätigen, dass das so stimmt.
 
 ## Bitte liefern
 
@@ -39,13 +47,13 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 - [ ] Gütesiegel der Staging Community als Grafik (Premium-Mitglied)
 - [ ] LinkedIn- und Instagram-Link
 - [ ] **Porträt in Originalauflösung**: Das aktuelle Business-Porträt lag nur mit 241 × 249 Pixeln vor und wurde per KI auf 964 × 996 hochgerechnet (Real-ESRGAN, Gesicht mit GFPGAN). Die Originaldatei vom Fotografen ersetzt das 1:1 und ist noch schärfer.
-- [ ] Freigabe der vier Ratgeber-Artikel (Inhalte von der alten Seite übernommen und überarbeitet)
+- [ ] Freigabe der vier übernommenen und der vier neuen Ratgeber-Artikel
 
 ## Technik (Ricardo)
 
 - [ ] Web3Forms-Key für `kg@khatera-gross.de` anlegen und in Vercel als `PUBLIC_WEB3FORMS_KEY` setzen. Ohne Key öffnet das Formular das E-Mail-Programm mit der fertigen Anfrage.
-- [ ] Domain umziehen, `PUBLIC_INDEXABLE=true`, Search Console (siehe `SICHTBARKEIT.md`, Go-live-Checkliste)
-- [ ] Impressum und Datenschutz juristisch prüfen lassen (Entwurf: Vercel-Hosting, Web3Forms, keine Cookies, keine Tracking-Tools)
+- [ ] Go-live nach `UEBERGABE.md`, Abschnitt 3
+- [ ] Impressum und Datenschutz juristisch prüfen lassen (Entwurf: IONOS- bzw. Vercel-Hosting, Web3Forms, keine Cookies, keine Tracking-Tools)
 
 ## Herkunft der Inhalte
 

@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "build:ionos": "DEPLOY_TARGET=ionos astro build"
+    "build:ionos": "DEPLOY_TARGET=ionos astro build",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "engines": {
     "node": ">=22.22.0"

@@ -97,7 +97,13 @@ export default defineConfig({
   trailingSlash: 'never',
   build: { format: 'file', inlineStylesheets: 'always' },
   adapter: ionos ? undefined : vercel({ webAnalytics: { enabled: false } }),
-  integrations: [sitemap({ filter: (page) => !page.includes('/danke') }), htaccess()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/danke') && !page.endsWith('.txt'),
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
+    }),
+    htaccess(),
+  ],
   redirects,
 
   fonts: [

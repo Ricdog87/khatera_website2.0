@@ -1,4 +1,5 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
@@ -29,11 +30,13 @@ const fragen: Frage[] = [
   { frage: 'Wer ist Vertragspartner, Makler oder Eigentümer?', antwort: 'Beides ist möglich. Viele Makler beauftragen das Staging selbst und kalkulieren es in ihre Vermarktung ein, andere vermitteln den Auftrag und ich rechne direkt mit dem Eigentümer ab. Als Partner können Sie bis zu 50 % der Kosten für Ihre Eigentümer übernehmen.' },
   { frage: 'Können Sie auch mehrere Objekte parallel betreuen?', antwort: 'Ja. Für Partner plane ich Kapazitäten fest ein. Sprechen Sie mich frühzeitig an, dann sichern wir die Termine.' },
 ];
+const og = await ogBild(wohnEss);
 ---
 
 <Base
+  ogImage={og}
   title="Home Staging für Makler: Partnermodell"
-  description="Home Staging als Vertriebswerkzeug für Immobilienmakler im Rhein-Main-Gebiet: feste Partnerkonditionen, Kostenbeteiligung bis 50 %, Aufbau meist an einem Tag. Mehr Mandate, schnellere Abschlüsse."
+  description="Home Staging für Immobilienmakler im Rhein-Main-Gebiet: feste Partnerkonditionen, bis zu 50 % Kostenbeteiligung, Aufbau meist an einem Tag."
   breadcrumbs={[{ name: 'Für Makler', href: '/makler-bautraeger' }]}
   schema={[faqSchema(fragen)]}
 >

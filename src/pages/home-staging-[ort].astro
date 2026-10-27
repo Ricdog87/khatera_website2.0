@@ -1,5 +1,7 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
+import Kurzantwort from '../components/Kurzantwort.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import SectionHead from '../components/SectionHead.astro';
@@ -16,13 +18,16 @@ import terrasse from '../assets/images/haus-fernblick/terrasse-fernblick.jpg';
 import wohnzimmer from '../assets/images/haus-fernblick/home-staging-wohnzimmer-haus-fernblick.jpg';
 import kueche from '../assets/images/haus-fernblick/home-staging-kueche-blick-essbereich.jpg';
 import loft from '../assets/images/loft/home-staging-loft-wohnbereich.jpg';
+import schlafen from '../assets/images/haus-fernblick/home-staging-schlafzimmer-hell.jpg';
+import leseecke from '../assets/images/haus-fernblick/home-staging-leseecke-arbeitszimmer.jpg';
+import sofa from '../assets/images/haus-fernblick/detail-sofa-plaid.jpg';
 
 export function getStaticPaths() {
   return orte.map((ort) => ({ params: { ort: ort.slug }, props: { ort } }));
 }
 
 const { ort } = Astro.props as { ort: Ort };
-const bilder = { wiesbaden: wohnEss, rheingau: terrasse, taunusstein: wohnzimmer, mainz: kueche, frankfurt: loft } as const;
+const bilder = { wiesbaden: wohnEss, rheingau: terrasse, taunusstein: wohnzimmer, mainz: kueche, frankfurt: loft, darmstadt: leseecke, offenbach: schlafen, 'bad-homburg': sofa } as const;
 const bild = bilder[ort.slug as keyof typeof bilder] ?? wohnEss;
 const euro = (n: number) => n.toLocaleString('de-DE');
 const [beratung, teil, komplett] = pakete;
@@ -54,9 +59,11 @@ const service = {
   areaServed: { '@type': 'Place', name: ort.name },
   offers: pakete.map((p) => ({ '@type': 'Offer', name: p.name, price: p.preisAb, priceCurrency: 'EUR' })),
 };
+const og = await ogBild(bild);
 ---
 
 <Base
+  ogImage={og}
   title={`${ort.title} | Khatera Gross`}
   description={ort.description}
   schema={[service, faqSchema(fragen)]}
@@ -80,6 +87,18 @@ const service = {
       </div>
     </div>
   </section>
+
+  <Kurzantwort
+    class="mb-[var(--section)]"
+    frage={`Wer bietet Home Staging ${ort.praep} an?`}
+    antwort={`Khatera Gross Home Staging aus Taunusstein inszeniert Immobilien ${ort.praep} und im gesamten Rhein-Main-Gebiet, unter anderem in ${ort.lagen.slice(0, 4).join(', ')}. ${ort.anfahrt} Die Pakete: Staging-Beratung ab ${euro(beratung.preisAb!)} €, Teil-Staging ab ${euro(teil.preisAb!)} € und Komplett-Staging ab ${euro(komplett.preisAb!)} €, jeweils inklusive Möbelmiete und Anfahrt. Ein verbindliches Festpreisangebot gibt es innerhalb von 48 Stunden.`}
+    fakten={[
+      { label: 'Region', wert: ort.name },
+      { label: 'Pakete', wert: `ab ${euro(beratung.preisAb!)} €` },
+      { label: 'Aufbau', wert: 'meist 1 Tag' },
+      { label: 'Angebot', wert: 'Festpreis in 48 Std.' },
+    ]}
+  />
 
   <section class="section bg-linen">
     <div class="container-page grid gap-14 lg:grid-cols-12">

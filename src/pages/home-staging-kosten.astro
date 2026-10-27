@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import RatgeberTipp from '../components/RatgeberTipp.astro';
+import Kurzantwort from '../components/Kurzantwort.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Pakete from '../components/Pakete.astro';
 import Rechner from '../components/Rechner.astro';
@@ -26,7 +28,7 @@ const beispiel = [
 
 <Base
   title="Home Staging Kosten: Pakete & Preise"
-  description="Was kostet Home Staging? Transparente Pakete ab 290 €: Staging-Beratung, Teil-Staging und Komplett-Staging inkl. Möbelmiete. Festpreis in 48 Stunden, Rhein-Main-Gebiet."
+  description="Was kostet Home Staging? Pakete ab 290 €: Staging-Beratung, Teil- und Komplett-Staging inkl. Möbelmiete. Festpreisangebot in 48 Stunden."
   breadcrumbs={[{ name: 'Pakete & Preise', href: '/home-staging-kosten' }]}
   schema={[faqSchema(faqKosten)]}
 >
@@ -41,6 +43,18 @@ const beispiel = [
       </p>
     </div>
   </section>
+
+  <Kurzantwort
+    class="mb-[calc(var(--section)*0.6)]"
+    frage="Was kostet Home Staging im Rhein-Main-Gebiet?"
+    antwort="Bei Khatera Gross kostet eine Staging-Beratung für bewohnte Immobilien ab 290 €, ein Teil-Staging für leere Wohnungen bis etwa 80 m² ab 1.490 € inklusive acht Wochen Möbelmiete und ein Komplett-Staging für Häuser und große Wohnungen ab 2.990 € inklusive zwölf Wochen Möbelmiete, jeweils netto. Der genaue Preis richtet sich nach Zahl der Räume, Preisklasse der Immobilie und Laufzeit. Als Faustregel liegt ein Komplett-Staging bei rund 30 bis 45 € pro Quadratmeter."
+    fakten={[
+      { label: 'Beratung', wert: 'ab 290 €' },
+      { label: 'Teil-Staging', wert: 'ab 1.490 €' },
+      { label: 'Komplett-Staging', wert: 'ab 2.990 €' },
+      { label: 'Faustregel', wert: '30–45 € / m²' },
+    ]}
+  />
 
   <section class="kg-muster bg-linen pt-16 pb-[var(--section)] md:pt-24">
     <div class="container-page">
@@ -76,15 +90,17 @@ const beispiel = [
         <SectionHead label="Rechenbeispiel" title="Teurer als Home Staging ist" em="ein Preisnachlass." />
         <p class="mt-8 text-ink-600" data-reveal style="--d:2">Leere oder unruhig eingerichtete Immobilien stehen länger im Netz. Mit jeder Woche wächst der Druck, und am Ende wird über den Preis verhandelt. Schon ein kleiner Unterschied in der Verhandlung ist mehr wert als die Inszenierung.</p>
       </div>
-      <dl class="border-t border-ink-900 lg:col-span-6 lg:col-start-7" data-reveal>
+      <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+        <dl class="border-t border-ink-900">
         {beispiel.map((b, i) => (
           <div class:list={['flex items-baseline justify-between gap-6 border-b border-line py-5', i === beispiel.length - 1 && 'border-ink-900']}>
             <dt class="text-ink-600">{b.label}</dt>
             <dd class:list={['font-display text-[1.75rem] leading-none whitespace-nowrap lining-nums', i === beispiel.length - 1 && 'text-olive-600']}>{b.wert}</dd>
           </div>
         ))}
+        </dl>
         <p class="mt-4 text-[0.8125rem] text-ink-600">Beispielhafte Rechnung, Werte gerundet.</p>
-      </dl>
+      </div>
     </div>
   </section>
 
@@ -112,6 +128,7 @@ const beispiel = [
     </div>
   </section>
 
+  <RatgeberTipp slugs={['lohnt-sich-home-staging', 'vorteile-von-home-staging']} />
   <Faq fragen={faqKosten} title="Fragen zu" em="Kosten & Ablauf." />
   <CtaBand />
 </Base>

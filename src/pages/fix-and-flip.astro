@@ -1,8 +1,11 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
+import RatgeberTipp from '../components/RatgeberTipp.astro';
 import Photo from '../components/Photo.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Seitenkopf from '../components/Seitenkopf.astro';
+import Kurzantwort from '../components/Kurzantwort.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { faqSchema, type Frage } from '../content/faq';
@@ -30,11 +33,13 @@ const fragen: Frage[] = [
   { frage: 'Wie schnell kann das Staging nach der Sanierung stehen?', antwort: 'Wenn wir früh planen, steht das Konzept bereits während der Sanierung. Der Aufbau dauert meist nur einen Tag, sodass Fotos und Vermarktung direkt nach der Endreinigung starten können.' },
   { frage: 'Gibt es Konditionen für mehrere Objekte?', antwort: 'Ja. Für Investoren mit mehreren Objekten im Jahr biete ich eine Rahmenvereinbarung mit festen Preisen und priorisierten Terminen an.' },
 ];
+const og = await ogBild(loft);
 ---
 
 <Base
+  ogImage={og}
   title="Home Staging für Fix & Flip und Investoren"
-  description="Fix & Flip im Rhein-Main-Gebiet: Sanierte Immobilien schneller verkaufen. Beratung vor der Sanierung, virtuelles Staging, Aufbau an einem Tag, Rahmenvereinbarung für Investoren."
+  description="Home Staging für Fix & Flip im Rhein-Main-Gebiet: sanierte Immobilien schneller verkaufen. Virtuelles Staging, Aufbau an einem Tag, Rahmenvereinbarung."
   breadcrumbs={[{ name: 'Fix & Flip', href: '/fix-and-flip' }]}
   schema={[faqSchema(fragen)]}
 >
@@ -47,6 +52,13 @@ const fragen: Frage[] = [
     bildAlt="Saniertes Loft mit Sitzlandschaft nach dem Home Staging"
     cta={{ label: 'Objekt anfragen', href: '/kontakt?paket=fixflip' }}
     cta2={{ label: 'Rechenbeispiel', href: '#rechnung' }}
+  />
+
+  <Kurzantwort
+    class="mb-[var(--section)]"
+    frage="Lohnt sich Home Staging bei Fix & Flip?"
+    antwort="Meist ja, weil bei Fix & Flip jeder Monat Leerstand Geld kostet: Zinsen, Nebenkosten und gebundenes Kapital. Ein saniertes, aber leeres Objekt wirkt auf Fotos austauschbar. Mit Home Staging wird es emotional greifbar, die Vermarktung startet mit starken Bildern, und der Verkauf gelingt in der Regel schneller und mit weniger Preisnachlass. Bei rund 2.000 € Haltekosten im Monat ist ein Staging oft schon nach wenigen Wochen eingespielt."
+    fakten={[{ label: 'Haltekosten', wert: '≈ 2.000 € / Monat (Beispiel)' }, { label: 'Aufbau', wert: 'meist 1 Tag' }, { label: 'Vorvermarktung', wert: 'virtuelles Staging' }, { label: 'Mehrere Objekte', wert: 'Rahmenvereinbarung' }]}
   />
 
   <section class="section bg-linen">
@@ -70,15 +82,17 @@ const fragen: Frage[] = [
         <SectionHead label="Rechenbeispiel" title="Leerstand ist" em="Ihr teuerster Posten." />
         <p class="mt-8 text-ink-600" data-reveal style="--d:2">Bei Fix &amp; Flip zählt jeder Monat. Schon zwei Monate kürzere Vermarktung sparen in diesem Beispiel so viel, wie ein Komplett-Staging kostet. Und das, bevor überhaupt über den Verkaufspreis verhandelt wurde.</p>
       </div>
-      <dl class="border-t border-ink-900 lg:col-span-6 lg:col-start-7" data-reveal>
+      <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+        <dl class="border-t border-ink-900">
         {rechnung.map((r, i) => (
           <div class:list={['flex items-baseline justify-between gap-6 border-b py-5', i === rechnung.length - 1 ? 'border-ink-900' : 'border-line']}>
             <dt class="text-ink-600">{r.label}</dt>
             <dd class:list={['font-display text-[1.75rem] leading-none whitespace-nowrap lining-nums', i === rechnung.length - 1 && 'text-olive-600']}>{r.wert}</dd>
           </div>
         ))}
+        </dl>
         <p class="mt-4 text-[0.8125rem] text-ink-600">Beispielhafte Rechnung, Werte gerundet. Ihre Zahlen rechne ich gern mit Ihnen durch.</p>
-      </dl>
+      </div>
     </div>
   </section>
 
@@ -91,6 +105,7 @@ const fragen: Frage[] = [
     </div>
   </section>
 
+  <RatgeberTipp slugs={['fix-and-flip-home-staging', 'lohnt-sich-home-staging']} />
   <Faq fragen={fragen} title="Fragen von" em="Investoren." />
   <CtaBand title="Ihr nächstes Objekt," em="schneller verkauft." text="Schicken Sie mir Grundriss, Sanierungsstand und Zieltermin. Sie erhalten innerhalb von 48 Stunden ein Festpreisangebot." />
 </Base>

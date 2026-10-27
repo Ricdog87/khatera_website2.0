@@ -1,9 +1,12 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
+import RatgeberTipp from '../components/RatgeberTipp.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Seitenkopf from '../components/Seitenkopf.astro';
+import Kurzantwort from '../components/Kurzantwort.astro';
 import Pakete from '../components/Pakete.astro';
 import Ablauf from '../components/Ablauf.astro';
 import Faq from '../components/Faq.astro';
@@ -51,11 +54,13 @@ const service = {
   provider: { '@id': `${Astro.site!.href.replace(/\/$/, '')}/#business` },
   areaServed: ['Wiesbaden', 'Rheingau', 'Taunusstein', 'Mainz', 'Frankfurt am Main'].map((name) => ({ '@type': 'Place', name })),
 };
+const og = await ogBild(wohnEss);
 ---
 
 <Base
+  ogImage={og}
   title="Home Staging für Eigentümer im Rhein-Main-Gebiet"
-  description="Home Staging von Khatera Gross: Leere oder bewohnte Immobilien verkaufsstark inszenieren. Mehr Anfragen, schnellerer Verkauf, bessere Verhandlungsposition. Pakete ab 290 €."
+  description="Home Staging von Khatera Gross: leere oder bewohnte Immobilien verkaufsstark inszenieren. Mehr Anfragen, schnellerer Verkauf. Pakete ab 290 €."
   breadcrumbs={[{ name: 'Home Staging', href: '/home-staging' }]}
   schema={[service, faqSchema(fragen)]}
 >
@@ -69,6 +74,13 @@ const service = {
     bildPos="45% 50%"
     cta={{ label: 'Kostenlos beraten lassen', href: '/kontakt' }}
     cta2={{ label: 'Pakete ansehen', href: '#pakete' }}
+  />
+
+  <Kurzantwort
+    class="mb-[var(--section)]"
+    frage="Was ist Home Staging?"
+    antwort="Home Staging ist die professionelle Inszenierung einer Immobilie für den Verkauf. Leere Räume werden mit Möbeln, Leuchten, Textilien und Kunst eingerichtet, bewohnte Räume werden aufgeräumt, neutralisiert und gezielt ergänzt. So verstehen Käufer Grundriss und Größe sofort und können sich ihr eigenes Leben in den Räumen vorstellen. Das führt zu besseren Exposéfotos, mehr Besichtigungen und meist zu einem schnelleren Verkauf mit weniger Preisnachlass."
+    fakten={[{ label: 'Für', wert: 'leere und bewohnte Immobilien' }, { label: 'Aufbau', wert: 'meist 1 Tag' }, { label: 'Möbelmiete', wert: '8 bis 12 Wochen inkl.' }, { label: 'Pakete', wert: 'ab 290 €' }]}
   />
 
   <section class="section bg-linen">
@@ -119,6 +131,7 @@ const service = {
   </section>
 
   <Ablauf />
+  <RatgeberTipp slugs={['leere-wohnung-verkaufen', 'home-staging-tipps']} />
   <Faq fragen={fragen} title="Fragen zum" em="Home Staging." />
   <CtaBand />
 </Base>

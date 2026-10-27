@@ -11,7 +11,7 @@ export const company = {
   street: 'Im Biengarten 21',
   zip: '65232',
   city: 'Taunusstein',
-  region: 'Rheingau-Taunus · Wiesbaden · Rhein-Main',
+  region: 'Rhein-Main-Gebiet · Musterwohnungen bundesweit',
   phone: '+49 151 547 205 35',
   phoneHref: 'tel:+4915154720535',
   whatsappHref: 'https://wa.me/4915154720535',
@@ -31,7 +31,7 @@ export const web3formsKey: string = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
 // Reihenfolge abgestimmt im Meeting 21.10.: Home Staging an zweiter Stelle, dann Musterwohnungen, Fix & Flip, Preise
 export const navigation = [
-  { label: 'Start', href: '/' },
+  { label: 'Startseite', href: '/' },
   { label: 'Home Staging', href: '/home-staging' },
   { label: 'Musterwohnungen', href: '/musterwohnungen' },
   { label: 'Fix & Flip', href: '/fix-and-flip' },
@@ -226,7 +226,55 @@ export const orte: Ort[] = [
       'Gerade im gehobenen Segment im Westend, Nordend oder Sachsenhausen erwarten Käufer ein Gesamtbild. Home Staging zeigt, wie sich Architektur und Lebensstil verbinden.',
       'Für Makler in Frankfurt und im Vordertaunus arbeite ich auf Wunsch als feste Partnerin mit kurzen Abstimmungswegen und klaren Preisen.',
     ],
-    lagen: ['Westend', 'Nordend', 'Sachsenhausen', 'Bornheim', 'Europaviertel', 'Bad Homburg', 'Königstein', 'Kronberg', 'Oberursel'],
-    anfahrt: 'Frankfurt und der Vordertaunus sind über die A66 und A3 gut erreichbar.',
+    lagen: ['Westend', 'Nordend', 'Sachsenhausen', 'Bornheim', 'Europaviertel', 'Bockenheim', 'Riedberg', 'Höchst'],
+    anfahrt: 'Frankfurt erreiche ich über die A66 schnell, für Termine in der Innenstadt plane ich direkt mit Ihnen.',
+  },
+  {
+    slug: 'darmstadt',
+    name: 'Darmstadt',
+    praep: 'in Darmstadt',
+    title: 'Home Staging Darmstadt',
+    description:
+      'Home Staging in Darmstadt: Altbau in Bessungen, Wohnung im Martinsviertel oder Neubau in der Lincoln-Siedlung verkaufsstark inszeniert. Pakete ab 290 €.',
+    intro:
+      'Darmstadt ist Wissenschaftsstadt und Pendlerstadt zugleich. Hier kaufen Fachkräfte, Familien und Kapitalanleger, die genau rechnen und sich trotzdem verlieben wollen. Home Staging zeigt beides: klare Grundrisse und echtes Wohngefühl.',
+    markt: [
+      'Zwischen Jugendstil auf der Mathildenhöhe, Gründerzeit in Bessungen und neuen Quartieren auf ehemaligen Konversionsflächen ist das Angebot in Darmstadt sehr unterschiedlich. Wer im Exposé nicht sofort überzeugt, verschwindet zwischen vergleichbaren Objekten.',
+      'Gerade Neubau- und Bestandswohnungen für Pendler und junge Familien profitieren von einer Einrichtung, die Homeoffice, Kinderzimmer und Stauraum sichtbar macht.',
+    ],
+    lagen: ['Bessungen', 'Martinsviertel', 'Johannesviertel', 'Paulusviertel', 'Mathildenhöhe', 'Lincoln-Siedlung', 'Eberstadt', 'Arheilgen'],
+    anfahrt: 'Darmstadt erreiche ich über die A3 und A5, Termine plane ich gebündelt und verlässlich.',
+  },
+  {
+    slug: 'offenbach',
+    name: 'Offenbach',
+    praep: 'in Offenbach',
+    title: 'Home Staging Offenbach am Main',
+    description:
+      'Home Staging in Offenbach am Main: Neubau am Hafen, Altbau im Westend oder Haus in Bürgel professionell inszeniert. Schneller verkaufen, besser verhandeln.',
+    intro:
+      'Offenbach hat sich verändert: Neue Quartiere am Main, gefragte Altbauten und eine junge Käuferschaft, die oft aus Frankfurt herüberschaut. Wer hier verkauft, konkurriert mit Neubauprojekten und braucht starke Bilder.',
+    markt: [
+      'Viele Interessenten in Offenbach vergleichen direkt mit Frankfurt. Eine inszenierte Wohnung zeigt, dass man hier nicht nur günstiger, sondern auch schöner wohnen kann.',
+      'Für Bauträger am Hafen und in den neuen Quartieren biete ich Musterwohnungen und virtuelles Staging für den Vorvertrieb, für Eigentümer im Bestand die passenden Pakete.',
+    ],
+    lagen: ['Hafen', 'Westend', 'Nordend', 'Bürgel', 'Bieber', 'Rumpenheim', 'Tempelsee', 'Buchhügel'],
+    anfahrt: 'Offenbach erreiche ich über die A66 und A3. Bei mehreren Objekten plane ich die Termine gebündelt.',
+  },
+  {
+    slug: 'bad-homburg',
+    name: 'Bad Homburg',
+    praep: 'in Bad Homburg',
+    title: 'Home Staging Bad Homburg & Hochtaunus',
+    description:
+      'Home Staging in Bad Homburg, Oberursel, Kronberg und Königstein: Villen, Häuser und Wohnungen im Hochtaunus hochwertig inszeniert. Jetzt Paket anfragen.',
+    intro:
+      'Kurstadt, Villen, Taunusblick. In Bad Homburg und im Vordertaunus kaufen Menschen mit hohen Ansprüchen. Sie erwarten nicht nur eine gute Lage, sondern eine Präsentation, die zum Niveau der Immobilie passt.',
+    markt: [
+      'Im gehobenen Segment entscheidet der Gesamteindruck. Leere Räume in einer großzügigen Villa wirken schnell kühl und schwer einschätzbar, eine stimmige Inszenierung macht Proportionen, Licht und Ausblick erlebbar.',
+      'Ich arbeite mit hochwertigen Möbeln, Kunst und Lichtkonzept und stimme mich eng mit Ihrem Makler ab, damit Fototermin und Besichtigungen perfekt vorbereitet sind.',
+    ],
+    lagen: ['Bad Homburg', 'Gonzenheim', 'Kirdorf', 'Dornholzhausen', 'Oberursel', 'Kronberg', 'Königstein', 'Friedrichsdorf'],
+    anfahrt: 'Der Hochtaunus liegt gut erreichbar zwischen Taunusstein und Frankfurt.',
   },
 ];

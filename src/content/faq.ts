@@ -39,7 +39,7 @@ export const faqAllgemein: Frage[] = [
   {
     frage: 'In welchen Regionen sind Sie tätig?',
     antwort:
-      'Mein Schwerpunkt liegt im Rheingau-Taunus-Kreis, in Wiesbaden, Mainz und Frankfurt am Main. Größere Projekte und Musterwohnungen übernehme ich auch im gesamten Rhein-Main-Gebiet.',
+      'Ich bin im gesamten Rhein-Main-Gebiet für Sie da: von Wiesbaden, Mainz und dem Rheingau über Taunusstein und den Hochtaunus bis Frankfurt, Offenbach und Darmstadt. Musterwohnungen für Bauträger und Projektentwickler richte ich bundesweit ein.',
   },
 ];
 

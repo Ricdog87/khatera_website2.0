@@ -38,7 +38,8 @@ Voraussetzung: Node 22.22 oder neuer.
 |---|---|
 | `/` | Startseite: Hero, Zielgruppen, Pakete, Einblicke, Ablauf, Mehrerlös-Rechner, Über mich, Regionen, FAQ |
 | `/home-staging-kosten` | Pakete & Preise, Preisfaktoren, Rechenbeispiel, Rechner, FAQ Kosten |
-| `/home-staging-[ort]` | Stadtseiten Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt (Daten in `site.ts` → `orte`) |
+| `/home-staging-[ort]` | Stadtseiten Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt, Darmstadt, Offenbach, Bad Homburg (Daten in `site.ts` → `orte`) |
+| `/llms.txt`, `/llms-full.txt` | Firmenprofil und alle Fakten als Klartext für KI-Assistenten |
 | `/home-staging` | Leistungsseite für Eigentümer |
 | `/musterwohnungen` | Bauträger und Projektentwickler |
 | `/fix-and-flip` | Investoren, mit Rechenbeispiel zu Haltekosten |
@@ -63,7 +64,11 @@ Alte Framer-URLs (`/about-us`, `/blog/…`, `/project/…`) leiten per 301 weite
 | `scripts/screenshots.mjs` | Screenshots Desktop/Mobil: `node scripts/screenshots.mjs http://localhost:4321 / /kontakt` |
 | `scripts/og-image.mjs` | Erzeugt `public/og.jpg` und das Touch-Icon neu |
 | `scripts/logo-extract.mjs` | Zieht Logo-Teile als SVG aus den Originalen: `pdftocairo -svg brand-originale/….ai tmp.svg`, dann `node scripts/logo-extract.mjs tmp.svg out.svg 90-101,79-89` |
-| `SICHTBARKEIT.md` | Plan für Google-Profil, Bewertungen, Makler, Verzeichnisse, Ads, Go-live |
+| `UEBERGABE.md` | Übergabe: Stand, Go-live in 8 Schritten, Pflege-Anleitung, offene Punkte |
+| `SICHTBARKEIT.md` | Plan für Google-Profil, Bewertungen, Makler, Verzeichnisse, KI-Sichtbarkeit, Ads |
+| `src/lib/llms.ts` | Inhalte für `/llms.txt` und `/llms-full.txt` (aus denselben Daten wie die Website) |
+| `scripts/seo-check.py` | Prüft Links, Titel, Beschreibungen, H1, Alt-Texte, JSON-LD im Build |
+| `scripts/indexnow.mjs` | Meldet alle Seiten nach Go-live an Bing (`npm run indexnow`) |
 | `CONTENT-TODO.md` | Offene Inhalte und Entscheidungen für die Kundin |
 
 ## Prüfen

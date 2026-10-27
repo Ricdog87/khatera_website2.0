@@ -1,4 +1,5 @@
 ---
+import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Arrow from '../components/Arrow.astro';
@@ -72,9 +73,11 @@ const projekte = [
     ],
   },
 ];
+const og = await ogBild(hfWohnen);
 ---
 
 <Base
+  ogImage={og}
   title="Home Staging Projekte & Referenzen"
   description="Ausgewählte Home Staging Projekte von Khatera Gross im Rhein-Main-Gebiet: Haus mit Fernblick, Loft, Neubauwohnung und mehr. So wirken inszenierte Räume."
   breadcrumbs={[{ name: 'Projekte', href: '/projekte' }]}
