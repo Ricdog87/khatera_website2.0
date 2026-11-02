@@ -36,4 +36,4 @@ Viele Verkäufer hängen an ihrer Immobilie und an den Erinnerungen darin. Für 
 
 ## Fazit
 
-Home Staging ist keine Ausgabe, sondern eine Investition in den Verkaufserfolg. Die Kosten sind überschaubar, planbar und in den meisten Fällen deutlich geringer als ein Preisnachlass in der Verhandlung. Mit dem Mehrerlös-Rechner auf meiner Startseite sehen Sie in 30 Sekunden, was das für Ihre Immobilie bedeutet.
+Home Staging ist keine Ausgabe, sondern eine Investition in den Verkaufserfolg. Die Kosten sind überschaubar, planbar und in den meisten Fällen deutlich geringer als ein Preisnachlass in der Verhandlung. Was das für Ihre Immobilie bedeutet, besprechen wir am besten persönlich: Im kostenlosen Erstgespräch schauen wir auf Ihre Ausgangslage, danach erhalten Sie ein individuelles Angebot.

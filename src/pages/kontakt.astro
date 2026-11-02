@@ -5,20 +5,18 @@ import Arrow from '../components/Arrow.astro';
 import { company, pakete, web3formsKey } from '../config/site';
 import portrait from '../assets/images/portrait/khatera-gross-avatar.jpg';
 
-const euro = (n: number) => n.toLocaleString('de-DE');
 const optionen = [
-  ...pakete.map((p) => ({ value: p.id, label: `${p.name}${p.preisAb ? ` · ab ${euro(p.preisAb)} €` : ''}` })),
+  ...pakete.map((p) => ({ value: p.id, label: p.name })),
   { value: 'musterwohnung', label: 'Musterwohnung / Bauträger' },
   { value: 'makler', label: 'Partnerschaft als Makler' },
   { value: 'fixflip', label: 'Fix & Flip / Investor' },
-  { value: 'virtuell', label: 'Virtuelles Home Staging' },
   { value: 'unsicher', label: 'Weiß ich noch nicht, bitte beraten' },
 ];
 ---
 
 <Base
   title="Kontakt & Paket anfragen"
-  description="Home Staging anfragen: Paket wählen, Eckdaten eintragen, Festpreisangebot in 48 Stunden erhalten. Khatera Gross, Taunusstein, Tel. +49 151 547 205 35."
+  description="Home Staging anfragen: Paket wählen, Eckdaten eintragen, persönliches Angebot in 48 Stunden erhalten. Khatera Gross, Taunusstein, Tel. +49 151 547 205 35."
   breadcrumbs={[{ name: 'Kontakt', href: '/kontakt' }]}
 >
   <section class="pt-10 pb-[var(--section)] md:pt-16">
@@ -163,17 +161,15 @@ const optionen = [
   const error = form.querySelector<HTMLElement>('.form-error')!;
   const params = new URLSearchParams(location.search);
 
-  // Vorauswahl aus Paket-Buttons und Mehrerlös-Rechner
+  // Vorauswahl aus Paket-Buttons und Stadtseiten
   const paket = params.get('paket');
   if (paket) {
     const radio = form.querySelector<HTMLInputElement>(`input[name=paket][value="${CSS.escape(paket)}"]`);
     if (radio) radio.checked = true;
   }
-  for (const key of ['flaeche', 'preis', 'ort']) {
-    const v = params.get(key);
-    const input = form.querySelector<HTMLInputElement>(`[name=${key}]`);
-    if (v && input && v !== '0') input.value = key === 'preis' ? Number(v).toLocaleString('de-DE') + ' €' : v;
-  }
+  const ort = params.get('ort');
+  const ortInput = form.querySelector<HTMLInputElement>('[name=ort]');
+  if (ort && ortInput) ortInput.value = ort;
 
   const labels: Record<string, string> = {
     paket: 'Paket', objekt: 'Immobilie', zustand: 'Zustand', flaeche: 'Wohnfläche (m²)', ort: 'Ort', preis: 'Angebotspreis',

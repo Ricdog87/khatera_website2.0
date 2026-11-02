@@ -4,12 +4,12 @@ export const faqAllgemein: Frage[] = [
   {
     frage: 'Was kostet Home Staging?',
     antwort:
-      'Das hängt von Größe, Zustand und Zielgruppe der Immobilie ab. Eine Staging-Beratung für bewohnte Immobilien gibt es ab 290 €, ein Teil-Staging für leere Wohnungen ab 1.490 € und ein Komplett-Staging ab 2.990 €, jeweils inklusive Möbelmiete. Nach einem kurzen Blick auf Grundriss und Fotos bekommen Sie ein verbindliches Festpreisangebot.',
+      'Jedes Home Staging wird individuell kalkuliert, weil keine Immobilie wie die andere ist. Entscheidend sind die Zahl der Räume, die Preisklasse und Zielgruppe der Immobilie, die Laufzeit der Möbelmiete und der Aufwand beim Auf- und Abbau. Nach einem kostenlosen Erstgespräch und einem Blick auf Grundriss und Fotos erhalten Sie ein persönliches, transparentes Angebot.',
   },
   {
     frage: 'Lohnt sich Home Staging wirklich?',
     antwort:
-      'In den meisten Fällen ja. Laut Deutscher Gesellschaft für Home Staging und Redesign (DGHR) verkaufen sich inszenierte Immobilien deutlich schneller und erzielen häufig einen höheren Preis. Schon ein Prozent mehr Verhandlungsspielraum deckt bei einer Immobilie für 450.000 € die Kosten eines Komplett-Stagings.',
+      'In den meisten Fällen ja. Laut Deutscher Gesellschaft für Home Staging und Redesign (DGHR) verkaufen sich inszenierte Immobilien deutlich schneller und erzielen häufig einen höheren Preis. Oft wiegt schon ein geringerer Preisnachlass in der Verhandlung die Investition auf.',
   },
   {
     frage: 'Wie schnell kann es losgehen?',
@@ -30,11 +30,6 @@ export const faqAllgemein: Frage[] = [
     frage: 'Wer bezahlt das Home Staging, Eigentümer oder Makler?',
     antwort:
       'Beides ist üblich. Viele Makler bieten Home Staging als Teil ihres Vermarktungspakets an, andere teilen sich die Kosten mit dem Eigentümer. Vermarkten Sie über einen meiner Partnermakler, kann dieser bis zu 50 % der Home-Staging-Kosten übernehmen. Für Makler gibt es außerdem ein eigenes Partnermodell mit festen Konditionen.',
-  },
-  {
-    frage: 'Was ist virtuelles Home Staging?',
-    antwort:
-      'Leere Räume werden auf den Fotos digital eingerichtet. Das ist günstig und schnell, ideal für Neubauten vor Fertigstellung oder für Online-Exposés. Bei Besichtigungen ersetzt es aber nicht das echte Raumgefühl. Ich berate Sie ehrlich, was für Ihr Objekt sinnvoll ist.',
   },
   {
     frage: 'In welchen Regionen sind Sie tätig?',
@@ -58,7 +53,7 @@ export const faqKosten: Frage[] = [
   {
     frage: 'Gibt es versteckte Kosten?',
     antwort:
-      'Nein. Anfahrt im Rhein-Main-Gebiet, Aufbau und Abbau sind im Festpreis enthalten. Zusatzleistungen wie Fotografie, Malerarbeiten oder Reinigung stehen getrennt im Angebot und sind freiwillig.',
+      'Nein. Anfahrt im Rhein-Main-Gebiet, Aufbau und Abbau sind im Angebot enthalten. Zusatzleistungen wie Fotografie, Malerarbeiten oder Reinigung stehen getrennt im Angebot und sind freiwillig.',
   },
   faqAllgemein[1],
   faqAllgemein[5],

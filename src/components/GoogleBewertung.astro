@@ -4,14 +4,34 @@ import Arrow from './Arrow.astro';
 import { company } from '../config/site';
 
 interface Props {
-  variant?: 'link' | 'block';
+  /** button: präsenter Pill-Button (hell/dunkel über `ton`), link: dezent, block: große Box */
+  variant?: 'link' | 'block' | 'button';
+  ton?: 'hell' | 'dunkel';
   class?: string;
 }
-const { variant = 'block', class: className } = Astro.props;
+const { variant = 'block', ton = 'hell', class: className } = Astro.props;
 const sterne = Array.from({ length: 5 });
 ---
 
-{variant === 'link' ? (
+{variant === 'button' ? (
+  <a
+    href={company.googleReviewUrl}
+    target="_blank"
+    rel="noopener"
+    class:list={[
+      'bewertung-btn group inline-flex min-h-[3.25rem] items-center gap-3 rounded-full border py-2 pr-5 pl-2 transition-colors duration-500',
+      ton === 'dunkel' ? 'border-white/30 bg-white/10 text-paper backdrop-blur hover:bg-paper hover:text-ink-900' : 'border-ink-900/15 bg-white text-ink-900 shadow-[0_8px_30px_-12px_rgb(0_0_0/0.25)] hover:border-ink-900',
+      className,
+    ]}
+  >
+    <span class="flex h-9 items-center gap-0.5 rounded-full bg-ink-900 px-3 text-[#e4c66a]" aria-hidden="true">{sterne.map(() => <svg class="h-3.5 w-3.5" viewBox="0 0 20 20"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z" /></svg>)}</span>
+    <span class="flex flex-col leading-tight">
+      <span class="label text-[0.625rem] opacity-70">Google</span>
+      <span class="text-[0.9375rem] font-medium">Jetzt bewerten</span>
+    </span>
+    <Arrow class="ml-1 h-3 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+  </a>
+) : variant === 'link' ? (
   <a href={company.googleReviewUrl} target="_blank" rel="noopener" class:list={['group inline-flex items-center gap-3', className]}>
     <span class="flex gap-0.5 text-sand-400" aria-hidden="true">{sterne.map(() => <svg class="h-3.5 w-3.5" viewBox="0 0 20 20"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z" /></svg>)}</span>
     <span class="group-hover:text-paper">Auf Google bewerten</span>

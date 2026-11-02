@@ -6,10 +6,10 @@ import Arrow from '../components/Arrow.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Pakete from '../components/Pakete.astro';
 import Ablauf from '../components/Ablauf.astro';
-import Rechner from '../components/Rechner.astro';
 import Regionen from '../components/Regionen.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
+import GoogleBewertung from '../components/GoogleBewertung.astro';
 import { extras, facts } from '../config/site';
 import { faqAllgemein, faqSchema } from '../content/faq';
 
@@ -36,7 +36,7 @@ const zielgruppen = [
   },
   {
     titel: 'Bauträger',
-    text: 'Musterwohnungen und Restanten, die Grundrisse verständlich machen. Real, virtuell oder kombiniert, abgestimmt auf Ihre Vertriebsphase.',
+    text: 'Musterwohnungen und Restanten, die Grundrisse verständlich machen. Real eingerichtet und abgestimmt auf Ihre Vertriebsphase.',
     link: '/musterwohnungen',
     cta: 'Musterwohnungen',
   },
@@ -51,7 +51,7 @@ const zielgruppen = [
 
 <Base
   title="Home Staging Rhein-Main, Wiesbaden & Frankfurt | Khatera Gross"
-  description="Home Staging im Rhein-Main-Gebiet: Khatera Gross inszeniert Häuser und Wohnungen für schnellere Verkäufe. Pakete ab 290 €, Musterwohnungen bundesweit."
+  description="Home Staging im Rhein-Main-Gebiet: Khatera Gross inszeniert Häuser und Wohnungen für schnellere Verkäufe. Individuelle Angebote, Musterwohnungen bundesweit."
   overlayHeader
   schema={[faqSchema(faqAllgemein)]}
 >
@@ -70,13 +70,16 @@ const zielgruppen = [
         <p class="max-w-xl text-lead text-paper/85 md:col-span-6" data-reveal style="--d:2">
           Ich inszeniere Häuser und Wohnungen so, dass Käufer sich sofort zu Hause fühlen. Für schnellere Verkäufe, stärkere Exposés und bessere Preise.
         </p>
-        <div class="flex flex-wrap gap-3 md:col-span-6 md:justify-end" data-reveal style="--d:3">
-          <a href="/home-staging-kosten" class="btn btn-light">Pakete & Preise <Arrow /></a>
-          <a href="#rechner" class="btn btn-ghost">Mehrerlös berechnen</a>
+        <div class="flex flex-col gap-4 md:col-span-6 md:items-end" data-reveal style="--d:3">
+          <div class="flex flex-wrap gap-3 md:justify-end">
+            <a href="/home-staging-kosten" class="btn btn-light">Pakete ansehen <Arrow /></a>
+            <a href="/projekte" class="btn btn-ghost">Projekte ansehen</a>
+          </div>
+          <GoogleBewertung variant="button" ton="dunkel" />
         </div>
       </div>
       <ul class="mt-12 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-white/20 pt-6 text-small text-paper/80 md:mt-16 md:grid-cols-4" data-reveal style="--d:4">
-        <li><span class="text-sand-400">✦</span> Festpreis in 48 Stunden</li>
+        <li><span class="text-sand-400">✦</span> Persönliches Angebot in 48 Stunden</li>
         <li><span class="text-sand-400">✦</span> Aufbau meist an einem Tag</li>
         <li><span class="text-sand-400">✦</span> Abbau nach dem Notartermin</li>
         <li><span class="text-sand-400">✦</span> Premium-Mitglied Staging Community</li>
@@ -87,12 +90,12 @@ const zielgruppen = [
   <Kurzantwort
     class="mt-[calc(var(--section)*0.7)]"
     frage="Was macht Khatera Gross Home Staging?"
-    antwort="Khatera Gross Home Staging aus Taunusstein bereitet Häuser und Wohnungen im gesamten Rhein-Main-Gebiet für den Verkauf vor: mit Möbeln, Licht, Textilien und Kunst, abgestimmt auf die wahrscheinlichste Käufergruppe. Das Ziel sind stärkere Exposéfotos, mehr Anfragen, ein schnellerer Verkauf und weniger Preisnachlass. Eigentümer, Makler und Investoren buchen feste Pakete ab 290 €, Bauträger erhalten Musterwohnungen bundesweit."
+    antwort="Khatera Gross Home Staging aus Taunusstein bereitet Häuser und Wohnungen im gesamten Rhein-Main-Gebiet für den Verkauf vor: mit Möbeln, Licht, Textilien und Kunst, abgestimmt auf die wahrscheinlichste Käufergruppe. Das Ziel sind stärkere Exposéfotos, mehr Anfragen, ein schnellerer Verkauf und weniger Preisnachlass. Eigentümer, Makler und Investoren erhalten nach einem kostenlosen Erstgespräch ein individuelles Angebot, Bauträger Musterwohnungen bundesweit."
     fakten={[
       { label: 'Sitz', wert: 'Taunusstein' },
       { label: 'Einsatzgebiet', wert: 'Rhein-Main, Musterwohnungen bundesweit' },
-      { label: 'Pakete', wert: 'ab 290 €' },
-      { label: 'Angebot', wert: 'Festpreis in 48 Std.' },
+      { label: 'Angebot', wert: 'individuell nach Erstgespräch' },
+      { label: 'Zielgruppen', wert: 'Eigentümer, Makler, Bauträger' },
     ]}
   />
 
@@ -145,8 +148,8 @@ const zielgruppen = [
   <section class="section kg-muster bg-linen" id="leistungen">
     <div class="container-page">
       <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
-        <SectionHead class="lg:col-span-7" label="Pakete" title="Klare Pakete." em="Klare Preise." />
-        <p class="text-lead text-ink-600 lg:col-span-4 lg:col-start-9" data-reveal>Wählen Sie das passende Paket, ich melde mich innerhalb von 24 Stunden mit einem Terminvorschlag.</p>
+        <SectionHead class="lg:col-span-7" label="Pakete" title="Drei Pakete." em="Ein persönliches Angebot." />
+        <p class="text-lead text-ink-600 lg:col-span-4 lg:col-start-9" data-reveal>Den Preis besprechen wir persönlich: Jede Immobilie ist anders, deshalb erhalten Sie nach dem Erstgespräch ein individuelles Angebot.</p>
       </div>
       <div class="mt-16 md:mt-20">
         <Pakete />
@@ -160,7 +163,7 @@ const zielgruppen = [
           </div>
         ))}
       </div>
-      <p class="mt-12" data-reveal><a href="/home-staging-kosten" class="label link-line text-ink-900">Alle Details zu Kosten und Leistungen</a></p>
+      <p class="mt-12" data-reveal><a href="/home-staging-kosten" class="label link-line text-ink-900">Alle Details zu Paketen und Ablauf</a></p>
     </div>
   </section>
 
@@ -194,7 +197,6 @@ const zielgruppen = [
   </section>
 
   <Ablauf />
-  <Rechner />
 
   <!-- Über -->
   <section class="section">

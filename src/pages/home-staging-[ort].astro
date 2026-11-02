@@ -29,13 +29,11 @@ export function getStaticPaths() {
 const { ort } = Astro.props as { ort: Ort };
 const bilder = { wiesbaden: wohnEss, rheingau: terrasse, taunusstein: wohnzimmer, mainz: kueche, frankfurt: loft, darmstadt: leseecke, offenbach: schlafen, 'bad-homburg': sofa } as const;
 const bild = bilder[ort.slug as keyof typeof bilder] ?? wohnEss;
-const euro = (n: number) => n.toLocaleString('de-DE');
-const [beratung, teil, komplett] = pakete;
 
 const fragen: Frage[] = [
   {
     frage: `Was kostet Home Staging ${ort.praep}?`,
-    antwort: `Die Staging-Beratung für bewohnte Immobilien ${ort.praep} kostet ab ${euro(beratung.preisAb!)} €, ein Teil-Staging ab ${euro(teil.preisAb!)} € und ein Komplett-Staging ab ${euro(komplett.preisAb!)} €, jeweils inklusive Möbelmiete und Anfahrt. Den genauen Festpreis bekommen Sie nach einem Blick auf Grundriss und Fotos innerhalb von 48 Stunden.`,
+    antwort: `Das hängt von Ihrer Immobilie ab: von der Zahl der Räume, der Preisklasse, der Laufzeit der Möbelmiete und dem Aufwand beim Auf- und Abbau. Deshalb gibt es keine Preisliste, sondern nach einem kostenlosen Erstgespräch ein persönliches Angebot innerhalb von 48 Stunden. Die Anfahrt ${ort.praep} ist enthalten.`,
   },
   {
     frage: `Wie schnell sind Sie ${ort.praep} vor Ort?`,
@@ -57,7 +55,7 @@ const service = {
   serviceType: 'Home Staging',
   provider: { '@id': `${Astro.site!.href.replace(/\/$/, '')}/#business` },
   areaServed: { '@type': 'Place', name: ort.name },
-  offers: pakete.map((p) => ({ '@type': 'Offer', name: p.name, price: p.preisAb, priceCurrency: 'EUR' })),
+  hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Home Staging Pakete', itemListElement: pakete.map((p) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p.name, description: p.fuer } })) },
 };
 const og = await ogBild(bild);
 ---
@@ -76,7 +74,7 @@ const og = await ogBild(bild);
         <h1 class="mt-6 text-display" data-reveal style="--d:1">Home Staging <em class="text-olive-600">{ort.praep}</em></h1>
         <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">{ort.intro}</p>
         <div class="mt-10 flex flex-wrap gap-3" data-reveal style="--d:3">
-          <a href={`/kontakt?ort=${encodeURIComponent(ort.name)}`} class="btn btn-primary">Festpreis anfragen <Arrow /></a>
+          <a href={`/kontakt?ort=${encodeURIComponent(ort.name)}`} class="btn btn-primary">Angebot anfragen <Arrow /></a>
           <a href={company.phoneHref} class="btn btn-ghost lining-nums">{company.phone}</a>
         </div>
       </div>
@@ -91,12 +89,12 @@ const og = await ogBild(bild);
   <Kurzantwort
     class="mb-[var(--section)]"
     frage={`Wer bietet Home Staging ${ort.praep} an?`}
-    antwort={`Khatera Gross Home Staging aus Taunusstein inszeniert Immobilien ${ort.praep} und im gesamten Rhein-Main-Gebiet, unter anderem in ${ort.lagen.slice(0, 4).join(', ')}. ${ort.anfahrt} Die Pakete: Staging-Beratung ab ${euro(beratung.preisAb!)} €, Teil-Staging ab ${euro(teil.preisAb!)} € und Komplett-Staging ab ${euro(komplett.preisAb!)} €, jeweils inklusive Möbelmiete und Anfahrt. Ein verbindliches Festpreisangebot gibt es innerhalb von 48 Stunden.`}
+    antwort={`Khatera Gross Home Staging aus Taunusstein inszeniert Immobilien ${ort.praep} und im gesamten Rhein-Main-Gebiet, unter anderem in ${ort.lagen.slice(0, 4).join(', ')}. ${ort.anfahrt} Zur Wahl stehen Staging-Beratung für bewohnte Immobilien, Teil-Staging und Komplett-Staging, jeweils inklusive Möbelmiete und Anfahrt. Nach einem kostenlosen Erstgespräch gibt es innerhalb von 48 Stunden ein persönliches Angebot.`}
     fakten={[
       { label: 'Region', wert: ort.name },
-      { label: 'Pakete', wert: `ab ${euro(beratung.preisAb!)} €` },
+      { label: 'Erstgespräch', wert: 'kostenlos' },
       { label: 'Aufbau', wert: 'meist 1 Tag' },
-      { label: 'Angebot', wert: 'Festpreis in 48 Std.' },
+      { label: 'Angebot', wert: 'individuell, in 48 Std.' },
     ]}
   />
 
@@ -119,11 +117,11 @@ const og = await ogBild(bild);
 
   <section class="section">
     <div class="container-page">
-      <SectionHead label="Pakete" title={`Pakete für ${ort.name}.`} em="Festpreise ohne Überraschung." />
+      <SectionHead label="Pakete" title={`Pakete für ${ort.name}.`} em="Individuell abgestimmt." />
       <div class="mt-16">
         <Pakete />
       </div>
-      <p class="mt-8 text-small text-ink-600">Preise netto zzgl. MwSt., Anfahrt {ort.praep} inklusive. <a href="/home-staging-kosten" class="link-line text-ink-900">Alle Details zu den Kosten</a></p>
+      <p class="mt-8 text-small text-ink-600">Den Preis besprechen wir individuell, die Anfahrt {ort.praep} ist enthalten. <a href="/home-staging-kosten" class="link-line text-ink-900">Alles zu Paketen und Ablauf</a></p>
     </div>
   </section>
 

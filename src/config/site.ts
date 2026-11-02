@@ -1,6 +1,6 @@
 /**
  * Zentrale Daten der Website. Alles, was Khatera selbst ändern möchte
- * (Preise, Telefonnummer, Regionen), steht hier an einer Stelle.
+ * (Pakete, Telefonnummer, Regionen), steht hier an einer Stelle.
  * Offene Punkte: CONTENT-TODO.md
  */
 
@@ -29,13 +29,13 @@ export const company = {
 export const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
 export const web3formsKey: string = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
-// Reihenfolge abgestimmt im Meeting 21.10.: Home Staging an zweiter Stelle, dann Musterwohnungen, Fix & Flip, Preise
+// Reihenfolge abgestimmt im Meeting 21.10.: Home Staging an zweiter Stelle, dann Musterwohnungen, Fix & Flip, Pakete
 export const navigation = [
   { label: 'Startseite', href: '/' },
   { label: 'Home Staging', href: '/home-staging' },
   { label: 'Musterwohnungen', href: '/musterwohnungen' },
   { label: 'Fix & Flip', href: '/fix-and-flip' },
-  { label: 'Preise', href: '/home-staging-kosten' },
+  { label: 'Pakete', href: '/home-staging-kosten' },
   { label: 'Projekte', href: '/projekte' },
   { label: 'Über mich', href: '/ueber-mich' },
   { label: 'Ratgeber', href: '/ratgeber' },
@@ -53,28 +53,26 @@ export type Paket = {
   name: string;
   claim: string;
   fuer: string;
-  /** Startpreis in Euro (netto). null zeigt "Preis auf Anfrage". */
-  preisAb: number | null;
-  preisHinweis: string;
+  /** Kurzer Hinweis zum Umfang. Bewusst ohne Preise: Angebote entstehen individuell im Gespräch (Abstimmung 02.11.). */
+  hinweis: string;
   leistungen: string[];
   dauer: string;
   highlight?: boolean;
 };
 
-// TODO Kundin: Startpreise bestätigen oder anpassen. Werte sind Vorschläge auf Marktniveau Rhein-Main.
+// Keine Preise auf der Website (Abstimmung mit Khatera, 02.11.): jedes Angebot entsteht individuell im Gespräch.
 export const pakete: Paket[] = [
   {
     id: 'beratung',
     name: 'Staging-Beratung',
     claim: 'Ihr Zuhause, verkaufsbereit gemacht.',
     fuer: 'Für bewohnte Immobilien',
-    preisAb: 290,
-    preisHinweis: 'Festpreis, ein Termin vor Ort',
+    hinweis: 'Ein Termin vor Ort',
     dauer: '2 Stunden vor Ort',
     leistungen: [
       'Begehung Raum für Raum mit klarer Prioritätenliste',
       'Konkrete To-dos: entrümpeln, umstellen, neutralisieren',
-      'Einkaufsliste für Deko und Textilien, budgetgenau',
+      'Einkaufsliste für Deko und Textilien, passend zu Ihrem Budget',
       'Tipps für die Fotos im Exposé',
     ],
   },
@@ -83,8 +81,7 @@ export const pakete: Paket[] = [
     name: 'Teil-Staging',
     claim: 'Die Räume, die verkaufen.',
     fuer: 'Für leere Wohnungen bis ca. 80 m²',
-    preisAb: 1490,
-    preisHinweis: 'inkl. 8 Wochen Möbelmiete',
+    hinweis: 'Möbelmiete für 8 Wochen inklusive',
     dauer: 'Wohnen, Essen, Schlafen',
     leistungen: [
       'Konzept passend zur Zielgruppe Ihrer Immobilie',
@@ -98,8 +95,7 @@ export const pakete: Paket[] = [
     name: 'Komplett-Staging',
     claim: 'Die ganze Bühne für Ihre Immobilie.',
     fuer: 'Für Häuser, große Wohnungen und Premiumobjekte',
-    preisAb: 2990,
-    preisHinweis: 'inkl. 12 Wochen Möbelmiete',
+    hinweis: 'Möbelmiete für 12 Wochen inklusive',
     dauer: 'Alle Wohnräume, Flur und Bad',
     highlight: true,
     leistungen: [
@@ -119,21 +115,11 @@ export const partnerHinweis = {
 };
 
 export const extras = [
-  { name: 'Virtuelles Home Staging', text: 'Leere Räume digital eingerichtet, fotorealistisch, für Exposé und Portale.' },
+  { name: 'Moodboard & Einrichtungsplan', text: 'Farbwelt, Materialien und Möblierungsplan, schon vor Fertigstellung der Immobilie.' },
   { name: 'Immobilienfotografie', text: 'Profi-Fotos direkt nach dem Styling, über Partnerfotografen.' },
   { name: 'Verlängerung der Möbelmiete', text: 'Fair nach Wochen abgerechnet, ohne Kündigungsfrist.' },
   { name: 'Handwerker-Koordination', text: 'Maler, Reinigung, kleine Reparaturen aus meinem Netzwerk.' },
 ];
-
-/** Grundlage für den Mehrerlös-Rechner. Orientierungswerte, keine Zusage. */
-export const rechner = {
-  /** Konservative und optimistische Preiswirkung laut Branchenangaben */
-  effektMin: 0.03,
-  effektMax: 0.08,
-  /** Grobe Investition fürs Komplett-Staging je m² (inkl. 12 Wochen Miete) */
-  euroProQmMin: 30,
-  euroProQmMax: 45,
-};
 
 export type Ort = {
   slug: string;
@@ -155,7 +141,7 @@ export const orte: Ort[] = [
     praep: 'in Wiesbaden',
     title: 'Home Staging Wiesbaden',
     description:
-      'Home Staging in Wiesbaden: Altbau, Villa oder Neubauwohnung professionell inszeniert. Schneller verkaufen, besser verhandeln. Pakete ab 290 €.',
+      'Home Staging in Wiesbaden: Altbau, Villa oder Neubauwohnung professionell inszeniert. Schneller verkaufen, besser verhandeln.',
     intro:
       'Wiesbaden verkauft sich über Atmosphäre. Hohe Decken, Stuck, Erker und Parkett im Dichterviertel oder am Nerotal, klare Linien in den Neubauquartieren. Ich sorge dafür, dass Käufer genau das fühlen, sobald sie die Tür öffnen.',
     markt: [
@@ -187,7 +173,7 @@ export const orte: Ort[] = [
     praep: 'in Taunusstein',
     title: 'Home Staging Taunusstein',
     description:
-      'Home Staging in Taunusstein und im Rheingau-Taunus-Kreis. Einfamilienhaus oder Wohnung verkaufsfertig inszeniert, persönlich und vor Ort. Pakete ab 290 €.',
+      'Home Staging in Taunusstein und im Rheingau-Taunus-Kreis. Einfamilienhaus oder Wohnung verkaufsfertig inszeniert, persönlich und vor Ort.',
     intro:
       'Taunusstein ist mein Zuhause. Ich kenne die Häuser, die Straßen und die Käufer, die hier suchen: Familien und Pendler, die Grün und Platz wollen und trotzdem schnell in Wiesbaden oder Frankfurt sind.',
     markt: [
@@ -208,7 +194,7 @@ export const orte: Ort[] = [
       'Mainz ist jung, gefragt und schnell. Studierende, junge Familien und Kapitalanleger schauen sich Wohnungen oft zuerst online an. Wer im Exposé nicht überzeugt, bekommt keinen Besichtigungstermin.',
     markt: [
       'Bei Eigentumswohnungen in Mainz entscheidet die Wirkung der Fotos über die Zahl der Anfragen. Ein leerer Raum zeigt keine Größe, ein gut gestellter Raum zeigt Möglichkeiten.',
-      'Für Bauträger und Kapitalanleger biete ich zusätzlich virtuelles Home Staging an, um Grundrisse schon vor Fertigstellung erlebbar zu machen.',
+      'Für Bauträger und Kapitalanleger richte ich zusätzlich Musterwohnungen ein, die Grundrisse schon während des Vertriebs erlebbar machen.',
     ],
     lagen: ['Neustadt', 'Altstadt', 'Gonsenheim', 'Zollhafen', 'Bretzenheim', 'Finthen', 'Hechtsheim', 'Mainz-Kastel'],
     anfahrt: 'Über die Schiersteiner Brücke bin ich in rund 30 Minuten in Mainz.',
@@ -235,7 +221,7 @@ export const orte: Ort[] = [
     praep: 'in Darmstadt',
     title: 'Home Staging Darmstadt',
     description:
-      'Home Staging in Darmstadt: Altbau in Bessungen, Wohnung im Martinsviertel oder Neubau in der Lincoln-Siedlung verkaufsstark inszeniert. Pakete ab 290 €.',
+      'Home Staging in Darmstadt: Altbau in Bessungen, Wohnung im Martinsviertel oder Neubau in der Lincoln-Siedlung verkaufsstark inszeniert.',
     intro:
       'Darmstadt ist Wissenschaftsstadt und Pendlerstadt zugleich. Hier kaufen Fachkräfte, Familien und Kapitalanleger, die genau rechnen und sich trotzdem verlieben wollen. Home Staging zeigt beides: klare Grundrisse und echtes Wohngefühl.',
     markt: [
@@ -256,7 +242,7 @@ export const orte: Ort[] = [
       'Offenbach hat sich verändert: Neue Quartiere am Main, gefragte Altbauten und eine junge Käuferschaft, die oft aus Frankfurt herüberschaut. Wer hier verkauft, konkurriert mit Neubauprojekten und braucht starke Bilder.',
     markt: [
       'Viele Interessenten in Offenbach vergleichen direkt mit Frankfurt. Eine inszenierte Wohnung zeigt, dass man hier nicht nur günstiger, sondern auch schöner wohnen kann.',
-      'Für Bauträger am Hafen und in den neuen Quartieren biete ich Musterwohnungen und virtuelles Staging für den Vorvertrieb, für Eigentümer im Bestand die passenden Pakete.',
+      'Für Bauträger am Hafen und in den neuen Quartieren richte ich Musterwohnungen ein, für Eigentümer im Bestand gibt es die passenden Pakete.',
     ],
     lagen: ['Hafen', 'Westend', 'Nordend', 'Bürgel', 'Bieber', 'Rumpenheim', 'Tempelsee', 'Buchhügel'],
     anfahrt: 'Offenbach erreiche ich über die A66 und A3. Bei mehreren Objekten plane ich die Termine gebündelt.',

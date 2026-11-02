@@ -1,15 +1,15 @@
 # Übergabe: khatera-gross.de
 
-Stand: 27. Oktober 2026 · Demo: https://khatera-relaunch.vercel.app · Repository: `Ricdog87/khatera_website2.0`, Branch `claude/eager-bardeen-5ntj1o`
+Stand: 2. November 2026 · Demo: https://khatera-relaunch.vercel.app · Repository: `Ricdog87/khatera_website2.0`, Branch `claude/eager-bardeen-5ntj1o`
 
 ## 1. Was übergeben wird
 
 | Bereich | Inhalt |
 |---|---|
-| Seiten | Startseite, Home Staging, Musterwohnungen, Fix & Flip, Pakete & Preise, Für Makler, Projekte, Über mich, Kontakt, Ratgeber (8 Artikel), 8 Stadtseiten, Impressum, Datenschutz, 404 |
+| Seiten | Startseite, Home Staging, Musterwohnungen, Fix & Flip, Pakete & Ablauf, Für Makler, Projekte, Über mich, Kontakt, Ratgeber (8 Artikel), 8 Stadtseiten, Impressum, Datenschutz, 404 |
 | Stadtseiten | Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt, Darmstadt, Offenbach, Bad Homburg & Hochtaunus |
 | Einsatzgebiet | gesamtes Rhein-Main-Gebiet, Musterwohnungen bundesweit |
-| Funktionen | Paketauswahl mit Anfrageformular, Mehrerlös-Rechner, mobile Anruf-/WhatsApp-Leiste, Google-Bewertungslink |
+| Funktionen | Paketauswahl mit Anfrageformular, Vorher/Nachher-Schieberegler (Fix & Flip), mobile Anruf-/WhatsApp-Leiste, Google-Bewertungsbutton. Bewusst ohne Preise: jedes Angebot individuell nach Erstgespräch. |
 | Design | CI-Farben (helles Grau, Oliv, Anthrazit, Sand), Original-Logo aus Illustrator, Profi-Fotos MKG |
 | Qualität | Lighthouse mobil 99–100 in Performance, Barrierefreiheit, Best Practices und SEO; 30 Seiten ohne tote Links, je eine H1, Titel und Beschreibungen in Google-Länge |
 | Datenschutz | keine Cookies, kein Tracking, Schriften und Bilder lokal, daher kein Cookie-Banner nötig |
@@ -20,13 +20,13 @@ GEO heißt: Die Seite wird von ChatGPT, Perplexity, Claude, Gemini und Googles K
 
 | Baustein | Wirkung |
 |---|---|
-| „Kurz erklärt“-Block auf Startseite, Leistungs-, Preis- und Stadtseiten | Antwort zuerst, mit harten Fakten (Ort, Preise, Ablauf). Genau diese Absätze zitieren KI-Suchen und Featured Snippets. |
+| „Kurz erklärt“-Block auf Startseite, Leistungs-, Paket- und Stadtseiten | Antwort zuerst, mit harten Fakten (Ort, Region, Ablauf, Angebot in 48 Stunden). Genau diese Absätze zitieren KI-Suchen und Featured Snippets. |
 | `/llms.txt` und `/llms-full.txt` | Kompaktes Firmenprofil und alle Fakten, FAQ und Ratgeber als Klartext für KI-Assistenten. Wird bei jedem Build automatisch aus den Website-Daten erzeugt. |
 | `robots.txt` | Nach Go-live alle Suchmaschinen und KI-Crawler (GPTBot, ClaudeBot, PerplexityBot, Google-Extended u. a.) ausdrücklich erlaubt |
-| Strukturierte Daten | Firma mit Leistungen, Preisen, Einsatzgebiet und Fachgebieten; Website; Person; FAQ; Brotkrumen; Artikel mit Autorin; Service je Stadtseite |
+| Strukturierte Daten | Firma mit Leistungen, Einsatzgebiet und Fachgebieten; Website; Person; FAQ; Brotkrumen; Artikel mit Autorin; Service je Stadtseite |
 | 8 Stadtseiten | ranken auf „Home Staging + Ort“, jede mit eigenem Lokalbezug (Stadtteile, Markt, Anfahrt) |
 | Ratgeber | 8 Artikel, davon 4 neu: Kosten-Nutzen, leere Wohnung verkaufen, Musterwohnung einrichten, Fix & Flip. Alle mit Antwort zuerst, Tabellen und internen Links. |
-| Interne Verlinkung | Leistungsseiten verlinken passende Ratgeber, Ratgeber verlinken Leistungen und Preise |
+| Interne Verlinkung | Leistungsseiten verlinken passende Ratgeber, Ratgeber verlinken Leistungen und Pakete |
 | Sitemap mit Änderungsdatum, eigenes Vorschaubild je Seite, 301 für alle alten Framer-URLs | saubere Indexierung, keine verlorenen Rankings |
 | IndexNow (`npm run indexnow`) | meldet alle Seiten sofort an Bing. Bing speist die Websuche von ChatGPT und Copilot. |
 
@@ -53,7 +53,8 @@ Alle Inhalte, die sich ändern, liegen an wenigen Stellen. Nach jeder Änderung:
 
 | Ich möchte … | Datei | Was ändern |
 |---|---|---|
-| Preise oder Paketinhalte ändern | `src/config/site.ts` → `pakete` | `preisAb`, `leistungen`, `preisHinweis` |
+| Paketinhalte ändern | `src/config/site.ts` → `pakete` | `leistungen`, `hinweis` (Preise werden bewusst nicht angezeigt) |
+| Vorher/Nachher-Bilder ergänzen | `src/assets/images/vorher-nachher/` | Paar als `name-vorher.jpg` und `name-nachher.jpg` ablegen, der Regler auf `/fix-and-flip` erscheint automatisch |
 | Telefon, E-Mail, Adresse ändern | `src/config/site.ts` → `company` | Werte ersetzen, wirkt auf allen Seiten, im Impressum und in den strukturierten Daten |
 | Eine Stadtseite ergänzen | `src/config/site.ts` → `orte` | neuen Eintrag nach Vorbild anlegen, Bild in `src/pages/home-staging-[ort].astro` zuordnen |
 | FAQ ändern | `src/content/faq.ts` | Frage und Antwort; FAQ-Daten für Google aktualisieren sich automatisch |
@@ -69,8 +70,8 @@ Für Ricardo: `npm run check` (Typprüfung), `python3 -I scripts/seo-check.py .v
 Ausführlich in `CONTENT-TODO.md`. Die wichtigsten Punkte für mehr Anfragen:
 
 1. Direkter Google-Bewertungslink und die ersten 5 Bewertungen
-2. Bestätigung der Paketpreise und des 50-%-Partnerbonus
-3. Vorher/Nachher-Fotos und Ergebnisse zu 3 Projekten (Ort, Fläche, „nach X Wochen verkauft“)
+2. Bestätigung des 50-%-Partnerbonus
+3. 2 bis 3 echte Vorher/Nachher-Paare für den Schieberegler, dazu Ergebnisse zu 3 Projekten (Ort, Fläche, „nach X Wochen verkauft“)
 4. Porträt in Originalauflösung vom Fotografen
 5. LinkedIn- und Instagram-Link (werden automatisch in die strukturierten Daten übernommen)
 6. Juristische Prüfung von Impressum und Datenschutz

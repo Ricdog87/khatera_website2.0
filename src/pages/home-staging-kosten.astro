@@ -4,7 +4,6 @@ import RatgeberTipp from '../components/RatgeberTipp.astro';
 import Kurzantwort from '../components/Kurzantwort.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Pakete from '../components/Pakete.astro';
-import Rechner from '../components/Rechner.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Arrow from '../components/Arrow.astro';
@@ -17,29 +16,22 @@ const faktoren = [
   { titel: 'Laufzeit', text: 'Im Paket sind 8 oder 12 Wochen Möbelmiete enthalten. Danach wird fair nach Wochen abgerechnet, nicht nach Monaten.' },
   { titel: 'Zugang & Lage', text: 'Etage, Aufzug und Parkmöglichkeiten bestimmen den Aufwand beim Auf- und Abbau. Im Rhein-Main-Gebiet ist die Anfahrt inklusive.' },
 ];
-
-const beispiel = [
-  { label: 'Angebotspreis Eigentumswohnung', wert: '450.000 €' },
-  { label: 'Typischer Preisnachlass in der Verhandlung, 3 %', wert: '– 13.500 €' },
-  { label: 'Investition Komplett-Staging, ca.', wert: '3.500 €' },
-  { label: 'Break-even bei Mehrerlös von', wert: '0,8 %' },
-];
 ---
 
 <Base
-  title="Home Staging Kosten: Pakete & Preise"
-  description="Was kostet Home Staging? Pakete ab 290 €: Staging-Beratung, Teil- und Komplett-Staging inkl. Möbelmiete. Festpreisangebot in 48 Stunden."
-  breadcrumbs={[{ name: 'Pakete & Preise', href: '/home-staging-kosten' }]}
+  title="Home Staging Kosten & Pakete: individuelles Angebot"
+  description="Was kostet Home Staging? Staging-Beratung, Teil- und Komplett-Staging inkl. Möbelmiete. Jedes Angebot entsteht individuell nach einem kostenlosen Erstgespräch."
+  breadcrumbs={[{ name: 'Pakete', href: '/home-staging-kosten' }]}
   schema={[faqSchema(faqKosten)]}
 >
   <section class="pt-10 pb-[calc(var(--section)*0.6)] md:pt-16">
     <div class="container-page grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-8">
-        <p class="label rule text-olive-700" data-reveal>Pakete & Preise</p>
-        <h1 class="mt-6 text-display" data-reveal style="--d:1">Was kostet <em class="text-olive-600">Home Staging?</em></h1>
+        <p class="label rule text-olive-700" data-reveal>Pakete & Ablauf</p>
+        <h1 class="mt-6 text-display" data-reveal style="--d:1">Drei Pakete. <em class="text-olive-600">Ein persönliches Angebot.</em></h1>
       </div>
       <p class="text-lead text-ink-600 lg:col-span-4" data-reveal style="--d:2">
-        Drei Pakete mit klaren Startpreisen. Nach einem Blick auf Grundriss und Fotos bekommen Sie einen verbindlichen Festpreis, ohne versteckte Kosten.
+        Jede Immobilie ist anders. Deshalb gibt es bei mir keine Preisliste, sondern ein Angebot, das wir gemeinsam im Gespräch auf Ihr Projekt abstimmen. Transparent und ohne versteckte Kosten.
       </p>
     </div>
   </section>
@@ -47,26 +39,26 @@ const beispiel = [
   <Kurzantwort
     class="mb-[calc(var(--section)*0.6)]"
     frage="Was kostet Home Staging im Rhein-Main-Gebiet?"
-    antwort="Bei Khatera Gross kostet eine Staging-Beratung für bewohnte Immobilien ab 290 €, ein Teil-Staging für leere Wohnungen bis etwa 80 m² ab 1.490 € inklusive acht Wochen Möbelmiete und ein Komplett-Staging für Häuser und große Wohnungen ab 2.990 € inklusive zwölf Wochen Möbelmiete, jeweils netto. Der genaue Preis richtet sich nach Zahl der Räume, Preisklasse der Immobilie und Laufzeit. Als Faustregel liegt ein Komplett-Staging bei rund 30 bis 45 € pro Quadratmeter."
+    antwort="Die Kosten für Home Staging hängen von der Immobilie ab: von der Zahl der einzurichtenden Räume, der Preisklasse und Zielgruppe, der Laufzeit der Möbelmiete und vom Aufwand beim Auf- und Abbau. Khatera Gross arbeitet deshalb ohne Preisliste. Nach einem kostenlosen Erstgespräch und einem Blick auf Grundriss und Fotos erhalten Sie innerhalb von 48 Stunden ein persönliches, transparentes Angebot, in dem Arbeitsleistung und Möbelmiete getrennt ausgewiesen sind."
     fakten={[
-      { label: 'Beratung', wert: 'ab 290 €' },
-      { label: 'Teil-Staging', wert: 'ab 1.490 €' },
-      { label: 'Komplett-Staging', wert: 'ab 2.990 €' },
-      { label: 'Faustregel', wert: '30–45 € / m²' },
+      { label: 'Erstgespräch', wert: 'kostenlos' },
+      { label: 'Angebot', wert: 'individuell, in 48 Std.' },
+      { label: 'Möbelmiete', wert: '8 bis 12 Wochen inkl.' },
+      { label: 'Anfahrt Rhein-Main', wert: 'inklusive' },
     ]}
   />
 
   <section class="kg-muster bg-linen pt-16 pb-[var(--section)] md:pt-24">
     <div class="container-page">
       <Pakete />
-      <p class="mt-8 text-small text-ink-600">Alle Preise netto zzgl. 19 % MwSt. Anfahrt im Rhein-Main-Gebiet, Auf- und Abbau inklusive.</p>
+      <p class="mt-8 text-small text-ink-600">Den Preis besprechen wir individuell. Anfahrt im Rhein-Main-Gebiet, Auf- und Abbau sind im Angebot enthalten.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container-page grid gap-14 lg:grid-cols-12">
       <div class="lg:col-span-5">
-        <SectionHead label="So entsteht der Preis" title="Zwei Positionen," em="volle Transparenz." />
+        <SectionHead label="So entsteht Ihr Angebot" title="Zwei Positionen," em="volle Transparenz." />
         <div class="mt-8 space-y-5 text-ink-600" data-reveal style="--d:2">
           <p>Jedes Angebot besteht aus der <strong class="font-normal text-ink-900">Arbeitsleistung</strong> (Konzept, Transport, Aufbau, Styling, Abbau) und der <strong class="font-normal text-ink-900">Miete für Möbel und Dekoration</strong>. Beides weise ich getrennt aus, damit Sie genau sehen, wofür Sie zahlen.</p>
           <p>Zusatzleistungen wie Fotografie, Malerarbeiten oder Reinigung sind optional und stehen extra im Angebot.</p>
@@ -83,28 +75,6 @@ const beispiel = [
       </div>
     </div>
   </section>
-
-  <section class="section pt-0">
-    <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
-      <div class="lg:col-span-5">
-        <SectionHead label="Rechenbeispiel" title="Teurer als Home Staging ist" em="ein Preisnachlass." />
-        <p class="mt-8 text-ink-600" data-reveal style="--d:2">Leere oder unruhig eingerichtete Immobilien stehen länger im Netz. Mit jeder Woche wächst der Druck, und am Ende wird über den Preis verhandelt. Schon ein kleiner Unterschied in der Verhandlung ist mehr wert als die Inszenierung.</p>
-      </div>
-      <div class="lg:col-span-6 lg:col-start-7" data-reveal>
-        <dl class="border-t border-ink-900">
-        {beispiel.map((b, i) => (
-          <div class:list={['flex items-baseline justify-between gap-6 border-b border-line py-5', i === beispiel.length - 1 && 'border-ink-900']}>
-            <dt class="text-ink-600">{b.label}</dt>
-            <dd class:list={['font-display text-[1.75rem] leading-none whitespace-nowrap lining-nums', i === beispiel.length - 1 && 'text-olive-600']}>{b.wert}</dd>
-          </div>
-        ))}
-        </dl>
-        <p class="mt-4 text-[0.8125rem] text-ink-600">Beispielhafte Rechnung, Werte gerundet.</p>
-      </div>
-    </div>
-  </section>
-
-  <Rechner />
 
   <section class="section">
     <div class="container-page">
@@ -129,6 +99,6 @@ const beispiel = [
   </section>
 
   <RatgeberTipp slugs={['lohnt-sich-home-staging', 'vorteile-von-home-staging']} />
-  <Faq fragen={faqKosten} title="Fragen zu" em="Kosten & Ablauf." />
+  <Faq fragen={faqKosten} title="Fragen zu" em="Angebot & Ablauf." />
   <CtaBand />
 </Base>

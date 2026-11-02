@@ -9,9 +9,9 @@ import portraitGanz from '../assets/images/portrait/khatera-gross-portrait-busin
 import styling from '../assets/images/haus-fernblick/detail-bett-vase.jpg';
 
 const werte = [
-  { titel: 'Ehrlich', text: 'Ich empfehle nur, was sich für Ihre Immobilie rechnet. Manchmal ist das eine Beratung für 290 €, nicht das große Paket.' },
+  { titel: 'Ehrlich', text: 'Ich empfehle nur, was sich für Ihre Immobilie rechnet. Manchmal ist das eine kurze Beratung, nicht das große Paket.' },
   { titel: 'Persönlich', text: 'Sie haben eine Ansprechpartnerin vom ersten Anruf bis zum Abbau. Keine Hotline, keine wechselnden Teams.' },
-  { titel: 'Verlässlich', text: 'Klare Festpreise, feste Termine, Aufbau meist an einem Tag. Damit Ihre Vermarktung pünktlich starten kann.' },
+  { titel: 'Verlässlich', text: 'Klare Angebote, feste Termine, Aufbau meist an einem Tag. Damit Ihre Vermarktung pünktlich starten kann.' },
 ];
 const site = Astro.site!.href.replace(/\/$/, '');
 const person = {
@@ -40,6 +40,7 @@ const person = {
         <p class="mt-10 max-w-2xl text-lead text-ink-600" data-reveal style="--d:2">
           Gründerin von Khatera Gross Home Staging in Taunusstein. Meine Leidenschaft gilt Design, Raumgestaltung und der Kunst, Immobilien so zu präsentieren, dass sie ihr volles Potenzial zeigen.
         </p>
+        <GoogleBewertung variant="button" class="mt-10" />
       </div>
       <figure class="lg:col-span-4 lg:col-start-9">
         <div class="overflow-hidden bg-linen" data-reveal="image">
@@ -97,7 +98,6 @@ const person = {
     </div>
     <div class="container-page mt-12">
       <a href="/kontakt" class="btn btn-dark">Lernen wir uns kennen <Arrow /></a>
-      <GoogleBewertung class="mt-16" />
     </div>
   </section>
 

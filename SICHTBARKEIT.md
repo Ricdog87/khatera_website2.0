@@ -10,11 +10,11 @@ Die Website ist die Basis. Gefunden wird man im Home Staging aber vor allem übe
 | Seiten Musterwohnungen (bundesweit) und Fix & Flip | eigene Zielgruppen mit eigenem Suchverhalten: Bauträger und Investoren |
 | „Kurz erklärt“-Blöcke, `llms.txt`, KI-Crawler erlaubt | Grundlage dafür, dass KI-Assistenten Khatera als Quelle nennen (siehe Abschnitt 6) |
 | 8 Ratgeber-Artikel mit Antwort zuerst | ranken auf Fragen wie „Lohnt sich Home Staging?“ und werden von KI-Suchen zitiert |
-| Seite „Home Staging Kosten“ | rankt auf „Home Staging Kosten / Preise“, die meistgesuchte Frage |
-| Strukturierte Daten (LocalBusiness, Service, Preise, FAQ, Artikel, Brotkrumen) | Google versteht Leistung, Region und Preise, FAQ können direkt in den Suchergebnissen erscheinen |
+| Seite „Home Staging Kosten & Pakete“ | beantwortet die meistgesuchte Frage ehrlich: wovon der Preis abhängt und wie das Angebot entsteht |
+| Strukturierte Daten (LocalBusiness, Service, FAQ, Artikel, Brotkrumen) | Google versteht Leistung und Region, FAQ können direkt in den Suchergebnissen erscheinen |
 | 301-Weiterleitungen aller alten Framer-URLs | bestehende Rankings und Links gehen beim Umzug nicht verloren |
 | Statische Seite, Bilder in AVIF/WebP, keine Cookies | schnell auf dem Handy (Ranking-Faktor), kein Cookie-Banner nötig |
-| Mehrerlös-Rechner, Paket-Buttons, mobile Anruf-/WhatsApp-Leiste | aus Besuchern werden Anfragen |
+| Paket-Buttons, Google-Bewertungsbutton, mobile Anruf-/WhatsApp-Leiste | aus Besuchern werden Anfragen |
 
 ## 1. Google Unternehmensprofil (Woche 1, größter Hebel)
 
@@ -24,7 +24,7 @@ Bei „Home Staging Wiesbaden“ zeigt Google zuerst die Karte. Wer dort nicht s
 2. Als **Servicegebiet-Unternehmen** einrichten (Adresse ausblenden), Gebiete: Wiesbaden, Rheingau-Taunus-Kreis, Mainz, Frankfurt am Main, Main-Taunus-Kreis
 3. Hauptkategorie so nah wie möglich an Home Staging wählen (Google-Kategorien vor Ort prüfen, z. B. Inneneinrichtung / Raumausstattung), Nebenkategorien ergänzen
 4. Website-Link: `https://khatera-gross.de/home-staging-kosten` oder Startseite, Telefon wie auf der Website
-5. Unter **Produkte** die drei Pakete mit Preis eintragen, unter **Leistungen** Musterwohnungen, Virtuelles Staging, Beratung
+5. Unter **Produkte** die drei Pakete ohne Preis eintragen („Preis auf Anfrage“), unter **Leistungen** Musterwohnungen, Fix & Flip, Beratung
 6. Mindestens 15 eigene Fotos hochladen (Projekte + Porträt), danach jede Woche 1 bis 2 neue
 7. Alle 14 Tage einen Beitrag posten (neues Projekt, Tipp, Vorher/Nachher)
 
@@ -80,7 +80,7 @@ Vorher/Nachher-Fotos bei jedem Projekt machen. Sie sind für Website, Google-Pro
 ChatGPT, Perplexity, Claude und Googles KI-Übersichten empfehlen Anbieter, die sie auf mehreren vertrauenswürdigen Seiten mit **identischen Fakten** finden. Die Website liefert diese Fakten bereits sauber („Kurz erklärt“, strukturierte Daten, `llms.txt`). Jetzt geht es darum, dass sie auch anderswo stehen.
 
 1. **Bing Webmaster Tools** einrichten und `npm run indexnow` ausführen: ChatGPT-Suche und Copilot greifen auf Bing zu.
-2. **Gleiche Fakten überall:** Name „Khatera Gross Home Staging“, Taunusstein, Rhein-Main-Gebiet, Musterwohnungen bundesweit, Pakete ab 290 €. In Google-Profil, LinkedIn, Staging-Community-Profil, Houzz und Branchenverzeichnissen identisch formulieren.
+2. **Gleiche Fakten überall:** Name „Khatera Gross Home Staging“, Taunusstein, Rhein-Main-Gebiet, Musterwohnungen bundesweit, persönliches Angebot in 48 Stunden. In Google-Profil, LinkedIn, Staging-Community-Profil, Houzz und Branchenverzeichnissen identisch formulieren.
 3. **Bewertungen mit Inhalt:** Kunden bitten, Ort und Leistung zu nennen („Komplett-Staging für unsere Wohnung in Wiesbaden“). KI-Systeme werten den Text von Bewertungen aus.
 4. **Erwähnungen auf fremden Seiten:** Partnermakler-Websites („Unser Home-Staging-Partner“), Bauträger-Referenzen, lokale Presse (Wiesbadener Kurier, Rheingau Echo) mit einem Projekt.
 5. **LinkedIn-Beiträge** mit den Ratgeber-Themen, jeweils mit Link auf den Artikel.

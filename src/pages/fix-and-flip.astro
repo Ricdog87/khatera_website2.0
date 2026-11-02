@@ -1,6 +1,8 @@
 ---
 import { ogBild } from '../lib/og';
 import Base from '../layouts/Base.astro';
+import VorherNachher from '../components/VorherNachher.astro';
+import { vorherNachherPaare } from '../lib/vorherNachher';
 import RatgeberTipp from '../components/RatgeberTipp.astro';
 import Photo from '../components/Photo.astro';
 import SectionHead from '../components/SectionHead.astro';
@@ -15,7 +17,7 @@ import treppe from '../assets/images/loft/home-staging-loft-treppe.jpg';
 
 const leistungen = [
   { titel: 'Beratung vor der Sanierung', text: 'Welche Böden, Fliesen und Wandfarben verkaufen sich in Ihrer Lage? Ich berate Sie, bevor das Budget verbaut ist, damit Sanierung und Inszenierung zusammenpassen.' },
-  { titel: 'Virtuelles Staging', text: 'Noch während der Sanierung eingerichtete Visualisierungen für Exposé und Portale. So starten Sie die Vermarktung, bevor die Handwerker raus sind.' },
+  { titel: 'Planung während der Sanierung', text: 'Konzept, Möblierungsplan und Termin stehen, bevor die Handwerker fertig sind. So startet die Vermarktung direkt nach der Endreinigung.' },
   { titel: 'Staging nach Fertigstellung', text: 'Teil- oder Komplett-Staging, Aufbau meist an einem Tag. Direkt danach Fotos, direkt danach online.' },
   { titel: 'Rahmenvereinbarung', text: 'Mehrere Objekte im Jahr? Feste Konditionen, priorisierte Termine und ein eingespielter Ablauf, Objekt für Objekt.' },
 ];
@@ -34,12 +36,13 @@ const fragen: Frage[] = [
   { frage: 'Gibt es Konditionen für mehrere Objekte?', antwort: 'Ja. Für Investoren mit mehreren Objekten im Jahr biete ich eine Rahmenvereinbarung mit festen Preisen und priorisierten Terminen an.' },
 ];
 const og = await ogBild(loft);
+const paare = vorherNachherPaare();
 ---
 
 <Base
   ogImage={og}
   title="Home Staging für Fix & Flip und Investoren"
-  description="Home Staging für Fix & Flip im Rhein-Main-Gebiet: sanierte Immobilien schneller verkaufen. Virtuelles Staging, Aufbau an einem Tag, Rahmenvereinbarung."
+  description="Home Staging für Fix & Flip im Rhein-Main-Gebiet: sanierte Immobilien schneller verkaufen. Planung während der Sanierung, Aufbau an einem Tag, Rahmenvereinbarung."
   breadcrumbs={[{ name: 'Fix & Flip', href: '/fix-and-flip' }]}
   schema={[faqSchema(fragen)]}
 >
@@ -58,7 +61,7 @@ const og = await ogBild(loft);
     class="mb-[var(--section)]"
     frage="Lohnt sich Home Staging bei Fix & Flip?"
     antwort="Meist ja, weil bei Fix & Flip jeder Monat Leerstand Geld kostet: Zinsen, Nebenkosten und gebundenes Kapital. Ein saniertes, aber leeres Objekt wirkt auf Fotos austauschbar. Mit Home Staging wird es emotional greifbar, die Vermarktung startet mit starken Bildern, und der Verkauf gelingt in der Regel schneller und mit weniger Preisnachlass. Bei rund 2.000 € Haltekosten im Monat ist ein Staging oft schon nach wenigen Wochen eingespielt."
-    fakten={[{ label: 'Haltekosten', wert: '≈ 2.000 € / Monat (Beispiel)' }, { label: 'Aufbau', wert: 'meist 1 Tag' }, { label: 'Vorvermarktung', wert: 'virtuelles Staging' }, { label: 'Mehrere Objekte', wert: 'Rahmenvereinbarung' }]}
+    fakten={[{ label: 'Haltekosten', wert: '≈ 2.000 € / Monat (Beispiel)' }, { label: 'Aufbau', wert: 'meist 1 Tag' }, { label: 'Planung', wert: 'schon während der Sanierung' }, { label: 'Mehrere Objekte', wert: 'Rahmenvereinbarung' }]}
   />
 
   <section class="section bg-linen">
@@ -76,11 +79,25 @@ const og = await ogBild(loft);
     </div>
   </section>
 
+  {paare.length > 0 && (
+    <section class="section" id="vorher-nachher">
+      <div class="container-page">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <SectionHead class="lg:col-span-7" label="Vorher / Nachher" title="Sehen Sie selbst," em="was sich verwandelt." />
+          <p class="text-lead text-ink-600 lg:col-span-4 lg:col-start-9" data-reveal>Ziehen Sie den Regler: links der Zustand vor dem Home Staging, rechts das Ergebnis.</p>
+        </div>
+        <div class:list={['mt-14 grid gap-10', paare.length > 1 ? 'lg:grid-cols-2' : 'max-w-5xl']}>
+          {paare.map((p) => <VorherNachher vorher={p.vorher} nachher={p.nachher} titel={p.titel} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section" id="rechnung">
     <div class="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
       <div class="lg:col-span-5">
         <SectionHead label="Rechenbeispiel" title="Leerstand ist" em="Ihr teuerster Posten." />
-        <p class="mt-8 text-ink-600" data-reveal style="--d:2">Bei Fix &amp; Flip zählt jeder Monat. Schon zwei Monate kürzere Vermarktung sparen in diesem Beispiel so viel, wie ein Komplett-Staging kostet. Und das, bevor überhaupt über den Verkaufspreis verhandelt wurde.</p>
+        <p class="mt-8 text-ink-600" data-reveal style="--d:2">Bei Fix &amp; Flip zählt jeder Monat. Schon zwei Monate kürzere Vermarktung sparen in diesem Beispiel rund 4.000 € an Haltekosten. Und das, bevor überhaupt über den Verkaufspreis verhandelt wurde.</p>
       </div>
       <div class="lg:col-span-6 lg:col-start-7" data-reveal>
         <dl class="border-t border-ink-900">
@@ -107,5 +124,5 @@ const og = await ogBild(loft);
 
   <RatgeberTipp slugs={['fix-and-flip-home-staging', 'lohnt-sich-home-staging']} />
   <Faq fragen={fragen} title="Fragen von" em="Investoren." />
-  <CtaBand title="Ihr nächstes Objekt," em="schneller verkauft." text="Schicken Sie mir Grundriss, Sanierungsstand und Zieltermin. Sie erhalten innerhalb von 48 Stunden ein Festpreisangebot." />
+  <CtaBand title="Ihr nächstes Objekt," em="schneller verkauft." text="Schicken Sie mir Grundriss, Sanierungsstand und Zieltermin. Sie erhalten innerhalb von 48 Stunden ein persönliches Angebot." />
 </Base>

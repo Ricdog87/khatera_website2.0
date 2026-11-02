@@ -41,4 +41,4 @@ Eine Zwei-Zimmer-Wohnung in Uninähe spricht andere Käufer an als eine Familien
 
 ## Was hilft: Teil- oder Komplett-Staging
 
-Für leere Wohnungen bis etwa 80 m² reicht oft ein [Teil-Staging](/home-staging-kosten) der Schlüsselräume Wohnen, Essen und Schlafen. Größere Wohnungen und Häuser profitieren vom Komplett-Staging. Aufbau meist an einem Tag, Abbau nach dem Notartermin. Ein Festpreisangebot bekommen Sie innerhalb von 48 Stunden über das [Anfrageformular](/kontakt).
+Für leere Wohnungen bis etwa 80 m² reicht oft ein [Teil-Staging](/home-staging-kosten) der Schlüsselräume Wohnen, Essen und Schlafen. Größere Wohnungen und Häuser profitieren vom Komplett-Staging. Aufbau meist an einem Tag, Abbau nach dem Notartermin. Ein persönliches Angebot bekommen Sie innerhalb von 48 Stunden über das [Anfrageformular](/kontakt).

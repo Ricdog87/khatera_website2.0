@@ -3,28 +3,27 @@ import { getCollection } from 'astro:content';
 import { company, extras, orte, pakete, partnerHinweis } from '../config/site';
 import { faqAllgemein, faqKosten } from '../content/faq';
 
-const euro = (n: number) => `${n.toLocaleString('de-DE')} €`;
-
 export function kurzprofil(site: URL) {
   const u = (p: string) => new URL(p, site).href;
   return `# ${company.name}
 
-> ${company.name} ist ein Home-Staging-Studio aus ${company.city} (Hessen), gegründet und geführt von ${company.owner}. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet, damit Immobilien schneller und zu einem besseren Preis verkauft werden. Musterwohnungen für Bauträger und Projektentwickler richtet ${company.owner} bundesweit ein. Pakete beginnen bei ${euro(pakete[0].preisAb!)} (netto).
+> ${company.name} ist ein Home-Staging-Studio aus ${company.city} (Hessen), gegründet und geführt von ${company.owner}. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet, damit Immobilien schneller und zu einem besseren Preis verkauft werden. Musterwohnungen für Bauträger und Projektentwickler richtet ${company.owner} bundesweit ein. Preise werden nicht pauschal genannt: Jedes Angebot entsteht individuell nach einem kostenlosen Erstgespräch.
 
 Wichtige Fakten:
 - Inhaberin: ${company.owner}, Home Stagerin, Premium-Mitglied der Staging Community
 - Sitz: ${company.street}, ${company.zip} ${company.city}
 - Einsatzgebiet: gesamtes Rhein-Main-Gebiet (u. a. ${orte.map((o) => o.name).join(', ')}); Musterwohnungen bundesweit
-- Leistungen: Home Staging für leere und bewohnte Immobilien, Staging-Beratung, Musterwohnungen, Restanten-Staging, virtuelles Home Staging, Home Staging für Fix & Flip
-- Pakete: ${pakete.map((p) => `${p.name} ab ${euro(p.preisAb!)} (${p.preisHinweis})`).join('; ')}
-- Ablauf: kostenloses Erstgespräch, Festpreisangebot innerhalb von 48 Stunden, Aufbau meist an einem Tag, Abbau nach dem Notartermin
+- Leistungen: Home Staging für leere und bewohnte Immobilien, Staging-Beratung, Musterwohnungen, Restanten-Staging, Home Staging für Fix & Flip
+- Pakete: ${pakete.map((p) => `${p.name} (${p.fuer}, ${p.hinweis})`).join('; ')}
+- Preise: individuell, kein Preisverzeichnis; Angebot nach kostenlosem Erstgespräch, Arbeitsleistung und Möbelmiete getrennt ausgewiesen
+- Ablauf: kostenloses Erstgespräch, persönliches Angebot innerhalb von 48 Stunden, Aufbau meist an einem Tag, Abbau nach dem Notartermin
 - Kontakt: Telefon ${company.phone}, E-Mail ${company.email}, Anfrageformular ${u('/kontakt')}
 
 ## Leistungen
 
 - [Home Staging für Eigentümer](${u('/home-staging')}): Leere oder bewohnte Häuser und Wohnungen verkaufsstark inszenieren
-- [Pakete & Preise](${u('/home-staging-kosten')}): Staging-Beratung, Teil-Staging, Komplett-Staging mit Startpreisen und Preisfaktoren
-- [Musterwohnungen](${u('/musterwohnungen')}): Musterwohnungen, Restanten- und virtuelles Staging für Bauträger, bundesweit
+- [Pakete & Ablauf](${u('/home-staging-kosten')}): Staging-Beratung, Teil-Staging, Komplett-Staging und wovon der Preis abhängt
+- [Musterwohnungen](${u('/musterwohnungen')}): Musterwohnungen, Restanten-Staging und Showrooms für Bauträger, bundesweit
 - [Fix & Flip](${u('/fix-and-flip')}): Home Staging für Immobilieninvestoren, mit Rechenbeispiel zu Haltekosten
 - [Für Makler](${u('/makler-bautraeger')}): Partnermodell mit festen Konditionen und Kostenbeteiligung bis 50 %
 
@@ -59,9 +58,9 @@ export async function volltext(site: URL) {
 
 ${pakete
   .map(
-    (p) => `## ${p.name} (ab ${euro(p.preisAb!)} netto)
+    (p) => `## ${p.name}
 
-${p.claim} ${p.fuer}. ${p.preisHinweis}. Umfang: ${p.dauer}.
+${p.claim} ${p.fuer}. ${p.hinweis}. Umfang: ${p.dauer}. Preis: individuelles Angebot.
 
 ${p.leistungen.map((l) => `- ${l}`).join('\n')}`,
   )

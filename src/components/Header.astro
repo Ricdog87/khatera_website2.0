@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import GoogleBewertung from './GoogleBewertung.astro';
 import { company, navigation } from '../config/site';
 
 interface Props {
@@ -12,8 +13,8 @@ const path = Astro.url.pathname;
 
 <header class="site-header fixed inset-x-0 top-0 z-50" data-overlay={overlay ? 'true' : 'false'} data-solid={overlay ? 'false' : 'true'}>
   <div class="container-page flex h-(--header-h) items-center justify-between gap-6">
-    <a href="/" class="block w-[150px] shrink-0 md:w-[176px]" aria-label={`${company.name}, zur Startseite`}>
-      <Logo />
+    <a href="/" class="block w-[34px] shrink-0 md:w-[38px]" aria-label={`${company.name}, zur Startseite`}>
+      <Logo variant="monogramm" />
     </a>
 
     <nav aria-label="Hauptnavigation" class="hidden xl:block">
@@ -53,6 +54,7 @@ const path = Astro.url.pathname;
       </ul>
       <div class="space-y-4">
         <a href="/kontakt" class="btn btn-primary w-full">Paket anfragen</a>
+        <GoogleBewertung variant="button" class="w-full justify-center" />
         <div class="grid grid-cols-2 gap-3">
           <a href={company.phoneHref} class="btn btn-ghost">Anrufen</a>
           <a href={`mailto:${company.email}`} class="btn btn-ghost">E-Mail</a>

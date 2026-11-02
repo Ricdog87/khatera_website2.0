@@ -1,7 +1,7 @@
 ---
 title: 'Fachbegriffe aus dem Home Staging einfach erklärt'
 kurz: Home Staging Glossar
-description: 'Zoning, Depersonalisierung, Focal Point, Soft Staging, virtuelles Staging: die wichtigsten Begriffe aus dem Home Staging verständlich erklärt.'
+description: 'Zoning, Depersonalisierung, Focal Point, Soft Staging, Redesign: die wichtigsten Begriffe aus dem Home Staging verständlich erklärt.'
 kategorie: Glossar
 datum: 2024-08-07
 lesezeit: 6
@@ -50,10 +50,6 @@ Vorhandene Möbel werden aufgewertet, etwa ein alter Holztisch, der abgeschliffe
 ## Farbpsychologie
 
 Farben wecken Gefühle. Blau wirkt beruhigend und passt ins Schlafzimmer, warme Töne schaffen Geborgenheit im Wohnbereich, frische Akzente beleben die Küche.
-
-## Virtuelles Home Staging
-
-Leere Räume werden auf den Fotos digital eingerichtet. Das ist günstig und schnell, ideal für Neubauten vor Fertigstellung oder für Online-Exposés. Bei der Besichtigung fehlt aber das echte Raumgefühl.
 
 ## Staging to Live
 

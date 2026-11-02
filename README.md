@@ -36,17 +36,17 @@ Voraussetzung: Node 22.22 oder neuer.
 
 | URL | Inhalt |
 |---|---|
-| `/` | Startseite: Hero, Zielgruppen, Pakete, Einblicke, Ablauf, Mehrerlös-Rechner, Über mich, Regionen, FAQ |
-| `/home-staging-kosten` | Pakete & Preise, Preisfaktoren, Rechenbeispiel, Rechner, FAQ Kosten |
+| `/` | Startseite: Hero, Zielgruppen, Pakete, Einblicke, Ablauf, Über mich, Regionen, FAQ |
+| `/home-staging-kosten` | Pakete & Ablauf, wie das individuelle Angebot entsteht, FAQ (bewusst ohne Preise) |
 | `/home-staging-[ort]` | Stadtseiten Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt, Darmstadt, Offenbach, Bad Homburg (Daten in `site.ts` → `orte`) |
 | `/llms.txt`, `/llms-full.txt` | Firmenprofil und alle Fakten als Klartext für KI-Assistenten |
 | `/home-staging` | Leistungsseite für Eigentümer |
 | `/musterwohnungen` | Bauträger und Projektentwickler |
-| `/fix-and-flip` | Investoren, mit Rechenbeispiel zu Haltekosten |
+| `/fix-and-flip` | Investoren, mit Rechenbeispiel zu Haltekosten und Vorher/Nachher-Schieberegler (erscheint, sobald Bildpaare in `src/assets/images/vorher-nachher/` liegen) |
 | `/makler-bautraeger` | Partnermodell für Makler |
 | `/projekte`, `/ueber-mich` | Referenzen, Profil |
 | `/ratgeber`, `/ratgeber/[slug]` | Artikel als Markdown in `src/content/ratgeber/` |
-| `/kontakt` | Anfrageformular mit Paketauswahl, Vorbelegung über `?paket=komplett&flaeche=…&preis=…&ort=…` |
+| `/kontakt` | Anfrageformular mit Paketauswahl, Vorbelegung über `?paket=komplett&ort=…` |
 | `/impressum`, `/datenschutz` | Markdown in `src/content/recht/` |
 
 Alte Framer-URLs (`/about-us`, `/blog/…`, `/project/…`) leiten per 301 weiter, siehe `astro.config.mjs`.
@@ -55,9 +55,9 @@ Alte Framer-URLs (`/about-us`, `/blog/…`, `/project/…`) leiten per 301 weite
 
 | Pfad | Inhalt |
 |---|---|
-| `src/config/site.ts` | Firmendaten, Pakete und Preise, Extras, Rechner-Werte, Stadtseiten |
+| `src/config/site.ts` | Firmendaten, Pakete (ohne Preise), Extras, Stadtseiten |
 | `src/content/faq.ts` | FAQ, wird auch als FAQPage-Schema ausgegeben |
-| `src/components/` | Header, Footer, Paketkarten, Rechner, Ablauf, FAQ, Regionen, CTA |
+| `src/components/` | Header, Footer, Paketkarten, Vorher/Nachher-Regler, Google-Bewertung, Ablauf, FAQ, Regionen, CTA |
 | `src/assets/brand/` | Wortmarke, Logo, Monogramm und Musterkachel, extrahiert aus den Illustrator-Originalen |
 | `brand-originale/` | Originaldateien der Designerin (Visitenkarte, Briefumschlag, Icon in 4 Farben) |
 | `src/assets/images/` | Kuratierte, umbenannte Projektfotos und Porträts |
