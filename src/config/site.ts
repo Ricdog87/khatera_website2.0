@@ -5,13 +5,14 @@
  */
 
 export const company = {
-  // Markenname seit 11.11.: KG Homestaging. Inhaberin bleibt Khatera Gross (Impressum, Über mich, Autorin).
+  // Markenname seit 11.11.: KG Homestaging. Der frühere Firmenname wird nirgends mehr genannt.
+  // Inhaberin bleibt Khatera Gross (Impressum, Über mich, Autorin).
   name: 'KG Homestaging',
   shortName: 'KG Homestaging',
-  formerName: 'Khatera Gross Home Staging',
   owner: 'Khatera Gross',
   street: 'Im Biengarten 21',
   zip: '65232',
+  // Anschrift nur für Impressum und Datenschutz (Pflichtangabe). In Texten heißt es Rhein-Main-Gebiet, nicht Taunusstein.
   city: 'Taunusstein',
   region: 'Rhein-Main-Gebiet · Musterwohnungen bundesweit',
   phone: '+49 151 547 205 35',
@@ -25,7 +26,7 @@ export const company = {
   url: 'https://khatera-gross.de',
   // TODO: Direkten Bewertungslink aus dem Google-Unternehmensprofil eintragen (Profil > Rezensionen anfordern).
   // Bis dahin führt der Link auf die Google-Suche nach dem Profil.
-  googleReviewUrl: 'https://www.google.com/maps/search/?api=1&query=KG+Homestaging+Khatera+Gross+Taunusstein',
+  googleReviewUrl: 'https://www.google.com/maps/search/?api=1&query=KG+Homestaging+Home+Staging+Rhein-Main',
 } as const;
 
 export const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
@@ -151,7 +152,7 @@ export const orte: Ort[] = [
       'Gerade leerstehende Altbauwohnungen wirken auf Fotos schnell kühl und schwer lesbar. Mit gezielter Möblierung werden Raumproportionen, Lichtführung und Grundriss sofort verständlich.',
     ],
     lagen: ['Dichterviertel', 'Nerotal', 'Sonnenberg', 'Biebrich', 'Rheingauviertel', 'Bierstadt', 'Dotzheim', 'Nordost'],
-    anfahrt: 'Von Taunusstein bin ich in rund 20 Minuten in der Wiesbadener Innenstadt.',
+    anfahrt: 'Wiesbaden gehört zu meinem Kerngebiet. Ein Vor-Ort-Termin ist meist innerhalb weniger Tage möglich.',
   },
   {
     slug: 'rheingau',
@@ -167,7 +168,7 @@ export const orte: Ort[] = [
       'Ich inszeniere regional stimmig: natürliche Materialien, warme Töne, ein ruhiges Farbkonzept, das Ausblick und Architektur in den Mittelpunkt stellt.',
     ],
     lagen: ['Eltville', 'Oestrich-Winkel', 'Geisenheim', 'Rüdesheim', 'Kiedrich', 'Walluf', 'Lorch'],
-    anfahrt: 'Der Rheingau liegt direkt vor meiner Haustür. Kurze Wege, schnelle Termine.',
+    anfahrt: 'Im Rheingau bin ich regelmäßig vor Ort. Kurze Wege, schnelle Termine.',
   },
   {
     slug: 'taunusstein',
@@ -177,13 +178,13 @@ export const orte: Ort[] = [
     description:
       'Home Staging in Taunusstein und im Rheingau-Taunus-Kreis. Einfamilienhaus oder Wohnung verkaufsfertig inszeniert, persönlich und vor Ort.',
     intro:
-      'Taunusstein ist mein Zuhause. Ich kenne die Häuser, die Straßen und die Käufer, die hier suchen: Familien und Pendler, die Grün und Platz wollen und trotzdem schnell in Wiesbaden oder Frankfurt sind.',
+      'In Taunusstein bin ich regelmäßig im Einsatz. Ich kenne die Häuser, die Straßen und die Käufer, die hier suchen: Familien und Pendler, die Grün und Platz wollen und trotzdem schnell in Wiesbaden oder Frankfurt sind.',
     markt: [
       'Das typische Objekt hier ist das Einfamilien- oder Reihenhaus aus den 70ern bis 2000ern. Oft bewohnt, oft voller Erinnerungen. Für Käufer zählt aber, ob sie sich ihre eigene Familie darin vorstellen können.',
       'Mit einer Staging-Beratung oder einem Teil-Staging holen wir mit überschaubarem Budget das Maximum aus Wohnzimmer, Küche und Garten heraus.',
     ],
     lagen: ['Hahn', 'Wehen', 'Bleidenstadt', 'Neuhof', 'Orlen', 'Seitzenhahn', 'Bad Schwalbach', 'Idstein', 'Hohenstein'],
-    anfahrt: 'Ich arbeite von Taunusstein aus. Ein Vor-Ort-Termin ist meist innerhalb weniger Tage möglich.',
+    anfahrt: 'Der Rheingau-Taunus-Kreis gehört zu meinem Kerngebiet. Ein Vor-Ort-Termin ist meist innerhalb weniger Tage möglich.',
   },
   {
     slug: 'mainz',
@@ -263,6 +264,6 @@ export const orte: Ort[] = [
       'Ich arbeite mit hochwertigen Möbeln, Kunst und Lichtkonzept und stimme mich eng mit Ihrem Makler ab, damit Fototermin und Besichtigungen perfekt vorbereitet sind.',
     ],
     lagen: ['Bad Homburg', 'Gonzenheim', 'Kirdorf', 'Dornholzhausen', 'Oberursel', 'Kronberg', 'Königstein', 'Friedrichsdorf'],
-    anfahrt: 'Der Hochtaunus liegt gut erreichbar zwischen Taunusstein und Frankfurt.',
+    anfahrt: 'Der Hochtaunus gehört fest zu meinem Einsatzgebiet. Termine vor Ort sind kurzfristig möglich.',
   },
 ];

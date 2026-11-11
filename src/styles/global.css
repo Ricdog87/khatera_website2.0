@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Designsystem aus dem Logo: Petrol und Sand auf warmem Papierweiß. Fotos tragen, Typografie flüstert. */
+/* Designsystem aus der Geschäftsausstattung: Anthrazit, Sand und dezentes Oliv auf hellem Grau. Fotos tragen, Typografie flüstert. */
 @theme {
   --color-*: initial;
   --color-transparent: transparent;

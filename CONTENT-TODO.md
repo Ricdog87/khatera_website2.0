@@ -75,10 +75,28 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 
 ## Aus dem Termin vom 11.11. (umgesetzt, bitte prüfen)
 
-- Die Website heißt jetzt **KG Homestaging**: Logo, Seitentitel, Texte, Google-Daten, `llms.txt`. „Khatera Gross Home Staging“ bleibt als früherer Name in den Daten für Google hinterlegt, damit bestehende Suchtreffer erhalten bleiben. Impressum: „KG Homestaging, Inhaberin: Khatera Gross“.
+- Die Website heißt jetzt **KG Homestaging**: Logo, Seitentitel, Texte, Google-Daten, `llms.txt`. Der frühere Firmenname ist vollständig entfernt, auch aus den Daten für Google. Impressum: „KG Homestaging, Inhaberin: Khatera Gross“.
 - Neues Logo „KG | HOMESTAGING“ aus den Original-Buchstaben der bisherigen Wortmarke: einzeilig im Header, gestapelt im Footer und im Vorschaubild für WhatsApp/LinkedIn.
 - Vorher/Nachher-Regler „Leer / Eingerichtet“ auf der Startseite und auf Fix & Flip mit dem Schlafzimmer aus Bodenheim. **Der leere Zustand ist digital nachgestellt und in der Bildunterschrift so gekennzeichnet.** Ein echtes Foto des leeren Raums kann jederzeit nachgereicht werden (siehe `src/assets/images/vorher-nachher/LIESMICH.md`).
 - Neues Projekt „Wohnung in Bodenheim“ mit 6 Fotos auf `/projekte`. Bitte Ort und Text freigeben.
 - Über mich: „im Rhein-Main-Gebiet“ statt „in Taunusstein“, „Meine Leidenschaft gilt Immobilien sowie Design und Raumgestaltung“, dazu IHK-Zertifikat und Ausbildung bei der DGHR (auch auf der Startseite und in den Daten für Google). **Bitte genaue Bezeichnung des IHK-Zertifikats bestätigen.**
 - Offen: Die E-Mail-Adresse und die Domain lauten weiter auf `khatera-gross.de`.
+
+## Aus der Übergabe am 11.11., 11:35 Uhr
+
+Umgesetzt:
+- Früherer Firmenname vollständig entfernt (auch aus den Google-Daten und `llms.txt`).
+- Taunusstein steht nur noch im Impressum und in der Datenschutzerklärung (Pflichtangabe) sowie als Einsatzort (Stadtseite, Regionenliste). Aus Profil, Kurzfakten, Kontaktseite, Footer und Google-Daten ist es entfernt, dort steht Rhein-Main-Gebiet.
+- Footer-Logo jetzt im Sand-Ton der Visitenkarte. Vorher war es abgedunkelt und wirkte khaki.
+- Redaktionsplan für automatische Ratgeber-Beiträge: `RATGEBER-PLAN.md`.
+
+Wartet auf Khatera:
+| Was | Wofür | Bis |
+|---|---|---|
+| Neuer Text „Über mich“ | Seite Über mich, Startseite | Do, 12.11. |
+| Favoritenordner: je 5 Bilder Website und Bodenheim | Startseite, Projekte | Do, 12.11. |
+| Natürlicheres Profilbild in Originalauflösung | Über mich, Startseite, Kontakt. Aktuell hochskaliertes Bild, im Verlauf liegen noch die Studiofotos mit weißem Blazer und weißer Bluse | Do, 12.11. |
+| IONOS-Rechnung | Tarif prüfen, DNS-Zugang für Go-live | Do, 12.11. |
+| Entscheidung Domain (`khatera-gross.de` oder `kg-homestaging.de`) | Go-live, Werbematerial für den 17.11. | vor Druck |
+| Abschließende Durchsicht der gesamten Website | Freigabe | nach Go-live-Stand |
 

@@ -31,9 +31,9 @@ const business = {
   '@type': 'ProfessionalService',
   '@id': `${site}/#business`,
   name: company.name,
-  alternateName: [company.formerName, 'KG Home Staging'],
+  alternateName: 'KG Home Staging',
   description:
-    'KG Homestaging ist das Home-Staging-Studio von Khatera Gross aus Taunusstein. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet und richtet Musterwohnungen für Bauträger bundesweit ein.',
+    'KG Homestaging ist das Home-Staging-Studio von Khatera Gross im Rhein-Main-Gebiet. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet und richtet Musterwohnungen für Bauträger bundesweit ein.',
   slogan: 'Räume, die verkaufen.',
   knowsAbout: ['Home Staging', 'Immobilien-Inszenierung', 'Musterwohnung', 'Restanten-Staging', 'Redesign', 'Fix and Flip', 'Immobilienverkauf'],
   inLanguage: 'de-DE',
@@ -42,14 +42,8 @@ const business = {
   image: `${site}/og.jpg`,
   telephone: company.phone.replace(/\s/g, ''),
   email: company.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: company.street,
-    postalCode: company.zip,
-    addressLocality: company.city,
-    addressRegion: 'Hessen',
-    addressCountry: 'DE',
-  },
+  // Dienstleister ohne Ladengeschäft: nur Region, die Anschrift steht im Impressum
+  address: { '@type': 'PostalAddress', addressRegion: 'Hessen', addressCountry: 'DE' },
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Rhein-Main-Gebiet' },
     ...orte.map((o) => ({ '@type': 'City', name: o.name })),
@@ -98,7 +92,6 @@ const website = {
   '@id': `${site}/#website`,
   url: site,
   name: company.name,
-  alternateName: company.formerName,
   inLanguage: 'de-DE',
   publisher: { '@id': `${site}/#business` },
 };
@@ -119,7 +112,7 @@ const allSchema = [business, website, ...(crumbSchema ? [crumbSchema] : []), ...
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="geo.region" content="DE-HE" />
-    <meta name="geo.placename" content="Taunusstein" />
+    <meta name="geo.placename" content="Rhein-Main-Gebiet" />
     <Font cssVariable="--font-cormorant" preload />
     <Font cssVariable="--font-jost" preload />
 

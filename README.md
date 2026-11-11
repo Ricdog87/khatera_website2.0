@@ -1,6 +1,6 @@
 # khatera-gross.de
 
-Relaunch der Website von KG Homestaging (früher Khatera Gross Home Staging), Inhaberin Khatera Gross, Rhein-Main-Gebiet.
+Relaunch der Website von KG Homestaging, Inhaberin Khatera Gross, Rhein-Main-Gebiet.
 
 Astro, TypeScript, Tailwind CSS. Statisch gebaut, Bilder über `astro:assets` (AVIF/WebP), Schriften selbst gehostet (Cormorant Garamond, Jost). Keine Cookies, kein Tracking. Deployment auf Vercel.
 
