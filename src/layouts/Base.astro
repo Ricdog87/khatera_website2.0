@@ -23,7 +23,7 @@ interface Props {
 const { title, description, overlayHeader = false, ogImage = '/og.jpg', schema = [], breadcrumbs, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // Marken-Suffix nur, wenn der Titel dann noch in die Suchergebnisse passt (ca. 65 Zeichen)
-const fullTitle = title.includes('Khatera Gross') || title.length > 49 ? title : `${title} | Khatera Gross`;
+const fullTitle = title.includes(company.shortName) || title.length > 48 ? title : `${title} | ${company.shortName}`;
 const site = Astro.site!.href.replace(/\/$/, '');
 
 const business = {
@@ -31,9 +31,9 @@ const business = {
   '@type': 'ProfessionalService',
   '@id': `${site}/#business`,
   name: company.name,
-  alternateName: 'KG Home Staging',
+  alternateName: [company.formerName, 'KG Home Staging'],
   description:
-    'Home-Staging-Studio aus Taunusstein. Khatera Gross inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet und richtet Musterwohnungen für Bauträger bundesweit ein.',
+    'KG Homestaging ist das Home-Staging-Studio von Khatera Gross aus Taunusstein. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet und richtet Musterwohnungen für Bauträger bundesweit ein.',
   slogan: 'Räume, die verkaufen.',
   knowsAbout: ['Home Staging', 'Immobilien-Inszenierung', 'Musterwohnung', 'Restanten-Staging', 'Redesign', 'Fix and Flip', 'Immobilienverkauf'],
   inLanguage: 'de-DE',
@@ -55,7 +55,7 @@ const business = {
     ...orte.map((o) => ({ '@type': 'City', name: o.name })),
     { '@type': 'AdministrativeArea', name: 'Rheingau-Taunus-Kreis' },
   ],
-  founder: { '@type': 'Person', '@id': `${site}/#khatera`, name: company.owner, jobTitle: 'Home Stagerin', url: `${site}/ueber-mich` },
+  founder: { '@type': 'Person', '@id': `${site}/#khatera`, name: company.owner, jobTitle: 'IHK-zertifizierte Home Stagerin', url: `${site}/ueber-mich` },
   memberOf: { '@type': 'Organization', name: 'Staging Community' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -98,6 +98,7 @@ const website = {
   '@id': `${site}/#website`,
   url: site,
   name: company.name,
+  alternateName: company.formerName,
   inLanguage: 'de-DE',
   publisher: { '@id': `${site}/#business` },
 };

@@ -10,6 +10,8 @@ import Regionen from '../components/Regionen.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import GoogleBewertung from '../components/GoogleBewertung.astro';
+import VorherNachher from '../components/VorherNachher.astro';
+import { vorherNachherPaare } from '../lib/vorherNachher';
 import { extras, facts } from '../config/site';
 import { faqAllgemein, faqSchema } from '../content/faq';
 
@@ -47,18 +49,19 @@ const zielgruppen = [
     cta: 'Fix & Flip',
   },
 ];
+const paar = vorherNachherPaare()[0];
 ---
 
 <Base
-  title="Home Staging Rhein-Main, Wiesbaden & Frankfurt | Khatera Gross"
-  description="Home Staging im Rhein-Main-Gebiet: Khatera Gross inszeniert Häuser und Wohnungen für schnellere Verkäufe. Individuelle Angebote, Musterwohnungen bundesweit."
+  title="Home Staging Rhein-Main, Wiesbaden & Frankfurt | KG Homestaging"
+  description="Home Staging im Rhein-Main-Gebiet: KG Homestaging inszeniert Häuser und Wohnungen für schnellere Verkäufe. Individuelle Angebote, Musterwohnungen bundesweit."
   overlayHeader
   schema={[faqSchema(faqAllgemein)]}
 >
   <!-- Hero -->
   <section class="on-dark relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink-900 text-paper">
     <div class="absolute inset-0 -z-10 overflow-hidden" data-parallax-frame>
-      <Photo src={hero} alt="Von Khatera Gross inszeniertes, lichtdurchflutetes Wohnzimmer mit cremefarbenem Sofa und Blick ins Grüne" widths={[768, 1080, 1440, 1920, 2600]} sizes="100vw" loading="eager" fetchpriority="high" class="hero-img h-full w-full object-cover object-[55%_50%]" data-parallax="0.1" />
+      <Photo src={hero} alt="Von KG Homestaging inszeniertes, lichtdurchflutetes Wohnzimmer mit cremefarbenem Sofa und Blick ins Grüne" widths={[768, 1080, 1440, 1920, 2600]} sizes="100vw" loading="eager" fetchpriority="high" class="hero-img h-full w-full object-cover object-[55%_50%]" data-parallax="0.1" />
       <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(30_30_29/0.45)_0%,rgb(30_30_29/0)_28%,rgb(30_30_29/0.12)_55%,rgb(30_30_29/0.78)_100%)]"></div>
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgb(30_30_29/0.55)_0%,rgb(30_30_29/0.12)_50%,transparent_75%)]"></div>
     </div>
@@ -82,15 +85,15 @@ const zielgruppen = [
         <li><span class="text-sand-400">✦</span> Persönliches Angebot in 48 Stunden</li>
         <li><span class="text-sand-400">✦</span> Aufbau meist an einem Tag</li>
         <li><span class="text-sand-400">✦</span> Abbau nach dem Notartermin</li>
-        <li><span class="text-sand-400">✦</span> Premium-Mitglied Staging Community</li>
+        <li><span class="text-sand-400">✦</span> IHK-zertifiziert, ausgebildet bei der DGHR</li>
       </ul>
     </div>
   </section>
 
   <Kurzantwort
     class="mt-[calc(var(--section)*0.7)]"
-    frage="Was macht Khatera Gross Home Staging?"
-    antwort="Khatera Gross Home Staging aus Taunusstein bereitet Häuser und Wohnungen im gesamten Rhein-Main-Gebiet für den Verkauf vor: mit Möbeln, Licht, Textilien und Kunst, abgestimmt auf die wahrscheinlichste Käufergruppe. Das Ziel sind stärkere Exposéfotos, mehr Anfragen, ein schnellerer Verkauf und weniger Preisnachlass. Eigentümer, Makler und Investoren erhalten nach einem kostenlosen Erstgespräch ein individuelles Angebot, Bauträger Musterwohnungen bundesweit."
+    frage="Was macht KG Homestaging?"
+    antwort="KG Homestaging aus Taunusstein bereitet Häuser und Wohnungen im gesamten Rhein-Main-Gebiet für den Verkauf vor: mit Möbeln, Licht, Textilien und Kunst, abgestimmt auf die wahrscheinlichste Käufergruppe. Das Ziel sind stärkere Exposéfotos, mehr Anfragen, ein schnellerer Verkauf und weniger Preisnachlass. Eigentümer, Makler und Investoren erhalten nach einem kostenlosen Erstgespräch ein individuelles Angebot, Bauträger Musterwohnungen bundesweit."
     fakten={[
       { label: 'Sitz', wert: 'Taunusstein' },
       { label: 'Einsatzgebiet', wert: 'Rhein-Main, Musterwohnungen bundesweit' },
@@ -98,6 +101,26 @@ const zielgruppen = [
       { label: 'Zielgruppen', wert: 'Eigentümer, Makler, Bauträger' },
     ]}
   />
+
+  <!-- Vorher / Nachher -->
+  {paar && (
+    <section class="section bg-linen" id="vorher-nachher">
+      <div class="container-page grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <div class="lg:col-span-4">
+          <p class="label rule text-olive-700" data-reveal>Leer oder eingerichtet</p>
+          <h2 class="mt-6 text-headline" data-reveal style="--d:1">Derselbe Raum. <em class="block text-olive-600">Ein anderes Gefühl.</em></h2>
+          <p class="mt-8 text-lead text-ink-600" data-reveal style="--d:2">Ziehen Sie den Regler und sehen Sie, was Home Staging mit einem leeren Raum macht. Käufer sehen nicht mehr vier Wände, sondern ihr künftiges Zuhause.</p>
+          <div class="mt-10 flex flex-wrap gap-4" data-reveal style="--d:3">
+            <a href="/kontakt" class="btn btn-primary">Immobilie anfragen <Arrow /></a>
+            <a href="/projekte" class="btn btn-ghost">Projekte</a>
+          </div>
+        </div>
+        <div class="lg:col-span-8" data-reveal>
+          <VorherNachher vorher={paar.vorher} nachher={paar.nachher} titel={paar.titel} digital={paar.digital} />
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Haltung -->
   <section class="section">
@@ -118,7 +141,7 @@ const zielgruppen = [
       </div>
       <figure class="relative lg:col-span-4 lg:col-start-9">
         <div class="overflow-hidden" data-reveal="image">
-          <Photo src={portrait} alt="Khatera Gross, Home Stagerin aus Taunusstein, im dunkelblauen Blazer" widths={[480, 768, 964]} sizes="(min-width: 1024px) 30vw, 90vw" class="aspect-[4/5] w-full object-cover object-[50%_25%]" />
+          <Photo src={portrait} alt="Khatera Gross, IHK-zertifizierte Home Stagerin, im dunkelblauen Blazer" widths={[480, 768, 964]} sizes="(min-width: 1024px) 30vw, 90vw" class="aspect-[4/5] w-full object-cover object-[50%_25%]" />
         </div>
         <figcaption class="mt-4 flex items-baseline justify-between text-small text-ink-600">
           <span class="font-display text-[1.5rem] italic text-ink-900">Khatera Gross</span>
@@ -209,9 +232,9 @@ const zielgruppen = [
       <div class="lg:col-span-6 lg:col-start-7">
         <SectionHead label="Über mich" title="Mit Leidenschaft inszeniert," em="mit Liebe zum Detail." />
         <div class="mt-8 space-y-5 text-ink-600" data-reveal style="--d:2">
-          <p>Ich bin Khatera Gross, Gründerin von Khatera Gross Home Staging in Taunusstein. Meine Leidenschaft gilt Räumen, die Menschen berühren: Licht, Proportion, Material und das eine Detail, das hängen bleibt.</p>
+          <p>Ich bin Khatera Gross, Gründerin von KG Homestaging im Rhein-Main-Gebiet. Meine Leidenschaft gilt Immobilien sowie Design und Raumgestaltung: Licht, Proportion, Material und das eine Detail, das hängen bleibt.</p>
           <p>Ein Immobilienverkauf ist mehr als eine Transaktion. Ich begleite Sie von der ersten Idee bis zum Notartermin und sorge dafür, dass Ihre Immobilie nicht nur heraussticht, sondern schnell und zu einem guten Preis verkauft wird.</p>
-          <p>Als <strong class="font-normal text-ink-900">Premium-Mitglied der Staging Community</strong>, dem größten Netzwerk von über 250 Home-Staging-Profis im deutschsprachigen Raum, arbeite ich nach festen Qualitätsstandards und bilde mich laufend weiter.</p>
+          <p>Ich bin <strong class="font-normal text-ink-900">IHK-zertifizierte Home Stagerin</strong> und habe mein Handwerk bei der DGHR gelernt, der Deutschen Gesellschaft für Home Staging und Redesign. Als <strong class="font-normal text-ink-900">Premium-Mitglied der Staging Community</strong>, dem größten Netzwerk von über 250 Home-Staging-Profis im deutschsprachigen Raum, arbeite ich nach festen Qualitätsstandards und bilde mich laufend weiter.</p>
         </div>
         <a href="/ueber-mich" class="btn btn-dark mt-10" data-reveal>Mehr über mich <Arrow /></a>
       </div>

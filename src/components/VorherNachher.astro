@@ -7,8 +7,10 @@ interface Props {
   vorher: ImageMetadata;
   nachher: ImageMetadata;
   titel: string;
+  /** Vorher-Bild ist digital nachgestellt (kein Originalfoto des Leerstands) */
+  digital?: boolean;
 }
-const { vorher, nachher, titel } = Astro.props;
+const { vorher, nachher, titel, digital = false } = Astro.props;
 const [v, n] = await Promise.all([
   getImage({ src: vorher, width: 1600, format: 'webp', quality: 78 }),
   getImage({ src: nachher, width: 1600, format: 'webp', quality: 78 }),
@@ -17,19 +19,22 @@ const id = `vn-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <figure class="vorher-nachher" style="--pos: 50%">
-  <div class="vn-buehne relative aspect-[3/2] w-full overflow-hidden bg-linen select-none">
+  <div class="vn-buehne relative aspect-[4/3] w-full overflow-hidden bg-paper select-none md:aspect-[3/2]">
     <img src={n.src} alt={`Nachher: ${titel} nach dem Home Staging`} width={n.attributes.width} height={n.attributes.height} loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover" />
-    <img src={v.src} alt={`Vorher: ${titel} vor dem Home Staging`} width={v.attributes.width} height={v.attributes.height} loading="lazy" decoding="async" class="vn-vorher absolute inset-0 h-full w-full object-cover" />
-    <span class="label pointer-events-none absolute top-4 left-4 rounded-full bg-ink-900/70 px-3 py-1.5 text-paper">Vorher</span>
-    <span class="label pointer-events-none absolute top-4 right-4 rounded-full bg-paper/85 px-3 py-1.5 text-ink-900">Nachher</span>
+    <img src={v.src} alt={digital ? `Vorher: ${titel} ohne Einrichtung, digital nachgestellt` : `Vorher: ${titel} vor dem Home Staging`} width={v.attributes.width} height={v.attributes.height} loading="lazy" decoding="async" class="vn-vorher absolute inset-0 h-full w-full object-cover" />
+    <span class="label pointer-events-none absolute top-4 left-4 rounded-full bg-ink-900/70 px-3 py-1.5 text-paper">Leer</span>
+    <span class="label pointer-events-none absolute top-4 right-4 rounded-full bg-paper/85 px-3 py-1.5 text-ink-900">Eingerichtet</span>
     <span class="vn-linie pointer-events-none absolute inset-y-0 w-px bg-paper" aria-hidden="true"></span>
     <span class="vn-griff pointer-events-none absolute top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-paper text-ink-900 shadow-[0_6px_24px_-6px_rgb(0_0_0/0.45)]" aria-hidden="true">
       <svg class="h-4 w-6" viewBox="0 0 24 16" fill="none"><path d="M7 2 1 8l6 6M17 2l6 6-6 6" stroke="currentColor" stroke-width="1.4" /></svg>
     </span>
-    <label for={id} class="sr-only">Vergleich verschieben: links Vorher, rechts Nachher</label>
+    <label for={id} class="sr-only">Vergleich verschieben: links leer, rechts eingerichtet</label>
     <input id={id} type="range" min="0" max="100" value="50" step="1" class="vn-regler absolute inset-0 h-full w-full cursor-ew-resize opacity-0" />
   </div>
-  <figcaption class="mt-3 flex justify-between text-small text-ink-600"><span>{titel}</span><span>Regler ziehen</span></figcaption>
+  <figcaption class="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-small text-ink-600">
+    <span>{titel}{digital && ', eingerichtet von KG Homestaging. Leerstand zur Veranschaulichung digital nachgestellt.'}</span>
+    <span>Regler ziehen</span>
+  </figcaption>
 </figure>
 
 <style>

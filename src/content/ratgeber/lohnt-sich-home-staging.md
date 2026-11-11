@@ -10,7 +10,7 @@ bild: ../../assets/images/haus-fernblick/detail-esstisch.jpg
 bildAlt: Gedeckter Esstisch mit Vase in einer inszenierten Immobilie
 ---
 
-**Kurz gesagt:** Home Staging lohnt sich in den meisten Fällen, weil die Investition in der Regel deutlich kleiner ist als ein typischer Preisnachlass in der Verhandlung oder die Kosten von ein paar Monaten Leerstand. Was es im Einzelfall kostet, hängt von Größe, Preisklasse und Laufzeit ab. Deshalb gibt es bei Khatera Gross keine Preisliste, sondern nach einem kostenlosen Erstgespräch ein persönliches Angebot.
+**Kurz gesagt:** Home Staging lohnt sich in den meisten Fällen, weil die Investition in der Regel deutlich kleiner ist als ein typischer Preisnachlass in der Verhandlung oder die Kosten von ein paar Monaten Leerstand. Was es im Einzelfall kostet, hängt von Größe, Preisklasse und Laufzeit ab. Deshalb gibt es bei KG Homestaging keine Preisliste, sondern nach einem kostenlosen Erstgespräch ein persönliches Angebot.
 
 ## Wovon die Kosten abhängen
 

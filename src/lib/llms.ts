@@ -10,7 +10,8 @@ export function kurzprofil(site: URL) {
 > ${company.name} ist ein Home-Staging-Studio aus ${company.city} (Hessen), gegründet und geführt von ${company.owner}. Es inszeniert Häuser und Wohnungen für Eigentümer, Makler und Investoren im gesamten Rhein-Main-Gebiet, damit Immobilien schneller und zu einem besseren Preis verkauft werden. Musterwohnungen für Bauträger und Projektentwickler richtet ${company.owner} bundesweit ein. Preise werden nicht pauschal genannt: Jedes Angebot entsteht individuell nach einem kostenlosen Erstgespräch.
 
 Wichtige Fakten:
-- Inhaberin: ${company.owner}, Home Stagerin, Premium-Mitglied der Staging Community
+- Name: ${company.name} (früher: ${company.formerName})
+- Inhaberin: ${company.owner}, IHK-zertifizierte Home Stagerin, ausgebildet bei der Deutschen Gesellschaft für Home Staging und Redesign (DGHR), Premium-Mitglied der Staging Community
 - Sitz: ${company.street}, ${company.zip} ${company.city}
 - Einsatzgebiet: gesamtes Rhein-Main-Gebiet (u. a. ${orte.map((o) => o.name).join(', ')}); Musterwohnungen bundesweit
 - Leistungen: Home Staging für leere und bewohnte Immobilien, Staging-Beratung, Musterwohnungen, Restanten-Staging, Home Staging für Fix & Flip

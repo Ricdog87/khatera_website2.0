@@ -1,6 +1,6 @@
 # khatera-gross.de
 
-Relaunch der Website von Khatera Gross Home Staging (Taunusstein, Rheingau, Wiesbaden).
+Relaunch der Website von KG Homestaging (früher Khatera Gross Home Staging), Inhaberin Khatera Gross, Rhein-Main-Gebiet.
 
 Astro, TypeScript, Tailwind CSS. Statisch gebaut, Bilder über `astro:assets` (AVIF/WebP), Schriften selbst gehostet (Cormorant Garamond, Jost). Keine Cookies, kein Tracking. Deployment auf Vercel.
 
@@ -58,8 +58,8 @@ Alte Framer-URLs (`/about-us`, `/blog/…`, `/project/…`) leiten per 301 weite
 | `src/config/site.ts` | Firmendaten, Pakete (ohne Preise), Extras, Stadtseiten |
 | `src/content/faq.ts` | FAQ, wird auch als FAQPage-Schema ausgegeben |
 | `src/components/` | Header, Footer, Paketkarten, Vorher/Nachher-Regler, Google-Bewertung, Ablauf, FAQ, Regionen, CTA |
-| `src/assets/brand/` | Wortmarke, Logo, Monogramm und Musterkachel, extrahiert aus den Illustrator-Originalen |
-| `brand-originale/` | Originaldateien der Designerin (Visitenkarte, Briefumschlag, Icon in 4 Farben) |
+| `src/assets/brand/` | Logo „KG \| HOMESTAGING“ (Zeile und gestapelt), Monogramm und Musterkachel. Das Logo entsteht mit `node scripts/logo-kg.mjs` aus den Original-Buchstaben der Designerin. |
+| `brand-originale/` | Originaldateien der Designerin (Visitenkarte, Briefumschlag, Icon in 4 Farben) und die frühere Wortmarke „Khatera Gross Home Staging“ |
 | `src/assets/images/` | Kuratierte, umbenannte Projektfotos und Porträts |
 | `scripts/screenshots.mjs` | Screenshots Desktop/Mobil: `node scripts/screenshots.mjs http://localhost:4321 / /kontakt` |
 | `scripts/og-image.mjs` | Erzeugt `public/og.jpg` und das Touch-Icon neu |

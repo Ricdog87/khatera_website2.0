@@ -20,7 +20,7 @@ Die Website ist die Basis. Gefunden wird man im Home Staging aber vor allem übe
 
 Bei „Home Staging Wiesbaden“ zeigt Google zuerst die Karte. Wer dort nicht steht, existiert für viele Suchende nicht.
 
-1. Profil auf business.google.com anlegen oder übernehmen, Name exakt: **Khatera Gross Home Staging**
+1. Profil auf business.google.com anlegen oder übernehmen, Name exakt: **KG Homestaging**
 2. Als **Servicegebiet-Unternehmen** einrichten (Adresse ausblenden), Gebiete: Wiesbaden, Rheingau-Taunus-Kreis, Mainz, Frankfurt am Main, Main-Taunus-Kreis
 3. Hauptkategorie so nah wie möglich an Home Staging wählen (Google-Kategorien vor Ort prüfen, z. B. Inneneinrichtung / Raumausstattung), Nebenkategorien ergänzen
 4. Website-Link: `https://khatera-gross.de/home-staging-kosten` oder Startseite, Telefon wie auf der Website
@@ -52,7 +52,7 @@ Makler sind die schnellsten Multiplikatoren: ein Makler bringt 5 bis 20 Objekte 
 
 Gesprächseinstieg am Telefon:
 
-> „Guten Tag, Khatera Gross, Home Staging aus Taunusstein. Ich unterstütze Makler hier in der Region, damit leere Objekte schneller weggehen und Sie im Akquisegespräch ein Argument mehr haben. Haben Sie gerade ein Objekt, das schon länger online ist?“
+> „Guten Tag, Khatera Gross von KG Homestaging. Ich unterstütze Makler hier in der Region, damit leere Objekte schneller weggehen und Sie im Akquisegespräch ein Argument mehr haben. Haben Sie gerade ein Objekt, das schon länger online ist?“
 
 ## 4. Einträge und Verzeichnisse (Woche 2 bis 3)
 
@@ -80,7 +80,7 @@ Vorher/Nachher-Fotos bei jedem Projekt machen. Sie sind für Website, Google-Pro
 ChatGPT, Perplexity, Claude und Googles KI-Übersichten empfehlen Anbieter, die sie auf mehreren vertrauenswürdigen Seiten mit **identischen Fakten** finden. Die Website liefert diese Fakten bereits sauber („Kurz erklärt“, strukturierte Daten, `llms.txt`). Jetzt geht es darum, dass sie auch anderswo stehen.
 
 1. **Bing Webmaster Tools** einrichten und `npm run indexnow` ausführen: ChatGPT-Suche und Copilot greifen auf Bing zu.
-2. **Gleiche Fakten überall:** Name „Khatera Gross Home Staging“, Taunusstein, Rhein-Main-Gebiet, Musterwohnungen bundesweit, persönliches Angebot in 48 Stunden. In Google-Profil, LinkedIn, Staging-Community-Profil, Houzz und Branchenverzeichnissen identisch formulieren.
+2. **Gleiche Fakten überall:** Name „KG Homestaging“, Inhaberin Khatera Gross, IHK-zertifiziert, Taunusstein, Rhein-Main-Gebiet, Musterwohnungen bundesweit, persönliches Angebot in 48 Stunden. In Google-Profil, LinkedIn, Staging-Community-Profil, Houzz und Branchenverzeichnissen identisch formulieren.
 3. **Bewertungen mit Inhalt:** Kunden bitten, Ort und Leistung zu nennen („Komplett-Staging für unsere Wohnung in Wiesbaden“). KI-Systeme werten den Text von Bewertungen aus.
 4. **Erwähnungen auf fremden Seiten:** Partnermakler-Websites („Unser Home-Staging-Partner“), Bauträger-Referenzen, lokale Presse (Wiesbadener Kurier, Rheingau Echo) mit einem Projekt.
 5. **LinkedIn-Beiträge** mit den Ratgeber-Themen, jeweils mit Link auf den Artikel.

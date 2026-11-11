@@ -19,7 +19,12 @@ const person = {
   '@type': 'Person',
   '@id': `${site}/#khatera`,
   name: 'Khatera Gross',
-  jobTitle: 'Home Stagerin, Gründerin',
+  jobTitle: 'IHK-zertifizierte Home Stagerin, Gründerin',
+  hasCredential: [
+    { '@type': 'EducationalOccupationalCredential', name: 'Home Staging (IHK-Zertifikat)', credentialCategory: 'certificate', recognizedBy: { '@type': 'Organization', name: 'Industrie- und Handelskammer (IHK)' } },
+    { '@type': 'EducationalOccupationalCredential', name: 'Ausbildung Home Staging', recognizedBy: { '@type': 'Organization', name: 'Deutsche Gesellschaft für Home Staging und Redesign (DGHR)' } },
+  ],
+  knowsAbout: ['Home Staging', 'Raumgestaltung', 'Interior Design', 'Immobilienverkauf'],
   worksFor: { '@id': `${site}/#business` },
   memberOf: { '@type': 'Organization', name: 'Staging Community' },
   address: { '@type': 'PostalAddress', addressLocality: 'Taunusstein', addressCountry: 'DE' },
@@ -27,8 +32,8 @@ const person = {
 ---
 
 <Base
-  title="Über mich: Khatera Gross, Home Stagerin"
-  description="Khatera Gross ist Home Stagerin aus Taunusstein und Premium-Mitglied der Staging Community. Mit Leidenschaft für Räume, die Käufer berühren."
+  title="Über mich: Khatera Gross von KG Homestaging"
+  description="Khatera Gross, Gründerin von KG Homestaging im Rhein-Main-Gebiet: IHK-zertifizierte Home Stagerin, ausgebildet bei der DGHR, Premium-Mitglied der Staging Community."
   breadcrumbs={[{ name: 'Über mich', href: '/ueber-mich' }]}
   schema={[person]}
 >
@@ -38,7 +43,7 @@ const person = {
         <p class="label rule text-olive-700" data-reveal>Über mich</p>
         <h1 class="mt-6 text-display" data-reveal style="--d:1">Ich bin Khatera. <em class="text-olive-600">Ich gebe Räumen eine Geschichte.</em></h1>
         <p class="mt-10 max-w-2xl text-lead text-ink-600" data-reveal style="--d:2">
-          Gründerin von Khatera Gross Home Staging in Taunusstein. Meine Leidenschaft gilt Design, Raumgestaltung und der Kunst, Immobilien so zu präsentieren, dass sie ihr volles Potenzial zeigen.
+          Gründerin von KG Homestaging im Rhein-Main-Gebiet. Meine Leidenschaft gilt Immobilien sowie Design und Raumgestaltung. Als IHK-zertifizierte Home Stagerin, ausgebildet bei der DGHR, präsentiere ich Immobilien so, dass sie ihr volles Potenzial zeigen.
         </p>
         <GoogleBewertung variant="button" class="mt-10" />
       </div>
@@ -77,10 +82,11 @@ const person = {
   <section class="section">
     <div class="container-page grid gap-14 lg:grid-cols-12">
       <div class="lg:col-span-5">
-        <p class="label rule text-olive-700" data-reveal>Mitgliedschaft</p>
-        <h2 class="mt-6 text-headline" data-reveal style="--d:1">Premium-Mitglied der <em class="text-olive-600">Staging Community.</em></h2>
+        <p class="label rule text-olive-700" data-reveal>Ausbildung &amp; Mitgliedschaft</p>
+        <h2 class="mt-6 text-headline" data-reveal style="--d:1">IHK-zertifiziert, <em class="text-olive-600">ausgebildet bei der DGHR.</em></h2>
       </div>
       <div class="space-y-5 text-ink-600 lg:col-span-6 lg:col-start-7" data-reveal style="--d:2">
+        <p>Mein Handwerk habe ich bei der <strong class="font-normal text-ink-900">Deutschen Gesellschaft für Home Staging und Redesign (DGHR)</strong> gelernt und mit dem <strong class="font-normal text-ink-900">IHK-Zertifikat</strong> abgeschlossen. Für Sie heißt das: geprüftes Fachwissen statt Bauchgefühl, von der Zielgruppenanalyse bis zur Möblierung.</p>
         <p>Die Staging Community ist der größte Zusammenschluss von über 250 deutschsprachigen Expertinnen und Experten für Home Staging, Interior, Redesign und Immobilienverkauf.</p>
         <p>Als Teil dieser Gemeinschaft bilde ich mich regelmäßig in Webinaren und Workshops weiter, habe Zugang zu exklusiven Einkaufskonditionen und ein starkes Netzwerk von Kolleginnen und Kollegen.</p>
         <p>Als <strong class="font-normal text-ink-900">Premium-Mitglied</strong> verpflichte ich mich zu hohen Qualitätsstandards und trage das Gütesiegel der Community. Für Sie bedeutet das zusätzliche Sicherheit und Vertrauen.</p>

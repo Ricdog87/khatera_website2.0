@@ -5,8 +5,10 @@
  */
 
 export const company = {
-  name: 'Khatera Gross Home Staging',
-  shortName: 'Khatera Gross',
+  // Markenname seit 11.11.: KG Homestaging. Inhaberin bleibt Khatera Gross (Impressum, Über mich, Autorin).
+  name: 'KG Homestaging',
+  shortName: 'KG Homestaging',
+  formerName: 'Khatera Gross Home Staging',
   owner: 'Khatera Gross',
   street: 'Im Biengarten 21',
   zip: '65232',
@@ -23,7 +25,7 @@ export const company = {
   url: 'https://khatera-gross.de',
   // TODO: Direkten Bewertungslink aus dem Google-Unternehmensprofil eintragen (Profil > Rezensionen anfordern).
   // Bis dahin führt der Link auf die Google-Suche nach dem Profil.
-  googleReviewUrl: 'https://www.google.com/maps/search/?api=1&query=Khatera+Gross+Home+Staging+Taunusstein',
+  googleReviewUrl: 'https://www.google.com/maps/search/?api=1&query=KG+Homestaging+Khatera+Gross+Taunusstein',
 } as const;
 
 export const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';

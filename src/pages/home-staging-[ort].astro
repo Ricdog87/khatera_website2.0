@@ -62,7 +62,7 @@ const og = await ogBild(bild);
 
 <Base
   ogImage={og}
-  title={`${ort.title} | Khatera Gross`}
+  title={`${ort.title} | KG Homestaging`}
   description={ort.description}
   schema={[service, faqSchema(fragen)]}
   breadcrumbs={[{ name: ort.title, href: `/home-staging-${ort.slug}` }]}
@@ -80,7 +80,7 @@ const og = await ogBild(bild);
       </div>
       <div class="lg:col-span-6">
         <div class="overflow-hidden" data-reveal="image">
-          <Photo src={bild} alt={`Home Staging ${ort.praep}: inszenierter Wohnraum von Khatera Gross`} widths={[768, 1080, 1440, 1920]} sizes="(min-width: 1024px) 50vw, 100vw" loading="eager" fetchpriority="high" class="aspect-[4/3] w-full object-cover" />
+          <Photo src={bild} alt={`Home Staging ${ort.praep}: inszenierter Wohnraum von KG Homestaging`} widths={[768, 1080, 1440, 1920]} sizes="(min-width: 1024px) 50vw, 100vw" loading="eager" fetchpriority="high" class="aspect-[4/3] w-full object-cover" />
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@ const og = await ogBild(bild);
   <Kurzantwort
     class="mb-[var(--section)]"
     frage={`Wer bietet Home Staging ${ort.praep} an?`}
-    antwort={`Khatera Gross Home Staging aus Taunusstein inszeniert Immobilien ${ort.praep} und im gesamten Rhein-Main-Gebiet, unter anderem in ${ort.lagen.slice(0, 4).join(', ')}. ${ort.anfahrt} Zur Wahl stehen Staging-Beratung für bewohnte Immobilien, Teil-Staging und Komplett-Staging, jeweils inklusive Möbelmiete und Anfahrt. Nach einem kostenlosen Erstgespräch gibt es innerhalb von 48 Stunden ein persönliches Angebot.`}
+    antwort={`KG Homestaging aus Taunusstein inszeniert Immobilien ${ort.praep} und im gesamten Rhein-Main-Gebiet, unter anderem in ${ort.lagen.slice(0, 4).join(', ')}. ${ort.anfahrt} Zur Wahl stehen Staging-Beratung für bewohnte Immobilien, Teil-Staging und Komplett-Staging, jeweils inklusive Möbelmiete und Anfahrt. Nach einem kostenlosen Erstgespräch gibt es innerhalb von 48 Stunden ein persönliches Angebot.`}
     fakten={[
       { label: 'Region', wert: ort.name },
       { label: 'Erstgespräch', wert: 'kostenlos' },

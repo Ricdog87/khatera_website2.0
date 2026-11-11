@@ -19,6 +19,12 @@ import wtDiele from '../assets/images/haus-wendeltreppe/home-staging-diele-wende
 import wtTreppe from '../assets/images/haus-wendeltreppe/detail-wendeltreppe-gelaender.jpg';
 import wtSchlafen from '../assets/images/haus-wendeltreppe/home-staging-schlafzimmer-balkon.jpg';
 import wtKinder from '../assets/images/haus-wendeltreppe/home-staging-kinderzimmer-hausbett.jpg';
+import bhWohnen from '../assets/images/bodenheim/home-staging-wohnzimmer-bodenheim.jpg';
+import bhSessel from '../assets/images/bodenheim/home-staging-wohnzimmer-regal-sessel.jpg';
+import bhKonsole from '../assets/images/bodenheim/detail-konsole-kunstdrucke.jpg';
+import bhSchlafen from '../assets/images/bodenheim/home-staging-schlafzimmer-bodenheim.jpg';
+import bhArbeit from '../assets/images/bodenheim/home-staging-schlafzimmer-arbeitsplatz.jpg';
+import bhBad from '../assets/images/bodenheim/home-staging-bad-bodenheim.jpg';
 import loftWohnen from '../assets/images/loft/home-staging-loft-wohnbereich.jpg';
 import loftTreppe from '../assets/images/loft/home-staging-loft-treppe.jpg';
 import nbWohnen from '../assets/images/projekte/home-staging-wohnzimmer-neubauwohnung.jpg';
@@ -47,6 +53,21 @@ const projekte = [
   },
   {
     nr: '02',
+    titel: 'Wohnung in Bodenheim',
+    ort: 'Bodenheim, Rheinhessen',
+    art: 'Komplett-Staging',
+    text: 'Eine frisch renovierte Erdgeschosswohnung, leer und ohne Maßstab auf den Fotos. Rundes Sofa, schwarze Stahlregale, warme Brauntöne und Bouclé geben jedem Raum eine klare Aufgabe: wohnen, essen, schlafen, arbeiten.',
+    bilder: [
+      { src: bhWohnen, alt: 'Wohnzimmer mit rundem Sofa, Couchtisch aus Holz und schwarzem Regal', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: bhSessel, alt: 'Sitzecke mit Sessel, Plaid und Stahlregalen, Blick in den Essbereich', cls: 'col-span-12 md:col-span-7', ratio: 'aspect-[3/2]' },
+      { src: bhKonsole, alt: 'Konsole mit Kunstdrucken, Vase und Hängepflanze', cls: 'col-span-12 md:col-span-5', ratio: 'aspect-[4/5] md:aspect-auto md:h-full' },
+      { src: bhSchlafen, alt: 'Schlafzimmer mit Doppelbett, Holzpaneel, Sitzbank und Pendelleuchte', cls: 'col-span-12', ratio: 'aspect-[3/2]' },
+      { src: bhArbeit, alt: 'Schlafzimmer mit Arbeitsplatz, Sessel und Garderobe', cls: 'col-span-6', ratio: 'aspect-[3/2]' },
+      { src: bhBad, alt: 'Bad mit Waschtisch, rundem Spiegel und Handtuchhalter', cls: 'col-span-6', ratio: 'aspect-[3/2]' },
+    ],
+  },
+  {
+    nr: '03',
     titel: 'Haus mit Wendeltreppe',
     ort: 'Rhein-Main',
     art: 'Komplett-Staging',
@@ -61,7 +82,7 @@ const projekte = [
     ],
   },
   {
-    nr: '03',
+    nr: '04',
     titel: 'Loft mit Galerie',
     ort: 'Rhein-Main',
     art: 'Home Staging, Gewerbe zu Wohnen',
@@ -72,7 +93,7 @@ const projekte = [
     ],
   },
   {
-    nr: '04',
+    nr: '05',
     titel: 'Neubauwohnung',
     ort: 'Rhein-Main',
     art: 'Home Staging, leerstehend',
@@ -83,7 +104,7 @@ const projekte = [
     ],
   },
   {
-    nr: '05',
+    nr: '06',
     titel: 'Einliegerwohnung',
     ort: 'Rheingau-Taunus',
     art: 'Einrichtung & Styling',
@@ -100,7 +121,7 @@ const og = await ogBild(hfWohnen);
 <Base
   ogImage={og}
   title="Home Staging Projekte & Referenzen"
-  description="Ausgewählte Home Staging Projekte von Khatera Gross im Rhein-Main-Gebiet: Haus mit Fernblick, Haus mit Wendeltreppe, Loft und mehr. So wirken inszenierte Räume."
+  description="Ausgewählte Home Staging Projekte von KG Homestaging im Rhein-Main-Gebiet: Haus mit Fernblick, Wohnung in Bodenheim, Haus mit Wendeltreppe und mehr. So wirken inszenierte Räume."
   breadcrumbs={[{ name: 'Projekte', href: '/projekte' }]}
 >
   <section class="pt-10 pb-[calc(var(--section)*0.6)] md:pt-16">

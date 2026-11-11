@@ -72,3 +72,13 @@ Alles hier ist auf der Website schon als sinnvoller Platzhalter gefüllt. Bitte 
 - Neues Projekt „Haus mit Wendeltreppe“ (Fotos Oktober 2025) auf `/projekte`.
 - **Vorher/Nachher-Schieberegler auf `/fix-and-flip` ist eingebaut, aber noch ausgeblendet.** Er erscheint automatisch, sobald echte Bildpaare in `src/assets/images/vorher-nachher/` liegen, benannt `name-vorher.jpg` und `name-nachher.jpg`, gleiche Perspektive. **Bitte 2 bis 3 Paare liefern.**
 - Vorschläge für Schrift und Logo liegen als Ansichtsseite bereit. Entscheidung offen.
+
+## Aus dem Termin vom 11.11. (umgesetzt, bitte prüfen)
+
+- Die Website heißt jetzt **KG Homestaging**: Logo, Seitentitel, Texte, Google-Daten, `llms.txt`. „Khatera Gross Home Staging“ bleibt als früherer Name in den Daten für Google hinterlegt, damit bestehende Suchtreffer erhalten bleiben. Impressum: „KG Homestaging, Inhaberin: Khatera Gross“.
+- Neues Logo „KG | HOMESTAGING“ aus den Original-Buchstaben der bisherigen Wortmarke: einzeilig im Header, gestapelt im Footer und im Vorschaubild für WhatsApp/LinkedIn.
+- Vorher/Nachher-Regler „Leer / Eingerichtet“ auf der Startseite und auf Fix & Flip mit dem Schlafzimmer aus Bodenheim. **Der leere Zustand ist digital nachgestellt und in der Bildunterschrift so gekennzeichnet.** Ein echtes Foto des leeren Raums kann jederzeit nachgereicht werden (siehe `src/assets/images/vorher-nachher/LIESMICH.md`).
+- Neues Projekt „Wohnung in Bodenheim“ mit 6 Fotos auf `/projekte`. Bitte Ort und Text freigeben.
+- Über mich: „im Rhein-Main-Gebiet“ statt „in Taunusstein“, „Meine Leidenschaft gilt Immobilien sowie Design und Raumgestaltung“, dazu IHK-Zertifikat und Ausbildung bei der DGHR (auch auf der Startseite und in den Daten für Google). **Bitte genaue Bezeichnung des IHK-Zertifikats bestätigen.**
+- Offen: Die E-Mail-Adresse und die Domain lauten weiter auf `khatera-gross.de`.
+

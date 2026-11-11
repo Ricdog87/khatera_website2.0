@@ -1,6 +1,6 @@
 # Übergabe: khatera-gross.de
 
-Stand: 2. November 2026 · Demo: https://khatera-relaunch.vercel.app · Repository: `Ricdog87/khatera_website2.0`, Branch `claude/eager-bardeen-5ntj1o`
+Stand: 11. November 2026 · Demo: https://khatera-relaunch.vercel.app · Repository: `Ricdog87/khatera_website2.0`, Branch `claude/eager-bardeen-5ntj1o`
 
 ## 1. Was übergeben wird
 
@@ -9,8 +9,9 @@ Stand: 2. November 2026 · Demo: https://khatera-relaunch.vercel.app · Reposito
 | Seiten | Startseite, Home Staging, Musterwohnungen, Fix & Flip, Pakete & Ablauf, Für Makler, Projekte, Über mich, Kontakt, Ratgeber (8 Artikel), 8 Stadtseiten, Impressum, Datenschutz, 404 |
 | Stadtseiten | Wiesbaden, Rheingau, Taunusstein, Mainz, Frankfurt, Darmstadt, Offenbach, Bad Homburg & Hochtaunus |
 | Einsatzgebiet | gesamtes Rhein-Main-Gebiet, Musterwohnungen bundesweit |
-| Funktionen | Paketauswahl mit Anfrageformular, Vorher/Nachher-Schieberegler (Fix & Flip), mobile Anruf-/WhatsApp-Leiste, Google-Bewertungsbutton. Bewusst ohne Preise: jedes Angebot individuell nach Erstgespräch. |
-| Design | CI-Farben (helles Grau, Oliv, Anthrazit, Sand), Original-Logo aus Illustrator, Profi-Fotos MKG |
+| Funktionen | Paketauswahl mit Anfrageformular, Vorher/Nachher-Schieberegler (Startseite und Fix & Flip), mobile Anruf-/WhatsApp-Leiste, Google-Bewertungsbutton. Bewusst ohne Preise: jedes Angebot individuell nach Erstgespräch. |
+| Name und Logo | Die Website heißt **KG Homestaging**. Das Logo „KG \| HOMESTAGING“ ist aus den Original-Buchstaben der bisherigen Wortmarke gebaut. Inhaberin Khatera Gross steht weiter im Impressum und auf „Über mich“. |
+| Design | CI-Farben (helles Grau, Oliv, Anthrazit, Sand), Profi-Fotos MKG |
 | Qualität | Lighthouse mobil 99–100 in Performance, Barrierefreiheit, Best Practices und SEO; 30 Seiten ohne tote Links, je eine H1, Titel und Beschreibungen in Google-Länge |
 | Datenschutz | keine Cookies, kein Tracking, Schriften und Bilder lokal, daher kein Cookie-Banner nötig |
 
@@ -54,7 +55,8 @@ Alle Inhalte, die sich ändern, liegen an wenigen Stellen. Nach jeder Änderung:
 | Ich möchte … | Datei | Was ändern |
 |---|---|---|
 | Paketinhalte ändern | `src/config/site.ts` → `pakete` | `leistungen`, `hinweis` (Preise werden bewusst nicht angezeigt) |
-| Vorher/Nachher-Bilder ergänzen | `src/assets/images/vorher-nachher/` | Paar als `name-vorher.jpg` und `name-nachher.jpg` ablegen, der Regler auf `/fix-and-flip` erscheint automatisch |
+| Vorher/Nachher-Bilder ergänzen | `src/assets/images/vorher-nachher/` | Paar als `name-vorher.jpg` und `name-nachher.jpg` ablegen. Das erste Paar erscheint auf der Startseite, alle auf `/fix-and-flip`. Details in der `LIESMICH.md` im Ordner. |
+| Logo neu erzeugen | `scripts/logo-kg.mjs` | `node scripts/logo-kg.mjs`, danach `node scripts/og-image.mjs` für Vorschaubild und Icons |
 | Telefon, E-Mail, Adresse ändern | `src/config/site.ts` → `company` | Werte ersetzen, wirkt auf allen Seiten, im Impressum und in den strukturierten Daten |
 | Eine Stadtseite ergänzen | `src/config/site.ts` → `orte` | neuen Eintrag nach Vorbild anlegen, Bild in `src/pages/home-staging-[ort].astro` zuordnen |
 | FAQ ändern | `src/content/faq.ts` | Frage und Antwort; FAQ-Daten für Google aktualisieren sich automatisch |
@@ -71,10 +73,11 @@ Ausführlich in `CONTENT-TODO.md`. Die wichtigsten Punkte für mehr Anfragen:
 
 1. Direkter Google-Bewertungslink und die ersten 5 Bewertungen
 2. Bestätigung des 50-%-Partnerbonus
-3. 2 bis 3 echte Vorher/Nachher-Paare für den Schieberegler, dazu Ergebnisse zu 3 Projekten (Ort, Fläche, „nach X Wochen verkauft“)
+3. Echte Fotos vom leeren Zustand für den Schieberegler (aktuell ist der Leerstand digital nachgestellt und so gekennzeichnet), dazu Ergebnisse zu 3 Projekten (Ort, Fläche, „nach X Wochen verkauft“)
 4. Porträt in Originalauflösung vom Fotografen
 5. LinkedIn- und Instagram-Link (werden automatisch in die strukturierten Daten übernommen)
 6. Juristische Prüfung von Impressum und Datenschutz
+7. Neuer Name: Google-Unternehmensprofil, LinkedIn, Staging-Community-Profil und Verzeichnisse auf „KG Homestaging“ umstellen. Optional die Domain `kg-homestaging.de` sichern und auf `khatera-gross.de` weiterleiten.
 
 ## 6. Nächste Ausbaustufe (optional)
 

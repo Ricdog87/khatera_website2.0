@@ -3,7 +3,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import sharp from 'sharp';
 
-const logo = fs.readFileSync('src/assets/brand/logo.svg', 'utf8');
+const logo = fs.readFileSync('src/assets/brand/kg-homestaging-gestapelt.svg', 'utf8');
 const mono = fs.readFileSync('src/assets/brand/monogramm.svg', 'utf8');
 const photo = (await sharp('src/assets/images/haus-fernblick/home-staging-wohnzimmer-haus-fernblick.jpg').resize(1400).jpeg({ quality: 85 }).toBuffer()).toString('base64');
 

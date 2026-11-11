@@ -45,4 +45,4 @@ Das ist ein gutes Zeichen. Die Einrichtung zieht dann in eine vergleichbare Einh
 
 ## Bundesweit umgesetzt
 
-Khatera Gross richtet [Musterwohnungen](/musterwohnungen) für Bauträger und Projektentwickler bundesweit ein: Projektanalyse, Konzept mit Moodboard, Einrichtung termingenau zum Vertriebsstart, Betreuung während der Laufzeit und Rückbau. Grundrisse und Vertriebsplan genügen für ein erstes Gespräch.
+KG Homestaging richtet [Musterwohnungen](/musterwohnungen) für Bauträger und Projektentwickler bundesweit ein: Projektanalyse, Konzept mit Moodboard, Einrichtung termingenau zum Vertriebsstart, Betreuung während der Laufzeit und Rückbau. Grundrisse und Vertriebsplan genügen für ein erstes Gespräch.

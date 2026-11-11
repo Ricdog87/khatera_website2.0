@@ -1,14 +1,16 @@
 ---
 // Logo als CSS-Maske: eine gecachte SVG-Datei für alle Seiten, Farbe über currentColor.
-import wortmarke from '../assets/brand/wortmarke.svg';
+import wortmarke from '../assets/brand/kg-homestaging.svg';
+import gestapelt from '../assets/brand/kg-homestaging-gestapelt.svg';
 import monogramm from '../assets/brand/monogramm.svg';
 
 interface Props {
-  variant?: 'wortmarke' | 'monogramm';
+  /** wortmarke: KG | HOMESTAGING in einer Zeile, gestapelt: KG groß über HOMESTAGING, monogramm: KG-Zeichen */
+  variant?: 'wortmarke' | 'gestapelt' | 'monogramm';
   class?: string;
 }
 const { variant = 'wortmarke', class: className } = Astro.props;
-const svg = variant === 'wortmarke' ? wortmarke : monogramm;
+const svg = { wortmarke, gestapelt, monogramm }[variant];
 ---
 
 <span
